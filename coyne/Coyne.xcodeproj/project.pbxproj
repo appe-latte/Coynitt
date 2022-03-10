@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19ED4168A5C949CE099E0396 /* Pods_Coyne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B114F7B63E72C94987A929 /* Pods_Coyne.framework */; };
 		2F1F039527D7BE8C00009465 /* CoyneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039427D7BE8C00009465 /* CoyneApp.swift */; };
 		2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039627D7BE8C00009465 /* ContentView.swift */; };
 		2F1F039927D7BE8D00009465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1F039827D7BE8D00009465 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B114F7B63E72C94987A929 /* Pods_Coyne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coyne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1F039127D7BE8C00009465 /* Coyne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coyne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1F039427D7BE8C00009465 /* CoyneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoyneApp.swift; sourceTree = "<group>"; };
 		2F1F039627D7BE8C00009465 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +31,8 @@
 		2F1F03AD27D7C10900009465 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2F1F03AF27D7C14000009465 /* TransactionSect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSect.swift; sourceTree = "<group>"; };
 		2F1F03B127D7DFBB00009465 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.release.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.release.xcconfig"; sourceTree = "<group>"; };
+		DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.debug.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19ED4168A5C949CE099E0396 /* Pods_Coyne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +52,8 @@
 			children = (
 				2F1F039327D7BE8C00009465 /* Coyne */,
 				2F1F039227D7BE8C00009465 /* Products */,
+				CFFD664F107813200D3B3D7E /* Pods */,
+				D3EACA32C97A1598AAB39810 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +137,24 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		CFFD664F107813200D3B3D7E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */,
+				D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D3EACA32C97A1598AAB39810 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11B114F7B63E72C94987A929 /* Pods_Coyne.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +162,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F1F039F27D7BE8D00009465 /* Build configuration list for PBXNativeTarget "Coyne" */;
 			buildPhases = (
+				13C3A2AFB7A80B0CBDFA415A /* [CP] Check Pods Manifest.lock */,
 				2F1F038D27D7BE8C00009465 /* Sources */,
 				2F1F038E27D7BE8C00009465 /* Frameworks */,
 				2F1F038F27D7BE8C00009465 /* Resources */,
@@ -194,6 +220,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13C3A2AFB7A80B0CBDFA415A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Coyne-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F1F038D27D7BE8C00009465 /* Sources */ = {
@@ -331,6 +382,7 @@
 		};
 		2F1F03A027D7BE8D00009465 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -360,6 +412,7 @@
 		};
 		2F1F03A127D7BE8D00009465 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
