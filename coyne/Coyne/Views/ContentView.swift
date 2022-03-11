@@ -22,7 +22,12 @@ struct ContentView: View {
             
             MainView()
                             .tabItem {
-                                Label("Profile", systemImage: "person.crop.circle.fill")
+                                Label("Trends", systemImage: "chart.bar.xaxis")
+                            }
+            
+            MainView()
+                            .tabItem {
+                                Label("Help", systemImage: "questionmark.circle")
                             }
             
             MainView()
@@ -31,11 +36,5 @@ struct ContentView: View {
                             }
         }
         .accentColor(cynGreen)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

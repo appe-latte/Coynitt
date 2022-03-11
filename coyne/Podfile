@@ -6,5 +6,6 @@ target 'Coyne' do
   use_frameworks!
 
   # Pods for Coyne
+  pod 'Firebase/Auth'
 
 end

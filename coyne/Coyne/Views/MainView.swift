@@ -8,8 +8,38 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var accNum : String = "373812093"
+    @State private var accNum : Int = 373812093
     @State var fName = "Samuel"
+    @State var rowHeight = 60.0 // sets row height for list
+    
+    // MARK: Card Rotate
+    @State var backDegree = 0.0
+    @State var frontDegree = -90.0
+    @State var isFlipped = false
+    
+    let width : CGFloat = 200
+    let height : CGFloat = 250
+    let durationAndDelay : CGFloat = 0.3
+    
+    //MARK: Flip Card Function
+    func flipCard () {
+        isFlipped = !isFlipped
+        if isFlipped {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                backDegree = 90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                frontDegree = 0
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                frontDegree = -90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                backDegree = 0
+            }
+        }
+    }
     
     init() {
         // MARK: Nav Bar
@@ -31,14 +61,14 @@ struct MainView: View {
     }
     
     let dummyActivity = [
-        Activity(activDate: "07-Mar", activName: "Shell Garage", activAmount: 35.19),
-        Activity(activDate: "07-Mar", activName: "Hotel Artes", activAmount: 54.38),
-        Activity(activDate: "05-Mar", activName: "KLM Airlines", activAmount: 939.99),
-        Activity(activDate: "05-Mar", activName: "Footlocker", activAmount: 129.99),
-        Activity(activDate: "05-Mar", activName: "Marsch*PayPal", activAmount: 526.87),
-        Activity(activDate: "01-Mar", activName: "Niko's Pizza", activAmount: 32.29),
-        Activity(activDate: "27-Feb", activName: "Shopper's Drug Mart", activAmount: 74.99),
-        Activity(activDate: "18-Feb", activName: "McDonald's", activAmount: 1.99)
+        Activity(activDate: "07-Mar", activName: "Shell Garage", activAmount: -35.19),
+        Activity(activDate: "07-Mar", activName: "Hotel Artes", activAmount: -54.38),
+        Activity(activDate: "05-Mar", activName: "Deposit -- Marsch*PayPal", activAmount: 526.87),
+        Activity(activDate: "04-Mar", activName: "KLM Airlines", activAmount: -939.99),
+        Activity(activDate: "02-Mar", activName: "Footlocker", activAmount: -129.99),
+        Activity(activDate: "28-Feb", activName: "Deposit -- Appe Latte Ltd", activAmount: 3500.29),
+        Activity(activDate: "26-Feb", activName: "Niko's Pizza", activAmount: -32.29)
+        
     ]
     
     var body: some View {
@@ -115,31 +145,116 @@ struct MainView: View {
                     }
                     .padding()
                     
-                    CardView()
-                        .frame(height: 150)
-                        .foregroundColor(.black).edgesIgnoringSafeArea(.all)
-                        .padding(.horizontal)
-                    
+                    // MARK: Card Views
                     HStack {
-                        Text("Current Account: \(accNum)")
-                            .font(.custom("Avenir", size: 14))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
+                        ZStack {
+                            CardFrontView(width: width, height: height, degree: $backDegree)
+                            CardBackView(width: width, height: height, degree: $frontDegree)
+                        }
+                        .frame(width: 250, height: 160)
                         
-                        Spacer()
+                        
+                        // MARK: Information
+                        VStack {
+                            Button(action: {
+                                
+                            }, label: {
+                                VStack {
+                                    Image(systemName: "info.circle.fill")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(10)
+                                        .background(cynGreen.opacity(0.1))
+                                        .clipShape(Circle())
+                                    Text("Account Details")
+                                        .font(.system(size: 11))
+                                        .foregroundColor(.black)
+                                }
+                            })
+                            
+                            Button(action: {
+                                self.flipCard()
+                            }, label: {
+                                VStack {
+                                    Image(systemName: "arrow.triangle.2.circlepath.circle")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(10)
+                                        .background(cynGreen.opacity(0.1))
+                                        .clipShape(Circle())
+                                    if isFlipped == true {
+                                    Text("Card Front")
+                                        .font(.system(size: 11))
+                                        .foregroundColor(.black)
+                                    } else {
+                                        Text("Card Back")
+                                            .font(.system(size: 11))
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                            }).onTapGesture {
+                                flipCard ()
+                            }
+                            
+                            Spacer()
+                        }
+                        .frame(height: 150)
+                        .padding(.trailing, 20)
+                        
                     }
-                    .padding(.horizontal)
+                    
+                    //                    HStack {
+                    //
+                    //                        // MARK: View Account Details
+                    //                        Button(action: {
+                    //
+                    //                        }, label: {
+                    //                            VStack {
+                    //                                Image(systemName: "info.circle.fill")
+                    //                                    .resizable()
+                    //                                    .frame(width: 25, height: 25)
+                    //                                    .padding(10)
+                    //                                    .background(cynGreen.opacity(0.1))
+                    //                                    .clipShape(Circle())
+                    //                                Text("Account Details")
+                    //                                    .font(.system(size: 11))
+                    //                                    .foregroundColor(.black)
+                    //                            }
+                    //                        })
+                    //
+                    //                        // MARK: View Card Back
+                    //                        Button(action: {
+                    //
+                    //                        }, label: {
+                    //                            VStack {
+                    //                                Image(systemName: "arrow.triangle.2.circlepath.circle")
+                    //                                    .resizable()
+                    //                                    .frame(width: 25, height: 25)
+                    //                                    .padding(10)
+                    //                                    .background(cynGreen.opacity(0.1))
+                    //                                    .clipShape(Circle())
+                    //                                Text("Card Back")
+                    //                                    .font(.system(size: 11))
+                    //                                    .foregroundColor(.black)
+                    //                            }
+                    //                        })
+                    //                    }
+                    //                    .frame(height: 150)
+                    //                    .padding(.trailing, 20)
+                    
                     
                     Spacer()
                         .frame(height: 20)
                     
                     Form {
-                        Section(header: Text("All Activity")) {
+                        Section(header: Text("Latest Activity")) {
                             List(dummyActivity) { activity in
                                 ActivityRow(activity: activity)
                             }
                         }
-                    }.foregroundColor(.black)
+                    }
+                    .foregroundColor(.black)
+                    .environment(\.defaultMinListRowHeight, rowHeight)
                 }
                 
             }
@@ -175,20 +290,29 @@ struct ActivityRow: View {
     var activity: Activity
     
     var body: some View {
-        HStack {
-            Text(activity.activDate)
-                .font(.custom("Avenir", size: 16))
-                .fontWeight(.semibold)
-                .foregroundColor(.black)
-            Text(activity.activName)
-                .font(.custom("Avenir", size: 15))
-                .fontWeight(.semibold)
-                .foregroundColor(.black)
-            Spacer()
-            Text("\(activity.activAmount, specifier: "%.2f")")
-                .font(.custom("Avenir", size: 15))
-                .fontWeight(.semibold)
-                .foregroundColor(.black)
+        VStack {
+            HStack {
+                Text(activity.activName)
+                    .font(.custom("Avenir", size: 16))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+                
+                Spacer()
+                
+                Text("\(activity.activAmount, specifier: "%.2f")")
+                    .font(.custom("Avenir", size: 15))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+            }
+            
+            HStack {
+                Text(activity.activDate)
+                    .font(.custom("Avenir", size: 14))
+                    .bold()
+                    .foregroundColor(.gray)
+                
+                Spacer()
+            }
         }
         .listRowBackground(cynWhite) // list background colour
         .edgesIgnoringSafeArea(.all)

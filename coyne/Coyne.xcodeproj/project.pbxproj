@@ -14,9 +14,10 @@
 		2F1F039C27D7BE8D00009465 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1F039B27D7BE8D00009465 /* Preview Assets.xcassets */; };
 		2F1F03A927D7BF6600009465 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03A827D7BF6600009465 /* MainView.swift */; };
 		2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AB27D7C00E00009465 /* Colors.swift */; };
-		2F1F03AE27D7C10900009465 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AD27D7C10900009465 /* CardView.swift */; };
+		2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AD27D7C10900009465 /* CardFrontView.swift */; };
 		2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AF27D7C14000009465 /* TransactionSect.swift */; };
 		2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03B127D7DFBB00009465 /* ActivityView.swift */; };
+		2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C2FE27DA90E800B97B58 /* CardBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +29,10 @@
 		2F1F039B27D7BE8D00009465 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F1F03A827D7BF6600009465 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2F1F03AB27D7C00E00009465 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		2F1F03AD27D7C10900009465 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2F1F03AD27D7C10900009465 /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		2F1F03AF27D7C14000009465 /* TransactionSect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSect.swift; sourceTree = "<group>"; };
 		2F1F03B127D7DFBB00009465 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		2F94C2FE27DA90E800B97B58 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.release.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.release.xcconfig"; sourceTree = "<group>"; };
 		DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.debug.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				2F1F03AB27D7C00E00009465 /* Colors.swift */,
-				2F1F03AD27D7C10900009465 /* CardView.swift */,
+				2F1F03AD27D7C10900009465 /* CardFrontView.swift */,
+				2F94C2FE27DA90E800B97B58 /* CardBackView.swift */,
 				2F1F03B127D7DFBB00009465 /* ActivityView.swift */,
 				2F1F03AF27D7C14000009465 /* TransactionSect.swift */,
 			);
@@ -143,7 +146,6 @@
 				DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */,
 				D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -166,6 +168,7 @@
 				2F1F038D27D7BE8C00009465 /* Sources */,
 				2F1F038E27D7BE8C00009465 /* Frameworks */,
 				2F1F038F27D7BE8C00009465 /* Resources */,
+				12FC079F05934908433A51EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,6 +225,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		12FC079F05934908433A51EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coyne/Pods-Coyne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coyne/Pods-Coyne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coyne/Pods-Coyne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		13C3A2AFB7A80B0CBDFA415A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,7 +273,8 @@
 			files = (
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
-				2F1F03AE27D7C10900009465 /* CardView.swift in Sources */,
+				2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */,
+				2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */,
 				2F1F03A927D7BF6600009465 /* MainView.swift in Sources */,
 				2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoyneApp.swift in Sources */,
