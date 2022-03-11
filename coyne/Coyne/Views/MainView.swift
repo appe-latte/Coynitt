@@ -52,7 +52,6 @@ struct MainView: View {
         barTintColor.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.black)]
         UINavigationBar.appearance().scrollEdgeAppearance = barTintColor
         UINavigationBar.appearance().standardAppearance = barTintColor
-        UITableView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
         
         // MARK: Tab Bar
         let tabBarTintColor = UITabBarAppearance()
@@ -60,6 +59,10 @@ struct MainView: View {
         tabBarTintColor.backgroundColor = UIColor.init(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
         UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
         UITabBar.appearance().standardAppearance = tabBarTintColor
+        
+        UITextView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
+        UITableView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
+        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
     }
     
     let dummyActivity = [
