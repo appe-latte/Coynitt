@@ -20,6 +20,7 @@
 		2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C2FE27DA90E800B97B58 /* CardBackView.swift */; };
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
+		2F94C30727DAE28500B97B58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30627DAE28500B97B58 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		2F94C2FE27DA90E800B97B58 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		2F94C30227DAD53E00B97B58 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
+		2F94C30627DAE28500B97B58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.release.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.release.xcconfig"; sourceTree = "<group>"; };
 		DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.debug.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +77,7 @@
 		2F1F039327D7BE8C00009465 /* Coyne */ = {
 			isa = PBXGroup;
 			children = (
+				2FD18BBB27DAE81600FED6B9 /* Info.plist */,
 				2F1F03A527D7BEC800009465 /* Delegates */,
 				2F1F03A727D7BF0300009465 /* Helpers */,
 				2F1F03A327D7BEB800009465 /* Utils */,
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				2F94C30227DAD53E00B97B58 /* LatestActivity.swift */,
+				2F94C30627DAE28500B97B58 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoyneApp.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
+				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,21 +427,24 @@
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Coyne/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Coyne;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appelatte.Coyne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -451,21 +460,24 @@
 				DEVELOPMENT_TEAM = QACLP69RHJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Coyne/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Coyne;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appelatte.Coyne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -6,6 +6,11 @@ target 'Coyne' do
   use_frameworks!
 
   # Pods for Coyne
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
 
 end
