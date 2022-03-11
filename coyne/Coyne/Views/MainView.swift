@@ -10,7 +10,9 @@ import SwiftUI
 struct MainView: View {
     @State private var accNum : Int = 373812093
     @State var fName : String = "Samuel"
+    
     @State var rowHeight = 60.0 // sets row height for list
+    @State private var showAccountDetailsSheetView = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -68,7 +70,6 @@ struct MainView: View {
         Activity(activDate: "02-Mar", activName: "Footlocker", activAmount: -129.99),
         Activity(activDate: "28-Feb", activName: "Deposit -- Appe Latte Ltd", activAmount: 3500.29),
         Activity(activDate: "26-Feb", activName: "Niko's Pizza", activAmount: -32.29)
-        
     ]
     
     var body: some View {
@@ -153,11 +154,10 @@ struct MainView: View {
                         }
                         .frame(width: 250, height: 160)
                         
-                        
                         // MARK: Information
                         VStack {
                             Button(action: {
-                                
+                                self.showAccountDetailsSheetView.toggle()
                             }, label: {
                                 VStack {
                                     Image(systemName: "info.circle.fill")
@@ -199,7 +199,7 @@ struct MainView: View {
                             Spacer()
                         }
                         .frame(height: 150)
-                        .padding(.trailing, 20)
+                        .padding(.trailing, 15)
                     }
                     
                     Spacer()
@@ -215,6 +215,9 @@ struct MainView: View {
                     .foregroundColor(.black)
                     .environment(\.defaultMinListRowHeight, rowHeight)
                 }
+            }
+            .sheet(isPresented: $showAccountDetailsSheetView) {
+                AccountDetailsView()
             }
             .accentColor(cynGreen)
             .navigationBarTitle("Dashboard")

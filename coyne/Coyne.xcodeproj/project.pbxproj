@@ -19,6 +19,7 @@
 		2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03B127D7DFBB00009465 /* ActivityView.swift */; };
 		2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C2FE27DA90E800B97B58 /* CardBackView.swift */; };
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
+		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		2F1F03B127D7DFBB00009465 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		2F94C2FE27DA90E800B97B58 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		2F94C30227DAD53E00B97B58 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
+		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.release.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.release.xcconfig"; sourceTree = "<group>"; };
 		DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.debug.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 			children = (
 				2F1F039627D7BE8C00009465 /* ContentView.swift */,
 				2F1F03A827D7BF6600009465 /* MainView.swift */,
+				2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
 				2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */,
+				2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */,
 				2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */,
 				2F1F03A927D7BF6600009465 /* MainView.swift in Sources */,
 				2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */,
