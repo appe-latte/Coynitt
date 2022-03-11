@@ -13,6 +13,7 @@ struct MainView: View {
     
     @State var rowHeight = 60.0 // sets row height for list
     @State private var showAccountDetailsSheetView = false
+    @State private var showDepositSheetView = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -100,20 +101,21 @@ struct MainView: View {
                         Spacer()
                         
                         // MARK: Deposit Money View
-                        NavigationLink(
-                            destination: MainView()){
-                                VStack {
-                                    Image(systemName: "arrow.down.circle")
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                        .padding(10)
-                                        .background(cynGreen.opacity(0.1))
-                                        .clipShape(Circle())
-                                    Text("Deposit")
-                                        .font(.system(size: 11))
-                                        .foregroundColor(.black)
-                                }
+                        Button(action: {
+                            self.showDepositSheetView.toggle()
+                        }, label: {
+                            VStack {
+                            Image(systemName: "arrow.down.circle")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(10)
+                                .background(cynGreen.opacity(0.1))
+                                .clipShape(Circle())
+                            Text("Deposit")
+                                .font(.system(size: 11))
+                                .foregroundColor(.black)
                             }
+                        })
                         
                         // MARK: Send Money View
                         NavigationLink(
@@ -209,11 +211,11 @@ struct MainView: View {
                         .frame(height: 20)
                     
                     HStack {
-                    Text("Latest Activity")
-                        .font(.system(size: 15))
-                        .bold()
-                        .foregroundColor(.gray)
-                        .textCase(.uppercase)
+                        Text("Latest Activity")
+                            .font(.system(size: 15))
+                            .bold()
+                            .foregroundColor(.gray)
+                            .textCase(.uppercase)
                         
                         Spacer()
                     }.padding(.leading, 30)
@@ -232,6 +234,9 @@ struct MainView: View {
             }
             .sheet(isPresented: $showAccountDetailsSheetView) {
                 AccountDetailsView()
+            }
+            .sheet(isPresented: $showDepositSheetView) {
+                AccountDepositView()
             }
             .accentColor(cynGreen)
             .navigationBarTitle("Dashboard")

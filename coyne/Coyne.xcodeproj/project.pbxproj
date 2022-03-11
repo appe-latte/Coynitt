@@ -21,6 +21,7 @@
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
 		2F94C30727DAE28500B97B58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30627DAE28500B97B58 /* User.swift */; };
+		2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		2F94C30627DAE28500B97B58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDepositView.swift; sourceTree = "<group>"; };
 		D750DF656B01DB09481FBE75 /* Pods-Coyne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.release.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.release.xcconfig"; sourceTree = "<group>"; };
 		DC2B600F64304B0B6E54BA3C /* Pods-Coyne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coyne.debug.xcconfig"; path = "Target Support Files/Pods-Coyne/Pods-Coyne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				2F1F039627D7BE8C00009465 /* ContentView.swift */,
 				2F1F03A827D7BF6600009465 /* MainView.swift */,
 				2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */,
+				2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				2F1F039527D7BE8C00009465 /* CoyneApp.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
 				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
+				2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardFrontView: View {
-    @State private var accBalance : Double = 14198.18
+    @State var accBalance : Double = 14198.18
     @State private var lastFourDigits : Int = 1762
     @State var accType : String = "Current"
     

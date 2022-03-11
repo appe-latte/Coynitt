@@ -15,6 +15,7 @@ struct CardBackView: View {
     @State private var cvv : Int = 162
     @State private var expiryDate = "03/25"
     @State private var fullName : String = "S Jameson"
+    
     @State var cardWidth : CGFloat = 250.0
     @State var cardHeight : CGFloat = 150
     
@@ -62,11 +63,13 @@ struct CardBackView: View {
                                                 .font(.custom("Avenir", size: 14))
                                                 .fontWeight(.semibold)
                                                 .foregroundColor(.white)
+                                                .padding(.leading, 5)
                                         } else {
                                             Text("\(String(firstFourDigits)) " + "\(String(secondFourDigits)) " + "\(String(thirdFourDigits)) " + "\(String(lastFourDigits))")
                                                 .font(.custom("Avenir", size: 14))
                                                 .fontWeight(.semibold)
                                                 .foregroundColor(.white)
+                                                .padding(.leading, 5)
                                         }
                                         
                                         Spacer()
@@ -76,7 +79,7 @@ struct CardBackView: View {
                                         }, label: {
                                             Image(systemName: "eye")
                                                 .resizable()
-                                                .frame(width: 20, height: 15)
+                                                .frame(width: 20, height: 14)
                                                 .foregroundColor(cynWhite)
                                                 .padding(2)
                                         })
