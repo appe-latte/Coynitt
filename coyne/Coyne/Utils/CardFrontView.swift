@@ -70,7 +70,7 @@ struct CardFrontView: View {
                                     Spacer()
                                     
                                 }
-                                .padding(.horizontal, 10)
+                                .padding(.horizontal, 5)
                             }
                         }
                             .padding(10))

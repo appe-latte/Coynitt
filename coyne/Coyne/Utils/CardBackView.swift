@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct CardBackView: View {
-    @State private var accBalance : Double = 14198.18
+    @State private var firstFourDigits : Int = 2536
+    @State private var secondFourDigits : Int = 5291
+    @State private var thirdFourDigits : Int = 1809
     @State private var lastFourDigits : Int = 1762
     @State private var cvv : Int = 162
     @State private var expiryDate = "03/25"
     @State private var fullName : String = "S Jameson"
     @State var cardWidth : CGFloat = 250.0
     @State var cardHeight : CGFloat = 150
+    
+    @State private var isSecured: Bool = true
     
     let width : CGFloat
     let height : CGFloat
@@ -53,14 +57,23 @@ struct CardBackView: View {
                                 .background(.black).opacity(0.1)
                                 .overlay(
                                     HStack {
-                                        Text("**** **** **** \(String(lastFourDigits))")
-                                            .font(.custom("Avenir", size: 14))
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.white)
+                                        if isSecured {
+                                            Text("**** **** **** \(String(lastFourDigits))")
+                                                .font(.custom("Avenir", size: 14))
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.white)
+                                        } else {
+                                            Text("\(String(firstFourDigits)) " + "\(String(secondFourDigits)) " + "\(String(thirdFourDigits)) " + "\(String(lastFourDigits))")
+                                                .font(.custom("Avenir", size: 14))
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.white)
+                                        }
                                         
                                         Spacer()
                                         
-                                        Button(action: {}, label: {
+                                        Button(action: {
+                                            self.isSecured.toggle()
+                                        }, label: {
                                             Image(systemName: "eye")
                                                 .resizable()
                                                 .frame(width: 20, height: 15)
@@ -75,17 +88,17 @@ struct CardBackView: View {
                             HStack {
                                 Text("CVV: \(String(cvv))")
                                     .font(.custom("Avenir", size: 12))
-                                    .fontWeight(.semibold)
+                                    .bold()
                                     .foregroundColor(.white)
                                 
                                 Spacer()
                                 
                                 Text("Expiry: \(String(expiryDate))") // String() ~ removes comma from Int
                                     .font(.custom("Avenir", size: 12))
-                                    .fontWeight(.semibold)
+                                    .bold()
                                     .foregroundColor(.white)
                             }
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 5)
                             
                             Spacer()
                             
@@ -94,10 +107,11 @@ struct CardBackView: View {
                                     .font(.custom("Avenir", size: 14))
                                     .bold()
                                     .foregroundColor(.white)
+                                    .textCase(.uppercase)
                                 
                                 Spacer()
                             }
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 5)
                         }
                             .padding(10))
             }

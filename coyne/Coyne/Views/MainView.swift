@@ -155,7 +155,7 @@ struct MainView: View {
                             CardFrontView(width: width, height: height, degree: $rotationAngleBack)
                             CardBackView(width: width, height: height, degree: $rotationAngleFront)
                         }
-                        .frame(width: 250, height: 160)
+                        .frame(width: 260, height: 160)
                         
                         // MARK: Information
                         VStack {
@@ -202,14 +202,25 @@ struct MainView: View {
                             Spacer()
                         }
                         .frame(height: 150)
-                        .padding(.trailing, 15)
+                        .padding(.trailing, 10)
                     }
                     
                     Spacer()
                         .frame(height: 20)
                     
+                    HStack {
+                    Text("Latest Activity")
+                        .font(.system(size: 15))
+                        .bold()
+                        .foregroundColor(.gray)
+                        .textCase(.uppercase)
+                        
+                        Spacer()
+                    }.padding(.leading, 30)
+                    
+                    // MARK: Latest Activity
                     Form {
-                        Section(header: Text("Latest Activity")) {
+                        Section {
                             List(dummyActivity) { activity in
                                 ActivityRow(activity: activity)
                             }
