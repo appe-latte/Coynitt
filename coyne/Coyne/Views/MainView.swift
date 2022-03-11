@@ -164,17 +164,12 @@ struct MainView: View {
                             Button(action: {
                                 self.showAccountDetailsSheetView.toggle()
                             }, label: {
-                                VStack {
                                     Image(systemName: "info.circle.fill")
                                         .resizable()
                                         .frame(width: 25, height: 25)
                                         .padding(10)
                                         .background(cynGreen.opacity(0.1))
                                         .clipShape(Circle())
-                                    Text("Account Details")
-                                        .font(.system(size: 11))
-                                        .foregroundColor(.black)
-                                }
                             })
                             
                             Button(action: {
@@ -187,15 +182,15 @@ struct MainView: View {
                                         .padding(10)
                                         .background(cynGreen.opacity(0.1))
                                         .clipShape(Circle())
-                                    if isCardFlipped == true {
-                                        Text("Card Front")
-                                            .font(.system(size: 11))
-                                            .foregroundColor(.black)
-                                    } else {
-                                        Text("Card Back")
-                                            .font(.system(size: 11))
-                                            .foregroundColor(.black)
-                                    }
+//                                    if isCardFlipped == true {
+//                                        Text("Card Front")
+//                                            .font(.system(size: 11))
+//                                            .foregroundColor(.black)
+//                                    } else {
+//                                        Text("Card Back")
+//                                            .font(.system(size: 11))
+//                                            .foregroundColor(.black)
+//                                    }
                                 }
                             }).onTapGesture {
                                 cardAnimation ()
@@ -204,14 +199,14 @@ struct MainView: View {
                             Spacer()
                         }
                         .frame(height: 150)
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 5)
                     }
                     
                     Spacer()
                         .frame(height: 20)
                     
                     HStack {
-                        Text("Latest Activity")
+                        Text("Recent Transactions")
                             .font(.system(size: 15))
                             .bold()
                             .foregroundColor(.gray)

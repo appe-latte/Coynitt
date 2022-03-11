@@ -15,7 +15,7 @@ struct ContentView: View {
                                 Label("Home", systemImage: "house.fill")
                             }
             
-            MainView()
+            PaymentsView()
                             .tabItem {
                                 Label("Payments", systemImage: "arrow.left.arrow.right")
                             }

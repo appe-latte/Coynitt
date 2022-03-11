@@ -19,19 +19,21 @@ struct AccountDepositView: View {
     
     var body: some View {
         ZStack {
-//            bgWhite()
+            //            bgWhite()
             VStack {
                 // MARK: Account Balance
-                HStack {
-                    Spacer()
+                VStack {
+                    Text("Bank Transfer")
+                        .font(.system(size: 20))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.gray)
                     
-                    Text("Balance: \(String(accBalance))")
-                        .font(.system(size: 15))
+                    Text("Balance: $\(accBalance, specifier: "%.2f")")
+                        .font(.system(size: 12))
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)
                 }
                 .padding(.top, 20)
-                .padding(.horizontal, 20)
                 
                 Form {
                     Section {
@@ -40,7 +42,7 @@ struct AccountDepositView: View {
                                 .font(.system(size: 30))
                                 .bold()
                             TextField("0.00", text: $depositAmt)
-                                .font(.system(size: 30))
+                                .font(.system(size: 32))
                                 .keyboardType(.numbersAndPunctuation)
                         }
                     }.frame(height: 80)
@@ -105,16 +107,15 @@ struct AccountDepositView: View {
                                 HStack {
                                     Text("\(String(accNum))")
                                         .font(.system(size: 14))
-                                        .fontWeight(.semibold)
                                         .foregroundColor(.gray)
                                     Text("·")
-                                        .font(.system(size: 18))
+                                        .font(.system(size: 22))
                                         .bold()
                                         .foregroundColor(.gray)
                                     Text("\(String(transitNum))")
                                         .font(.system(size: 14))
-                                        .fontWeight(.semibold)
                                         .foregroundColor(.gray)
+                                    Spacer()
                                 }
                             }
                             
@@ -134,25 +135,30 @@ struct AccountDepositView: View {
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
                     }
+                    
+                    // MARK: Agree & Transfer button
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {}, label: {
+                            Text("Agree & Continue")
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                        })
+                            .frame(width: 175, height: 70)
+                            .background(Color.blue)
+                            .cornerRadius(15)
+                            .disabled((depositAmt != "") ? false : true)
+                            .opacity((depositAmt != "") ? 1 : 0.4)
+                        
+                        Spacer()
+                    }
                 }
                 .environment(\.defaultMinListRowHeight, rowHeight)
                 .onAppear(perform: {
                     UITableView.appearance().backgroundColor = UIColor.clear
                     UITableViewCell.appearance().backgroundColor = UIColor.clear
                 })
-                
-                VStack {
-                    Button(action: {}, label: {
-                        Text("Agree & Continue")
-                            .font(.system(size: 16))
-                            .foregroundColor(.white)
-                    })
-                        .frame(width: 175, height: 70)
-                        .background(Color.blue)
-                        .cornerRadius(15)
-                        .disabled((depositAmt != "") ? false : true)
-                        .opacity((depositAmt != "") ? 1 : 0.4)
-                }
             }
         }
         .accentColor(.blue)
