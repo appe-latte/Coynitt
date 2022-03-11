@@ -9,34 +9,34 @@ import SwiftUI
 
 struct MainView: View {
     @State private var accNum : Int = 373812093
-    @State var fName = "Samuel"
+    @State var fName : String = "Samuel"
     @State var rowHeight = 60.0 // sets row height for list
     
     // MARK: Card Rotate
-    @State var backDegree = 0.0
-    @State var frontDegree = -90.0
-    @State var isFlipped = false
+    @State var rotationAngleBack = 0.0
+    @State var rotationAngleFront = -90.0
+    @State var isCardFlipped = false
     
     let width : CGFloat = 200
     let height : CGFloat = 250
-    let durationAndDelay : CGFloat = 0.3
+    let animationDelay : CGFloat = 0.3
     
     //MARK: Flip Card Function
-    func flipCard () {
-        isFlipped = !isFlipped
-        if isFlipped {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                backDegree = 90
+    func cardAnimation () {
+        isCardFlipped = !isCardFlipped
+        if isCardFlipped {
+            withAnimation(.linear(duration: animationDelay)) {
+                rotationAngleBack = 90
             }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                frontDegree = 0
+            withAnimation(.linear(duration: animationDelay).delay(animationDelay)){
+                rotationAngleFront = 0
             }
         } else {
-            withAnimation(.linear(duration: durationAndDelay)) {
-                frontDegree = -90
+            withAnimation(.linear(duration: animationDelay)) {
+                rotationAngleFront = -90
             }
-            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-                backDegree = 0
+            withAnimation(.linear(duration: animationDelay).delay(animationDelay)){
+                rotationAngleBack = 0
             }
         }
     }
@@ -95,7 +95,7 @@ struct MainView: View {
                         
                         Spacer()
                         
-                        // MARK: Deposit Money
+                        // MARK: Deposit Money View
                         NavigationLink(
                             destination: MainView()){
                                 VStack {
@@ -111,7 +111,7 @@ struct MainView: View {
                                 }
                             }
                         
-                        // MARK: Send Money
+                        // MARK: Send Money View
                         NavigationLink(
                             destination: MainView()){
                                 VStack {
@@ -127,7 +127,7 @@ struct MainView: View {
                                 }
                             }
                         
-                        // MARK: Spending Chart
+                        // MARK: Spending Chart View
                         NavigationLink(
                             destination: MainView()){
                                 VStack {
@@ -148,8 +148,8 @@ struct MainView: View {
                     // MARK: Card Views
                     HStack {
                         ZStack {
-                            CardFrontView(width: width, height: height, degree: $backDegree)
-                            CardBackView(width: width, height: height, degree: $frontDegree)
+                            CardFrontView(width: width, height: height, degree: $rotationAngleBack)
+                            CardBackView(width: width, height: height, degree: $rotationAngleFront)
                         }
                         .frame(width: 250, height: 160)
                         
@@ -173,7 +173,7 @@ struct MainView: View {
                             })
                             
                             Button(action: {
-                                self.flipCard()
+                                self.cardAnimation()
                             }, label: {
                                 VStack {
                                     Image(systemName: "arrow.triangle.2.circlepath.circle")
@@ -182,10 +182,10 @@ struct MainView: View {
                                         .padding(10)
                                         .background(cynGreen.opacity(0.1))
                                         .clipShape(Circle())
-                                    if isFlipped == true {
-                                    Text("Card Front")
-                                        .font(.system(size: 11))
-                                        .foregroundColor(.black)
+                                    if isCardFlipped == true {
+                                        Text("Card Front")
+                                            .font(.system(size: 11))
+                                            .foregroundColor(.black)
                                     } else {
                                         Text("Card Back")
                                             .font(.system(size: 11))
@@ -193,55 +193,14 @@ struct MainView: View {
                                     }
                                 }
                             }).onTapGesture {
-                                flipCard ()
+                                cardAnimation ()
                             }
                             
                             Spacer()
                         }
                         .frame(height: 150)
                         .padding(.trailing, 20)
-                        
                     }
-                    
-                    //                    HStack {
-                    //
-                    //                        // MARK: View Account Details
-                    //                        Button(action: {
-                    //
-                    //                        }, label: {
-                    //                            VStack {
-                    //                                Image(systemName: "info.circle.fill")
-                    //                                    .resizable()
-                    //                                    .frame(width: 25, height: 25)
-                    //                                    .padding(10)
-                    //                                    .background(cynGreen.opacity(0.1))
-                    //                                    .clipShape(Circle())
-                    //                                Text("Account Details")
-                    //                                    .font(.system(size: 11))
-                    //                                    .foregroundColor(.black)
-                    //                            }
-                    //                        })
-                    //
-                    //                        // MARK: View Card Back
-                    //                        Button(action: {
-                    //
-                    //                        }, label: {
-                    //                            VStack {
-                    //                                Image(systemName: "arrow.triangle.2.circlepath.circle")
-                    //                                    .resizable()
-                    //                                    .frame(width: 25, height: 25)
-                    //                                    .padding(10)
-                    //                                    .background(cynGreen.opacity(0.1))
-                    //                                    .clipShape(Circle())
-                    //                                Text("Card Back")
-                    //                                    .font(.system(size: 11))
-                    //                                    .foregroundColor(.black)
-                    //                            }
-                    //                        })
-                    //                    }
-                    //                    .frame(height: 150)
-                    //                    .padding(.trailing, 20)
-                    
                     
                     Spacer()
                         .frame(height: 20)
@@ -256,17 +215,15 @@ struct MainView: View {
                     .foregroundColor(.black)
                     .environment(\.defaultMinListRowHeight, rowHeight)
                 }
-                
             }
             .accentColor(cynGreen)
             .navigationBarTitle("Dashboard")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // MARK: Notifications
                 Button(action: {
                     
                 }, label: {
-                    Image(systemName: "bell.fill")
+                    Image(systemName: "bell.fill") // Notifications button
                         .resizable()
                         .frame(width: 20, height: 20)
                         .padding(10)
@@ -276,45 +233,5 @@ struct MainView: View {
             }
             
         }
-    }
-}
-
-struct Activity: Identifiable {
-    let id = UUID()
-    let activDate: String
-    let activName: String
-    let activAmount: Double
-}
-
-struct ActivityRow: View {
-    var activity: Activity
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Text(activity.activName)
-                    .font(.custom("Avenir", size: 16))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.black)
-                
-                Spacer()
-                
-                Text("\(activity.activAmount, specifier: "%.2f")")
-                    .font(.custom("Avenir", size: 15))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.black)
-            }
-            
-            HStack {
-                Text(activity.activDate)
-                    .font(.custom("Avenir", size: 14))
-                    .bold()
-                    .foregroundColor(.gray)
-                
-                Spacer()
-            }
-        }
-        .listRowBackground(cynWhite) // list background colour
-        .edgesIgnoringSafeArea(.all)
     }
 }
