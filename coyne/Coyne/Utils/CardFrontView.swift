@@ -31,7 +31,7 @@ struct CardFrontView: View {
                         VStack {
                             // MARK: Top Section
                             HStack {
-                                Image("logo-small")
+                                Image("logo-trans")
                                     .resizable()
                                     .scaledToFill()
                                     .aspectRatio(contentMode: .fill)
@@ -41,7 +41,7 @@ struct CardFrontView: View {
                                 
                                 Spacer()
                                 
-                                Text("COYNE")
+                                Text("COYNITT")
                                     .font(.custom("Avenir", size: 16))
                                     .bold()
                                     .foregroundColor(.white)
@@ -76,22 +76,5 @@ struct CardFrontView: View {
                             .padding(10))
             }
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-    }
-}
-
-// MARK: Corner radius for "HeaderTop"
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }

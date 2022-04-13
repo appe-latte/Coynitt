@@ -10,6 +10,8 @@ import SwiftUI
 struct PaymentsView: View {
     @State var accBalance : Double = 14198.18
     
+    @State var rowHeight = 65.0
+    
     let dummyRecipients = [
         Recipients(lName: "Rogers", initials: "IR"),
         Recipients(lName: "Khumalo", initials: "SK"),
@@ -71,23 +73,59 @@ struct PaymentsView: View {
                     Section(header: Text("Payments")) {
                         // MARK: Pay an individual
                         NavigationLink(destination: MainView()){
-                            Text("Pay Individual")
-                                .font(.system(size: 16))
-                                .bold()
+                            VStack {
+                                HStack {
+                                    Text("Pay Individual")
+                                        .font(.system(size: 17))
+                                        .bold()
+                                    Spacer()
+                                }
+                                
+                                HStack {
+                                    Text("Send money via bank transfer.")
+                                        .font(.system(size: 13))
+                                        .fontWeight(.semibold)
+                                    Spacer()
+                                }
+                            }
                         }
                         
                         // MARK: Pay an individual
                         NavigationLink(destination: MainView()){
-                            Text("Transfer to another Coyne Account")
-                                .font(.system(size: 16))
-                                .bold()
+                            VStack {
+                                HStack {
+                                    Text("Move Funds")
+                                        .font(.system(size: 17))
+                                        .bold()
+                                    Spacer()
+                                }
+                                HStack {
+                                    Text("Transfer to another Coyne Account.")
+                                        .font(.system(size: 13))
+                                        .fontWeight(.semibold)
+                                    Spacer()
+                                }
+                            }
                         }
                         
                         // MARK: Pay an individual
                         NavigationLink(destination: MainView()){
-                            Text("Request Money")
-                                .font(.system(size: 16))
-                                .bold()
+                            VStack {
+                                HStack {
+                                    Text("Request Money")
+                                        .font(.system(size: 16))
+                                        .bold()
+                                    Spacer()
+                                }
+                                
+                                HStack {
+                                    Text("Request funds from another user.")
+                                        .font(.system(size: 13))
+                                        .fontWeight(.semibold)
+                                    Spacer()
+                                }
+                                
+                            }
                             
                         }
                     }
@@ -100,12 +138,14 @@ struct PaymentsView: View {
                         }
                     }
                 }
+                .environment(\.defaultMinListRowHeight, rowHeight)
+                .foregroundColor(Color.black)
             }
         }
     }
 }
 
-
+// MARK: Recipients Lists - shows last 10 transfers
 struct Recipients: Identifiable {
     let id = UUID()
     let lName : String
@@ -129,6 +169,9 @@ struct RecipientsRow: View {
                     .font(.custom("Avenir", size: 14))
                     .fontWeight(.semibold)
                     .foregroundColor(.black)
+                    .scaledToFill()
+                    .minimumScaleFactor(0.5)
+                
             }
             .padding(2)
             .listRowBackground(cynWhite) // list background colour

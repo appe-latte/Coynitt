@@ -23,7 +23,7 @@ struct AccountDepositView: View {
             VStack {
                 // MARK: Account Balance
                 VStack {
-                    Text("Bank Transfer")
+                    Text("Bank Deposit")
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)
@@ -39,10 +39,11 @@ struct AccountDepositView: View {
                     Section {
                         HStack {
                             Text("$")
-                                .font(.system(size: 30))
+                                .font(.system(size: 18, weight: .heavy, design: .default))
                                 .bold()
+                            
                             TextField("0.00", text: $depositAmt)
-                                .font(.system(size: 32))
+                                .font(.system(size: 50, weight: .heavy, design: .default)) // Bold text
                                 .keyboardType(.numbersAndPunctuation)
                         }
                     }.frame(height: 80)
@@ -103,6 +104,8 @@ struct AccountDepositView: View {
                                     .font(.system(size: 16))
                                     .bold()
                                     .textCase(.uppercase)
+                                    .scaledToFill()
+                                    .minimumScaleFactor(0.5)
                                 
                                 HStack {
                                     Text("\(String(accNum))")
@@ -145,7 +148,7 @@ struct AccountDepositView: View {
                                 .font(.system(size: 16))
                                 .foregroundColor(.white)
                         })
-                            .frame(width: 175, height: 70)
+                            .frame(width: 175, height: 45)
                             .background(Color.blue)
                             .cornerRadius(15)
                             .disabled((depositAmt != "") ? false : true)
@@ -161,6 +164,6 @@ struct AccountDepositView: View {
                 })
             }
         }
-        .accentColor(.blue)
+        .accentColor(cynGreen)
     }
 }

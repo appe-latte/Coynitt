@@ -37,16 +37,16 @@ struct CardBackView: View {
                         VStack {
                             // MARK: Top Section
                             HStack {
-                                Image("master-card")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .aspectRatio(contentMode: .fill)
-                                    .clipped()
-                                    .frame(width: 40, height: 40)
+//                                Image("master-card")
+//                                    .resizable()
+//                                    .scaledToFill()
+//                                    .aspectRatio(contentMode: .fill)
+//                                    .clipped()
+//                                    .frame(width: 40, height: 40)
                                 
                                 Spacer()
                                 
-                                Text("DEBIT CARD")
+                                Text("Current Account")
                                     .font(.custom("Avenir", size: 14))
                                     .fontWeight(.semibold)
                                     .foregroundColor(.white)
@@ -89,10 +89,17 @@ struct CardBackView: View {
                             
                             // MARK: Middle Section
                             HStack {
+                                if isSecured {
+                                    Text("CVV: ***")
+                                        .font(.custom("Avenir", size: 12))
+                                        .bold()
+                                        .foregroundColor(.white)
+                                } else {
                                 Text("CVV: \(String(cvv))")
                                     .font(.custom("Avenir", size: 12))
                                     .bold()
                                     .foregroundColor(.white)
+                                }
                                 
                                 Spacer()
                                 

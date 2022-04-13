@@ -22,7 +22,7 @@ struct ContentView: View {
             
             MainView()
                             .tabItem {
-                                Label("Trends", systemImage: "chart.bar.xaxis")
+                                Label("Crypto", systemImage: "dollarsign.circle.fill")
                             }
             
             MainView()
@@ -32,7 +32,7 @@ struct ContentView: View {
             
             MainView()
                             .tabItem {
-                                Label("Settings", systemImage: "line.3.horizontal")
+                                Label("More", systemImage: "ellipsis")
                             }
         }
         .accentColor(cynGreen)

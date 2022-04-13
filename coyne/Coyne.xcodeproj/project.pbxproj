@@ -17,6 +17,9 @@
 		2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AD27D7C10900009465 /* CardFrontView.swift */; };
 		2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AF27D7C14000009465 /* TransactionSect.swift */; };
 		2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03B127D7DFBB00009465 /* ActivityView.swift */; };
+		2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */; };
+		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
+		2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */; };
 		2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C2FE27DA90E800B97B58 /* CardBackView.swift */; };
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
@@ -37,6 +40,9 @@
 		2F1F03AD27D7C10900009465 /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		2F1F03AF27D7C14000009465 /* TransactionSect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSect.swift; sourceTree = "<group>"; };
 		2F1F03B127D7DFBB00009465 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsPotsView.swift; sourceTree = "<group>"; };
+		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
+		2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		2F94C2FE27DA90E800B97B58 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		2F94C30227DAD53E00B97B58 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
@@ -110,7 +116,9 @@
 				2F1F03A827D7BF6600009465 /* MainView.swift */,
 				2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */,
 				2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */,
+				2F8C6B3A2806A9FA00A3E7D1 /* Profile */,
 				2FC1643E27DBE0E800FCC267 /* Transfers */,
+				2F36A8E027DC737200E15350 /* Savings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 				2F94C2FE27DA90E800B97B58 /* CardBackView.swift */,
 				2F1F03B127D7DFBB00009465 /* ActivityView.swift */,
 				2F1F03AF27D7C14000009465 /* TransactionSect.swift */,
+				2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -155,6 +164,22 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2F36A8E027DC737200E15350 /* Savings */ = {
+			isa = PBXGroup;
+			children = (
+				2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */,
+			);
+			path = Savings;
+			sourceTree = "<group>";
+		};
+		2F8C6B3A2806A9FA00A3E7D1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		2FC1643E27DBE0E800FCC267 /* Transfers */ = {
@@ -306,6 +331,9 @@
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoyneApp.swift in Sources */,
+				2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */,
+				2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */,
+				2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
 				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
 				2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */,
