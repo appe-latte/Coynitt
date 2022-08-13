@@ -15,9 +15,14 @@ struct ContentView: View {
                                 Label("Main", systemImage: "rectangle.3.group.fill")
                             }
             
-            PaymentsView()
+            MainView()
                             .tabItem {
                                 Label("Transactions", systemImage: "arrow.left.arrow.right.square")
+                            }
+            
+            MainView()
+                            .tabItem {
+                                Label("Cards", systemImage: "creditcard")
                             }
             
             MainView()

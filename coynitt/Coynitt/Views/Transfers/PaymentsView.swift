@@ -11,31 +11,32 @@ struct PaymentsView: View {
     @State var accBalance : Double = 1498.18
     @State var rowHeight = 50.0
     @State var countrySelector = ""
-    @State var isChecked:Bool = false
-//       var title:String
-       func toggle(){isChecked = !isChecked}
+    @State var isChecked : Bool = false
+    @State var canPaySheet = true
+    func toggle(){ isChecked = !isChecked }
     
     
-//    let dummyRecipients = [
-//        Recipients(lName: "Rogers", initials: "IR"),
-//        Recipients(lName: "Khumalo", initials: "SK"),
-//        Recipients(lName: "Taylor", initials: "JT"),
-//        Recipients(lName: "Mlambo", initials: "MM"),
-//        Recipients(lName: "Manolas", initials: "KM")
-//    ]
+    //    let dummyRecipients = [
+    //        Recipients(lName: "Rogers", initials: "IR"),
+    //        Recipients(lName: "Khumalo", initials: "SK"),
+    //        Recipients(lName: "Taylor", initials: "JT"),
+    //        Recipients(lName: "Mlambo", initials: "MM"),
+    //        Recipients(lName: "Manolas", initials: "KM")
+    //    ]
     
     let countrySelect = ["Choose recipient country", "Canada", "United Kingdom", "Kenya", "Nigeria", "South Africa"]
     
     var body: some View {
         ZStack {
+            bgWhite()
             // MARK: Account Balance
             VStack {
                 // MARK: Country Picker
                 VStack {
                     HStack {
-                    Text("Select the country and withdrawal method:")
-                        .font(.custom("Avenir", size: 12))
-                        .bold()
+                        Text("Select the country and withdrawal method:")
+                            .font(.custom("Avenir", size: 12))
+                            .bold()
                         
                         Spacer()
                     }
@@ -45,7 +46,7 @@ struct PaymentsView: View {
                     HStack {
                         // Canada
                         Button(action: {
-                            //
+                            canPaySheet.toggle()
                         }, label: {
                             VStack {
                                 Image("canada")
@@ -56,6 +57,69 @@ struct PaymentsView: View {
                                     .font(.custom("Avenir", size: 10))
                             }
                         })
+                        .sheet(isPresented: $canPaySheet) {
+                            VStack {
+                                // MARK: Balance
+                                HStack {
+                                    Text("CAD Transfers")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                    
+                                    Spacer()
+                                    
+                                    Text("Avail. $\(accBalance, specifier: "%.2f")")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                }
+                                
+                                Spacer().frame(height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Withdrawal method:")
+                                            .font(.custom("Avenir", size: 13))
+                                        
+                                        Button(action: toggle){
+                                            Image(systemName: isChecked ? "circle.circle.fill": "circle")
+                                        }
+                                        Text("Interac")
+                                            .font(.custom("Avenir", size: 15))
+                                            .bold()
+                                    }
+                                }
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.black, lineWidth: 1)
+                                        .frame(width: 350))
+                                
+                                Spacer()
+                                    .frame(height: 30)
+                                
+                                if isChecked == true {
+                                    CanExchangeView()
+                                } else {
+                                    CanExchangeView().opacity(0.1)
+                                }
+                                
+                                Spacer()
+                                
+                                Button(action : {},
+                                       label: {
+                                    Text("CONTINUE")
+                                        .frame(width: 250, height: 50)
+                                        .foregroundColor(.white)
+                                        .background(cynGreen)
+                                        .cornerRadius(15)
+                                })
+                            }
+                            .accentColor(cynGreen)
+                            .padding(.top, 30)
+                        }
                         
                         // USA
                         Button(action: {
@@ -99,7 +163,7 @@ struct PaymentsView: View {
                             }
                         })
                     }
-            
+                    
                     // ROW TWO:
                     HStack {
                         // Nigeria
@@ -158,7 +222,7 @@ struct PaymentsView: View {
                             }
                         })
                     }
-                        
+                    
                 }
                 .padding(.top, 30)
                 
