@@ -12,19 +12,11 @@ struct PaymentsView: View {
     @State var rowHeight = 50.0
     @State var countrySelector = ""
     @State var isChecked : Bool = false
-    @State var canPaySheet = true
+    @State var canPaySheet = false
+    @State var zwPaySheet = false
+    @State var kesPaySheet = false
+    @State var zarPaySheet = false
     func toggle(){ isChecked = !isChecked }
-    
-    
-    //    let dummyRecipients = [
-    //        Recipients(lName: "Rogers", initials: "IR"),
-    //        Recipients(lName: "Khumalo", initials: "SK"),
-    //        Recipients(lName: "Taylor", initials: "JT"),
-    //        Recipients(lName: "Mlambo", initials: "MM"),
-    //        Recipients(lName: "Manolas", initials: "KM")
-    //    ]
-    
-    let countrySelect = ["Choose recipient country", "Canada", "United Kingdom", "Kenya", "Nigeria", "South Africa"]
     
     var body: some View {
         ZStack {
@@ -86,9 +78,9 @@ struct PaymentsView: View {
                                         Button(action: toggle){
                                             Image(systemName: isChecked ? "circle.circle.fill": "circle")
                                         }
-                                        Text("Interac")
-                                            .font(.custom("Avenir", size: 15))
-                                            .bold()
+                                        Image("interac")
+                                           .resizable()
+                                           .frame(width: 100, height: 45)
                                     }
                                 }
                                 .padding()
@@ -151,7 +143,7 @@ struct PaymentsView: View {
                         
                         // SA
                         Button(action: {
-                            //
+                            zarPaySheet.toggle()
                         }, label: {
                             VStack {
                                 Image("south-africa")
@@ -162,6 +154,75 @@ struct PaymentsView: View {
                                     .font(.custom("Avenir", size: 10))
                             }
                         })
+                        .sheet(isPresented: $zarPaySheet) {
+                            VStack {
+                                // MARK: Balance
+                                HStack {
+                                    Text("ZAR Transfers")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                    
+                                    Spacer()
+                                    
+                                    Text("Avail. $\(accBalance, specifier: "%.2f")")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                }
+                                
+                                Spacer().frame(height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Withdrawal method:")
+                                            .font(.custom("Avenir", size: 13))
+                                        
+                                        Button(action: toggle){
+                                            Image(systemName: isChecked ? "circle.circle.fill": "circle")
+                                        }
+                                        
+                                        HStack {
+                                            Image(systemName: "building.columns.fill")
+                                               .resizable()
+                                               .frame(width: 20, height: 20)
+                                            
+                                            Text("Bank Account")
+                                                .font(.custom("Avenir", size: 13))
+                                        }
+                                    }
+                                }
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.black, lineWidth: 1)
+                                        .frame(width: 350))
+                                
+                                Spacer()
+                                    .frame(height: 30)
+                                
+                                if isChecked == true {
+                                    ZarExchangeView()
+                                } else {
+                                    ZarExchangeView().opacity(0.1)
+                                }
+                                
+                                Spacer()
+                                
+                                Button(action : {},
+                                       label: {
+                                    Text("CONTINUE")
+                                        .frame(width: 250, height: 50)
+                                        .foregroundColor(.white)
+                                        .background(cynGreen)
+                                        .cornerRadius(15)
+                                })
+                            }
+                            .accentColor(cynGreen)
+                            .padding(.top, 30)
+                        }
                     }
                     
                     // ROW TWO:
@@ -182,7 +243,7 @@ struct PaymentsView: View {
                         
                         // Kenya
                         Button(action: {
-                            //
+                            kesPaySheet.toggle()
                         }, label: {
                             VStack {
                                 Image("kenya")
@@ -193,10 +254,74 @@ struct PaymentsView: View {
                                     .font(.custom("Avenir", size: 10))
                             }
                         })
+                        .sheet(isPresented: $kesPaySheet) {
+                            VStack {
+                                // MARK: Balance
+                                HStack {
+                                    Text("KES Transfers")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                    
+                                    Spacer()
+                                    
+                                    Text("Avail. $\(accBalance, specifier: "%.2f")")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                }
+                                
+                                Spacer().frame(height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Withdrawal method:")
+                                            .font(.custom("Avenir", size: 13))
+                                        
+                                        Button(action: toggle){
+                                            Image(systemName: isChecked ? "circle.circle.fill": "circle")
+                                        }
+                                        
+                                        Image("mpesa")
+                                           .resizable()
+                                           .frame(width: 80, height: 40)
+                                    }
+                                }
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.black, lineWidth: 1)
+                                        .frame(width: 350))
+                                
+                                Spacer()
+                                    .frame(height: 30)
+                                
+                                if isChecked == true {
+                                    KesExchangeView()
+                                } else {
+                                    KesExchangeView().opacity(0.1)
+                                }
+                                
+                                Spacer()
+                                
+                                Button(action : {},
+                                       label: {
+                                    Text("CONTINUE")
+                                        .frame(width: 250, height: 50)
+                                        .foregroundColor(.white)
+                                        .background(cynGreen)
+                                        .cornerRadius(15)
+                                })
+                            }
+                            .accentColor(cynGreen)
+                            .padding(.top, 30)
+                        }
                         
                         // Zimbabwe
                         Button(action: {
-                            //
+                            zwPaySheet.toggle()
                         }, label: {
                             VStack {
                                 Image("zimbabwe")
@@ -207,6 +332,73 @@ struct PaymentsView: View {
                                     .font(.custom("Avenir", size: 10))
                             }
                         })
+                        .sheet(isPresented: $zwPaySheet) {
+                            VStack {
+                                // MARK: Balance
+                                HStack {
+                                    Text("ZW Transfers")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                    
+                                    Spacer()
+                                    
+                                    Text("Avail. $\(accBalance, specifier: "%.2f")")
+                                        .font(.system(size: 15))
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(.horizontal, 20)
+                                }
+                                
+                                Spacer().frame(height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Withdrawal method:")
+                                            .font(.custom("Avenir", size: 13))
+                                        
+                                        Button(action: toggle){
+                                            Image(systemName: isChecked ? "circle.circle.fill": "circle")
+                                        }
+//                                        Text("Ecocash")
+//                                            .font(.custom("Avenir", size: 15))
+//                                            .bold()
+                                        
+                                        Image("ecocash")
+                                           .resizable()
+                                           .frame(width: 100, height: 40)
+                                    }
+                                }
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(.black, lineWidth: 1)
+                                        .frame(width: 350))
+                                
+                                Spacer()
+                                    .frame(height: 30)
+                                
+                                if isChecked == true {
+                                    ZwExchangeView()
+                                } else {
+                                    ZwExchangeView().opacity(0.1)
+                                }
+                                
+                                Spacer()
+                                
+                                Button(action : {},
+                                       label: {
+                                    Text("CONTINUE")
+                                        .frame(width: 250, height: 50)
+                                        .foregroundColor(.white)
+                                        .background(cynGreen)
+                                        .cornerRadius(15)
+                                })
+                            }
+                            .accentColor(cynGreen)
+                            .padding(.top, 30)
+                        }
                         
                         // Zambia
                         Button(action: {

@@ -27,6 +27,9 @@
 		2F94C30727DAE28500B97B58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30627DAE28500B97B58 /* User.swift */; };
 		2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1643F27DBE10000FCC267 /* PaymentsView.swift */; };
 		2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */; };
+		2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */; };
+		2FE3476528A8249700E0DBDD /* KesExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476428A8249700E0DBDD /* KesExchangeView.swift */; };
+		2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476628A8301400E0DBDD /* ZarExchangeView.swift */; };
 		C95806E36D32F2DFEE42468B /* Pods_Coynitt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9225846BEBB1AA64D14C151D /* Pods_Coynitt.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		2FC1643F27DBE10000FCC267 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
 		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDepositView.swift; sourceTree = "<group>"; };
+		2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZwExchangeView.swift; sourceTree = "<group>"; };
+		2FE3476428A8249700E0DBDD /* KesExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesExchangeView.swift; sourceTree = "<group>"; };
+		2FE3476628A8301400E0DBDD /* ZarExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZarExchangeView.swift; sourceTree = "<group>"; };
 		9225846BEBB1AA64D14C151D /* Pods_Coynitt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coynitt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D750DF656B01DB09481FBE75 /* Pods-Coynitt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coynitt.release.xcconfig"; path = "Target Support Files/Pods-Coynitt/Pods-Coynitt.release.xcconfig"; sourceTree = "<group>"; };
 		DC2B600F64304B0B6E54BA3C /* Pods-Coynitt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coynitt.debug.xcconfig"; path = "Target Support Files/Pods-Coynitt/Pods-Coynitt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +206,9 @@
 			children = (
 				2FC1643F27DBE10000FCC267 /* PaymentsView.swift */,
 				2F92F7E528A771FF00AC6C87 /* CanExchangeView.swift */,
+				2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */,
+				2FE3476428A8249700E0DBDD /* KesExchangeView.swift */,
+				2FE3476628A8301400E0DBDD /* ZarExchangeView.swift */,
 			);
 			path = Transfers;
 			sourceTree = "<group>";
@@ -336,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
+				2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
 				2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */,
 				2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */,
@@ -346,7 +356,9 @@
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F92F7E628A771FF00AC6C87 /* CanExchangeView.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
+				2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,
+				2FE3476528A8249700E0DBDD /* KesExchangeView.swift in Sources */,
 				2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */,
 				2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */,
 				2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */,
