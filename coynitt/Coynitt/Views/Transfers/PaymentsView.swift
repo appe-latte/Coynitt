@@ -80,7 +80,7 @@ struct PaymentsView: View {
                                         }
                                         Image("interac")
                                            .resizable()
-                                           .frame(width: 100, height: 45)
+                                           .frame(width: 80, height: 35)
                                     }
                                 }
                                 .padding()
@@ -94,20 +94,33 @@ struct PaymentsView: View {
                                 
                                 if isChecked == true {
                                     CanExchangeView()
+                                    
+                                    Spacer()
+                                    
+                                    Button(action : {},
+                                           label: {
+                                        Text("CONTINUE")
+                                            .frame(width: 250, height: 50)
+                                            .foregroundColor(.white)
+                                            .background(cynGreen)
+                                            .cornerRadius(15)
+                                    })
                                 } else {
                                     CanExchangeView().opacity(0.1)
+                                    
+                                    Spacer()
+                                    
+                                    Button(action : {},
+                                           label: {
+                                        Text("CONTINUE")
+                                            .frame(width: 250, height: 50)
+                                            .foregroundColor(.white)
+                                            .background(cynGreen).opacity(0)
+                                            .cornerRadius(15)
+                                            .disabled(true)
+                                    })
                                 }
                                 
-                                Spacer()
-                                
-                                Button(action : {},
-                                       label: {
-                                    Text("CONTINUE")
-                                        .frame(width: 250, height: 50)
-                                        .foregroundColor(.white)
-                                        .background(cynGreen)
-                                        .cornerRadius(15)
-                                })
                             }
                             .accentColor(cynGreen)
                             .padding(.top, 30)
@@ -367,7 +380,7 @@ struct PaymentsView: View {
                                         
                                         Image("ecocash")
                                            .resizable()
-                                           .frame(width: 100, height: 40)
+                                           .frame(width: 100, height: 35)
                                     }
                                 }
                                 .padding()
