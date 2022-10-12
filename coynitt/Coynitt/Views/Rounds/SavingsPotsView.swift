@@ -85,7 +85,7 @@ struct SavingsPotsView: View {
                     .clipShape(Circle())
             })
                 .actionSheet(isPresented: $showSavingsActionSheet) {
-                    ActionSheet(title: Text("Type of Savings"), message: Text("Which savings pot would you like to start with?"), buttons: [
+                    ActionSheet(title: Text("Rounds Group"), message: Text("Which savings pot would you like to start with?"), buttons: [
                         .default(Text("Savings Pot")){
                             activeSheet = .savings
                         },

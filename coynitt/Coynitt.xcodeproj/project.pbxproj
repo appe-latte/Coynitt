@@ -25,6 +25,8 @@
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
 		2F94C30727DAE28500B97B58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30627DAE28500B97B58 /* User.swift */; };
+		2F9F073F28F5C7EA00D6A122 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F073E28F5C7EA00D6A122 /* CardView.swift */; };
+		2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F074028F5FC9300D6A122 /* TransactionView.swift */; };
 		2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1643F27DBE10000FCC267 /* PaymentsView.swift */; };
 		2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */; };
 		2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */; };
@@ -53,6 +55,8 @@
 		2F94C30227DAD53E00B97B58 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		2F94C30627DAE28500B97B58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2F9F073E28F5C7EA00D6A122 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2F9F074028F5FC9300D6A122 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		2FC1643F27DBE10000FCC267 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
 		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDepositView.swift; sourceTree = "<group>"; };
@@ -125,11 +129,13 @@
 			children = (
 				2F1F039627D7BE8C00009465 /* ContentView.swift */,
 				2F1F03A827D7BF6600009465 /* MainView.swift */,
+				2F9F073E28F5C7EA00D6A122 /* CardView.swift */,
 				2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */,
 				2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */,
+				2F9F074028F5FC9300D6A122 /* TransactionView.swift */,
 				2F8C6B3A2806A9FA00A3E7D1 /* Profile */,
 				2FC1643E27DBE0E800FCC267 /* Transfers */,
-				2F36A8E027DC737200E15350 /* Savings */,
+				2F36A8E027DC737200E15350 /* Rounds */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,12 +183,12 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		2F36A8E027DC737200E15350 /* Savings */ = {
+		2F36A8E027DC737200E15350 /* Rounds */ = {
 			isa = PBXGroup;
 			children = (
 				2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */,
 			);
-			path = Savings;
+			path = Rounds;
 			sourceTree = "<group>";
 		};
 		2F4578C828330B6F00E232EB /* AccountInfo */ = {
@@ -347,6 +353,7 @@
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
 				2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
+				2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */,
 				2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */,
 				2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */,
 				2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */,
@@ -364,6 +371,7 @@
 				2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
 				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
+				2F9F073F28F5C7EA00D6A122 /* CardView.swift in Sources */,
 				2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +504,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coynitt/Preview Content\"";
-				DEVELOPMENT_TEAM = QACLP69RHJ;
+				DEVELOPMENT_TEAM = 293T89SZ36;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Coynitt/Info.plist;
@@ -505,6 +513,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -513,7 +522,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appelatte.Coynitt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.Coynitt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -530,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coynitt/Preview Content\"";
-				DEVELOPMENT_TEAM = QACLP69RHJ;
+				DEVELOPMENT_TEAM = 293T89SZ36;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Coynitt/Info.plist;
@@ -539,6 +548,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -547,7 +557,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appelatte.Coynitt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.Coynitt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

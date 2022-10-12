@@ -11,30 +11,30 @@ struct ContentView: View {
     var body: some View {
         TabView {
             MainView()
-                            .tabItem {
-                                Label("Main", systemImage: "rectangle.3.group.fill")
-                            }
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+            
+            TransactionView()
+                .tabItem {
+                    Label("History", systemImage: "calendar")
+                }
+            
+            CardView()
+                .tabItem {
+                    Label("Account", systemImage: "creditcard")
+                }
             
             MainView()
-                            .tabItem {
-                                Label("Transactions", systemImage: "arrow.left.arrow.right.square")
-                            }
+                .tabItem {
+                    Label("Recipients", systemImage: "person.2.fill")
+                }
             
             MainView()
-                            .tabItem {
-                                Label("Cards", systemImage: "creditcard")
-                            }
-            
-            MainView()
-                            .tabItem {
-                                Label("Recipients", systemImage: "person.3.fill")
-                            }
-            
-            MainView()
-                            .tabItem {
-                                Label("More", systemImage: "ellipsis")
-                            }
+                .tabItem {
+                    Label("Menu", systemImage: "ellipsis")
+                }
         }
-        .accentColor(cynRed)
+        .accentColor(cynGreen)
     }
 }

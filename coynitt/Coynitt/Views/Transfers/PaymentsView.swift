@@ -115,7 +115,13 @@ struct PaymentsView: View {
                                         Text("CONTINUE")
                                             .frame(width: 250, height: 50)
                                             .foregroundColor(.white)
-                                            .background(cynGreen).opacity(0)
+                                            .background(cynGreen).opacity(0
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                )
                                             .cornerRadius(15)
                                             .disabled(true)
                                     })
