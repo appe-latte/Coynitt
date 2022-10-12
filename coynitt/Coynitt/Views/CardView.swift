@@ -105,14 +105,15 @@ struct CardView: View {
                                     NavigationLink(
                                         destination: PaymentsView()){
                                             HStack {
-                                                Image(systemName: "paperplane.circle")
+                                                Image("send")
                                                     .resizable()
+                                                    .renderingMode(.template)
                                                     .frame(width: 25, height: 25)
-                                                    .foregroundColor(cynWhite)
+                                                    .foregroundColor(.white)
                                                 Text("Transfer")
                                                     .font(.system(size: 14))
-                                                    .foregroundColor(cynWhite)
-                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .fontWeight(.semibold)
                                             }
                                             .frame(width: 120, height: 50)
                                             .background(cynRed)
@@ -123,14 +124,15 @@ struct CardView: View {
                                     NavigationLink(
                                         destination: SavingsPotsView()){
                                             HStack {
-                                                Image(systemName: "repeat.circle")
+                                                Image("rounds")
                                                     .resizable()
+                                                    .renderingMode(.template)
                                                     .frame(width: 30, height: 30)
                                                     .foregroundColor(.white)
                                                 Text("Rounds")
                                                     .font(.system(size: 14))
-                                                    .foregroundColor(cynWhite)
-                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .fontWeight(.semibold)
                                             }
                                             .frame(width: 120, height: 50)
                                             .background(cynBlue)

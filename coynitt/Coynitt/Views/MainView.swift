@@ -134,20 +134,20 @@ struct MainView: View {
                             self.showDepositActiveSheet.toggle()
                         }, label: {
                             HStack {
-                                Image(systemName: "plus.square") // Notifications button
+                                Image("add") // Notifications button
                                     .resizable()
+                                    .renderingMode(.template)
                                     .frame(width: 20, height: 20)
                                     .foregroundColor(cynWhite)
-                                Text("Deposit")
-                                    .font(.custom("Avenir", size: 15))
-                                    .fontWeight(.bold)
+                                Text("Add Funds")
+                                    .font(.system(size: 14))
+                                    .fontWeight(.semibold)
                                     .foregroundColor(cynWhite)
                             }
                         })
                         .frame(width: 150, height: 60)
                         .background(cynGreen)
-                        .cornerRadius(10)
-                        .padding(5)
+                        .clipShape(Capsule())
                         .actionSheet(isPresented: $showDepositActiveSheet) {
                             ActionSheet(title: Text("Deposit Funds"), message: Text("Add funds to wallet"), buttons: [
                                 .default(Text("Apple Pay")){
@@ -165,21 +165,22 @@ struct MainView: View {
                             
                         }, label: {
                             HStack {
-                                Image(systemName: "paperplane.fill") // Notifications button
+                                Image("send") // Notifications button
                                     .resizable()
+                                    .renderingMode(.template)
                                     .frame(width: 20, height: 20)
                                     .foregroundColor(cynGreen)
                                 Text("Quick Send")
-                                    .font(.custom("Avenir", size: 15))
-                                    .fontWeight(.bold)
+                                    .font(.system(size: 14))
+                                    .fontWeight(.semibold)
                                     .foregroundColor(cynGreen)
                             }
                         })
                         .frame(width: 150, height: 60)
                         .background(cynGreen.opacity(0.1))
-                        .cornerRadius(10)
-                        .padding(5)
+                        .clipShape(Capsule())
                     }
+                    .padding(.bottom, 25)
                 }
                 
                 Spacer()
@@ -226,9 +227,10 @@ struct MainView: View {
                     Button(action: {
                         
                     }, label: {
-                        Image(systemName: "bell.fill")
+                        Image("alert")
                             .resizable()
-                            .frame(width: 20, height: 20)
+                            .renderingMode(.template)
+                            .frame(width: 30, height: 30)
                             .foregroundColor(cynWhite)
                             .clipShape(Circle())
                     })
@@ -242,7 +244,7 @@ struct KeyPad : View {
     @Binding var txDigits : [String]
     
     var body : some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 15) {
             ForEach(datas){ i in
                 HStack(spacing: self.getSpacing()){
                     ForEach(i.row){ j in
@@ -309,7 +311,7 @@ struct KeypadEntry : View {
                 }
                 
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 45)
                 
                 KeyPad(txDigits: $amtDigits)
             }

@@ -12,27 +12,27 @@ struct ContentView: View {
         TabView {
             MainView()
                 .tabItem {
-                    Label("Home", systemImage: "house.fill")
+                    Label("Home", image: "home")
                 }
             
             TransactionView()
                 .tabItem {
-                    Label("History", systemImage: "calendar")
+                    Label("History", image: "calendar")
                 }
             
             CardView()
                 .tabItem {
-                    Label("Account", systemImage: "creditcard")
+                    Label("Account", image: "wallet")
                 }
             
             MainView()
                 .tabItem {
-                    Label("Recipients", systemImage: "person.2.fill")
+                    Label("Recipients", image: "users")
                 }
             
             MainView()
                 .tabItem {
-                    Label("Menu", systemImage: "ellipsis")
+                    Label("Menu", image: "menu")
                 }
         }
         .accentColor(cynGreen)
