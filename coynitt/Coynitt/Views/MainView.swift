@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State var accBalance : Double = 129498.18
+    @State var accBalance : Double = 1498.18
     @State private var accNum : Int = 373812093
     @State var fName : String = "Samuel"
     @State private var userTag : String = "samthing90"
@@ -41,14 +41,14 @@ struct MainView: View {
         let tabBarTintColor = UITabBarAppearance()
         tabBarTintColor.configureWithOpaqueBackground()
         tabBarTintColor.shadowColor = .clear
-        tabBarTintColor.backgroundColor = UIColor.init(Color(red: 242 / 255, green: 241 / 255, blue: 237 / 255))
-        tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 242 / 255, green: 241 / 255, blue: 237 / 255))
+        tabBarTintColor.backgroundColor = UIColor.init(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
+        tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
         UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
         UITabBar.appearance().standardAppearance = tabBarTintColor
         
-        UITextView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
-        UITableView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
-        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
+        UITextView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
+        UITableView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
+        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
     }
     
     var body: some View {

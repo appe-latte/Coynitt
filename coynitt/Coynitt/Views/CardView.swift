@@ -12,7 +12,7 @@ struct CardView: View {
     @State var fName : String = "Samuel"
     @State private var userTag : String = "samthing90"
     
-    @State var rowHeight = 50.0 // sets row height for list
+    @State var rowHeight = 65.0 // sets row height for list
     @State private var showAccountDetailsSheetView = false
     @State private var showDepositSheetView = false
     @State var showAccFreezeAlert = false
@@ -120,6 +120,26 @@ struct CardView: View {
                                             .clipShape(Capsule())
                                         }
                                     
+                                    // MARK: Withdraw Funds View
+                                    NavigationLink(
+                                        destination: PaymentsView()){
+                                            HStack {
+                                                Image("send")
+                                                    .resizable()
+                                                    .renderingMode(.template)
+                                                    .frame(width: 25, height: 25)
+                                                    .foregroundColor(.white)
+                                                    .rotationEffect(Angle(degrees: -45))
+                                                Text("Withdraw")
+                                                    .font(.system(size: 14))
+                                                    .foregroundColor(.white)
+                                                    .fontWeight(.semibold)
+                                            }
+                                            .frame(width: 120, height: 50)
+                                            .background(cynGreen2)
+                                            .clipShape(Capsule())
+                                        }
+                                    
                                     // MARK: "Rounds" View
                                     NavigationLink(
                                         destination: SavingsPotsView()){
@@ -135,7 +155,7 @@ struct CardView: View {
                                                     .fontWeight(.semibold)
                                             }
                                             .frame(width: 120, height: 50)
-                                            .background(cynBlue)
+                                            .background(cynPurple)
                                             .clipShape(Capsule())
                                         }
                                 }
@@ -216,6 +236,101 @@ struct CardView: View {
                     }
                     
                     Spacer()
+                    
+//                  MARK: Information
+                    VStack {
+                        Form {
+                            Section {
+                                // MARK: Upgrade
+                                NavigationLink(destination: PaymentsView()){
+                                    Image("star")
+                                        .resizable()
+                                        .renderingMode(.template)
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.yellow)
+                                    VStack {
+                                        HStack {
+                                            Text("Upgrade Account")
+                                                .font(.custom("Avenir", size: 15).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        HStack {
+                                            Text("Upgrade your account and receive a physical debit card")
+                                                .font(.custom("Avenir", size: 10).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                    }
+                                }
+                                
+                                // MARK: Invite
+                                NavigationLink(destination: PaymentsView()){
+                                    Image("ticket")
+                                        .resizable()
+                                        .renderingMode(.template)
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.red)
+                                    VStack {
+                                        HStack {
+                                            Text("Refer A Friend")
+                                                .font(.custom("Avenir", size: 15).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        HStack {
+                                            Text("Earn money when you refer a friend")
+                                                .font(.custom("Avenir", size: 10).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                    }
+                                }
+                                
+                                // MARK: Instagram
+                                VStack(spacing: 10) {
+                                    HStack {
+                                        Image("instagram")
+                                            .resizable()
+                                            .frame(width: 32, height: 32)
+                                        Link("Follow Us on Instagram", destination: URL(string: "https://www.instagram.com/coynitt")!)
+                                            .font(.custom("Avenir", size: 15).bold())
+                                            .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
+                                    }
+                                }
+                                
+                                // MARK: Facebook
+                                VStack(spacing: 10) {
+                                    HStack {
+                                        Image("facebook")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                        Link("Follow Us on Facebook", destination: URL(string: "https://www.instagram.com/coynitt")!)
+                                            .font(.custom("Avenir", size: 15).bold())
+                                            .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
+                                    }
+                                }
+                                
+                                // MARK: TikTok
+                                VStack(spacing: 10) {
+                                    HStack {
+                                        Image("tiktok")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                        Link("Follow Us on TikTok", destination: URL(string: "https://www.tiktok.com/@appe.latte")!)
+                                            .font(.custom("Avenir", size: 15).bold())
+                                            .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .sheet(isPresented: $showAccountDetailsSheetView) {
@@ -226,6 +341,7 @@ struct CardView: View {
             }
             .accentColor(cynGreen)
             .navigationBarTitleDisplayMode(.inline)
+            .environment(\.defaultMinListRowHeight, rowHeight)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     VStack {
@@ -242,14 +358,31 @@ struct CardView: View {
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing){
+                    // MARK: How-to Button
+                    Button(action: {
+                        
+                    }, label: {
+                        VStack {
+                            Image("how-to")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(cynWhite)
+                                .clipShape(Circle())
+                            
+                            Text("How-To")
+                                .font(.system(size: 10))
+                                .foregroundColor(cynWhite)
+                        }
+                    })
+                    
                     // MARK: Help Button
                     Button(action: {
                         
                     }, label: {
                         VStack {
-                            Image(systemName: "lifepreserver")
+                            Image("question")
                                 .resizable()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 25, height: 25)
                                 .foregroundColor(cynWhite)
                                 .clipShape(Circle())
                             
