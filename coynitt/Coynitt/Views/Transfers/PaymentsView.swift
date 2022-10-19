@@ -79,8 +79,8 @@ struct PaymentsView: View {
                                             Image(systemName: isChecked ? "circle.circle.fill": "circle")
                                         }
                                         Image("interac")
-                                           .resizable()
-                                           .frame(width: 80, height: 35)
+                                            .resizable()
+                                            .frame(width: 80, height: 35)
                                     }
                                 }
                                 .padding()
@@ -116,12 +116,12 @@ struct PaymentsView: View {
                                             .frame(width: 250, height: 50)
                                             .foregroundColor(.white)
                                             .background(cynGreen).opacity(0
-                                            
-                                            
-                                            
-                                            
-                                            
-                                                )
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+                                                                          
+                                            )
                                             .cornerRadius(15)
                                             .disabled(true)
                                     })
@@ -205,8 +205,8 @@ struct PaymentsView: View {
                                         
                                         HStack {
                                             Image(systemName: "building.columns.fill")
-                                               .resizable()
-                                               .frame(width: 20, height: 20)
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
                                             
                                             Text("Bank Account")
                                                 .font(.custom("Avenir", size: 13))
@@ -304,8 +304,8 @@ struct PaymentsView: View {
                                         }
                                         
                                         Image("mpesa")
-                                           .resizable()
-                                           .frame(width: 80, height: 40)
+                                            .resizable()
+                                            .frame(width: 80, height: 40)
                                     }
                                 }
                                 .padding()
@@ -380,13 +380,13 @@ struct PaymentsView: View {
                                         Button(action: toggle){
                                             Image(systemName: isChecked ? "circle.circle.fill": "circle")
                                         }
-//                                        Text("Ecocash")
-//                                            .font(.custom("Avenir", size: 15))
-//                                            .bold()
+                                        //                                        Text("Ecocash")
+                                        //                                            .font(.custom("Avenir", size: 15))
+                                        //                                            .bold()
                                         
                                         Image("ecocash")
-                                           .resizable()
-                                           .frame(width: 100, height: 35)
+                                            .resizable()
+                                            .frame(width: 100, height: 35)
                                     }
                                 }
                                 .padding()

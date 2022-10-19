@@ -30,9 +30,9 @@ struct ContentView: View {
                     Label("Recipients", image: "users")
                 }
             
-            MainView()
+            SettingsView()
                 .tabItem {
-                    Label("Menu", image: "menu")
+                    Label("Settings", image: "settings")
                 }
         }
         .accentColor(cynGreen)

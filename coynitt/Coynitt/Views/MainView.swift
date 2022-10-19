@@ -26,6 +26,10 @@ struct MainView: View {
     @State private var showQrSheet = false
     
     init() {
+        UITableView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
+        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
+        UITextView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
+        
         // MARK: Nav Bar
         let barTintColor = UINavigationBarAppearance()
         barTintColor.configureWithOpaqueBackground()
@@ -36,7 +40,6 @@ struct MainView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = barTintColor
         UINavigationBar.appearance().standardAppearance = barTintColor
         
-        
         // MARK: Tab Bar
         let tabBarTintColor = UITabBarAppearance()
         tabBarTintColor.configureWithOpaqueBackground()
@@ -45,10 +48,6 @@ struct MainView: View {
         tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
         UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
         UITabBar.appearance().standardAppearance = tabBarTintColor
-        
-        UITextView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        UITableView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
     }
     
     var body: some View {
@@ -229,7 +228,6 @@ struct MainView: View {
                     }, label: {
                         Image("alert")
                             .resizable()
-                            .renderingMode(.template)
                             .frame(width: 30, height: 30)
                             .foregroundColor(cynWhite)
                             .clipShape(Circle())

@@ -52,39 +52,7 @@ struct CardView: View {
             }
         }
     }
-    
-    //    init() {
-    //        // MARK: Nav Bar
-    //        let barTintColor = UINavigationBarAppearance()
-    //        barTintColor.configureWithOpaqueBackground()
-    //        barTintColor.backgroundColor = UIColor.init(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-    //        barTintColor.titleTextAttributes = [.foregroundColor: UIColor(Color.white)]
-    //        barTintColor.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.white)]
-    //        UINavigationBar.appearance().scrollEdgeAppearance = barTintColor
-    //        UINavigationBar.appearance().standardAppearance = barTintColor
-    //
-    //        // MARK: Tab Bar
-    //        let tabBarTintColor = UITabBarAppearance()
-    //        tabBarTintColor.configureWithOpaqueBackground()
-    //        tabBarTintColor.backgroundColor = UIColor.init(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
-    //        UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
-    //        UITabBar.appearance().standardAppearance = tabBarTintColor
-    //
-    //        UITextView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
-    //        UITableView.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
-    //        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 241 / 255, green: 242 / 255, blue: 237 / 255))
-    //    }
-    //
-    //    let dummyActivity = [
-    //        Activity(activDate: "07-Mar", activName: "James Jones", activAmount: 135.25),
-    //        Activity(activDate: "07-Mar", activName: "Russell Wilson", activAmount: 450.00),
-    //        Activity(activDate: "05-Mar", activName: "Multichoice Africa *AG18773", activAmount: 65.15),
-    //        Activity(activDate: "04-Mar", activName: "Mobile top-up (eco) * - 9837", activAmount: 45.00),
-    //        Activity(activDate: "02-Mar", activName: "Stanford Khumalo", activAmount: 120.00),
-    //        Activity(activDate: "28-Feb", activName: "James Jones", activAmount: 750.29),
-    //        Activity(activDate: "26-Feb", activName: "Adija Portmore", activAmount: 250.65)
-    //    ]
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -298,7 +266,7 @@ struct CardView: View {
                                     HStack {
                                         Image("instagram")
                                             .resizable()
-                                            .frame(width: 32, height: 32)
+                                            .frame(width: 34, height: 34)
                                         Link("Follow Us on Instagram", destination: URL(string: "https://www.instagram.com/coynitt")!)
                                             .font(.custom("Avenir", size: 15).bold())
                                             .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
