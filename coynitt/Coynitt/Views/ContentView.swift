@@ -25,7 +25,7 @@ struct ContentView: View {
                     Label("Account", image: "wallet")
                 }
             
-            MainView()
+            RecipientsView()
                 .tabItem {
                     Label("Recipients", image: "users")
                 }

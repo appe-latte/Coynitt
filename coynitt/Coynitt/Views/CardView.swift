@@ -205,7 +205,7 @@ struct CardView: View {
                     
                     Spacer()
                     
-//                  MARK: Information
+//                  MARK: Share / Upgrade Section
                     VStack {
                         Form {
                             Section {

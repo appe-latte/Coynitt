@@ -13,7 +13,14 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                //                cynWhite
                 VStack(alignment: .center) {
+                    Rectangle()
+                        .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
+                        .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+                        .frame(width: UIScreen.main.bounds.width, height: 110)
+                        .edgesIgnoringSafeArea(.all)
+                    
                     Form {
                         // MARK: ID Verification
                         Section(header: Text("Verification")) {
@@ -33,7 +40,6 @@ struct SettingsView: View {
                                     }
                                 }
                             }
-                            
                         }
                         
                         // MARK: App Settings
@@ -80,22 +86,6 @@ struct SettingsView: View {
                                 
                                 HStack {
                                     Text("Privacy Policy")
-                                        .font(.custom("Avenir", size: 15).bold())
-                                        .foregroundColor(.black)
-                                    
-                                    Spacer()
-                                }
-                            }
-                            
-                            // Chat Support
-                            NavigationLink(destination: PaymentsView()){
-                                Image("chat-support")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(cynPurple)
-                                
-                                HStack {
-                                    Text("Chat to support")
                                         .font(.custom("Avenir", size: 15).bold())
                                         .foregroundColor(.black)
                                     
@@ -254,10 +244,41 @@ struct SettingsView: View {
                         }
                     }
                     .environment(\.defaultMinListRowHeight, rowHeight)
+                    .padding(.top, -100) // <--- removes white space above form from Navigation view
+                    .background(Color.red)
                 }
+                
+                Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Settings")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Settings")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .foregroundColor(cynWhite)
+                        .textCase(.uppercase)
+                }
+                
+                ToolbarItemGroup(placement: .navigationBarTrailing){
+                    // MARK: Chat Support
+                    Button(action: {
+                        
+                    }, label: {
+                        VStack {
+                            Image("chat-support")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(cynWhite)
+                                .clipShape(Circle())
+                            
+                            Text("Support")
+                                .font(.system(size: 10))
+                                .foregroundColor(cynWhite)
+                        }
+                    })
+                }
+            }
         }
     }
 }
