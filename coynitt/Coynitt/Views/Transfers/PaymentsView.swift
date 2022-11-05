@@ -307,12 +307,10 @@ struct PaymentsView: View {
                                             .resizable()
                                             .frame(width: 80, height: 40)
                                     }
+                                    .frame(width: 350, height: 50)
+                                    .background(cynGreen2.opacity(0.1))
+                                    .clipShape(RoundedCorner(radius: 15))
                                 }
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(.black, lineWidth: 1)
-                                        .frame(width: 350))
                                 
                                 Spacer()
                                     .frame(height: 30)
@@ -380,20 +378,18 @@ struct PaymentsView: View {
                                         Button(action: toggle){
                                             Image(systemName: isChecked ? "circle.circle.fill": "circle")
                                         }
-                                        //                                        Text("Ecocash")
-                                        //                                            .font(.custom("Avenir", size: 15))
-                                        //                                            .bold()
+                                        Text("Ecocash")
+                                            .font(.custom("Avenir", size: 15))
+                                            .bold()
                                         
-                                        Image("ecocash")
-                                            .resizable()
-                                            .frame(width: 100, height: 35)
+                                        //                                        Image("ecocash")
+                                        //                                            .resizable()
+                                        //                                            .frame(width: 100, height: 30)
                                     }
+                                    .frame(width: 350, height: 50)
+                                    .background(cynGreen2.opacity(0.1))
+                                    .clipShape(RoundedCorner(radius: 15))
                                 }
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(.black, lineWidth: 1)
-                                        .frame(width: 350))
                                 
                                 Spacer()
                                     .frame(height: 30)
@@ -408,11 +404,13 @@ struct PaymentsView: View {
                                 
                                 Button(action : {},
                                        label: {
-                                    Text("CONTINUE")
+                                    Text("continue")
+                                        .font(.custom("Avenir", size: 18))
+                                        .fontWeight(.bold)
                                         .frame(width: 250, height: 50)
                                         .foregroundColor(.white)
                                         .background(cynGreen)
-                                        .cornerRadius(15)
+                                        .clipShape(Capsule())
                                 })
                             }
                             .accentColor(cynGreen)

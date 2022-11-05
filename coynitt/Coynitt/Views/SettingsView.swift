@@ -245,7 +245,6 @@ struct SettingsView: View {
                     }
                     .environment(\.defaultMinListRowHeight, rowHeight)
                     .padding(.top, -100) // <--- removes white space above form from Navigation view
-                    .background(Color.red)
                 }
                 
                 Spacer()

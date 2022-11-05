@@ -27,6 +27,7 @@
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
 		2F94C30727DAE28500B97B58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30627DAE28500B97B58 /* User.swift */; };
+		2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E45E72916886A006F82BE /* TxCompletionView.swift */; };
 		2F9F073F28F5C7EA00D6A122 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F073E28F5C7EA00D6A122 /* CardView.swift */; };
 		2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F074028F5FC9300D6A122 /* TransactionView.swift */; };
 		2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1643F27DBE10000FCC267 /* PaymentsView.swift */; };
@@ -59,6 +60,7 @@
 		2F94C30227DAD53E00B97B58 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		2F94C30627DAE28500B97B58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2F9E45E72916886A006F82BE /* TxCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxCompletionView.swift; sourceTree = "<group>"; };
 		2F9F073E28F5C7EA00D6A122 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2F9F074028F5FC9300D6A122 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		2FC1643F27DBE10000FCC267 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC1643F27DBE10000FCC267 /* PaymentsView.swift */,
+				2F9E45E72916886A006F82BE /* TxCompletionView.swift */,
 				2F92F7E528A771FF00AC6C87 /* CanExchangeView.swift */,
 				2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */,
 				2FE3476428A8249700E0DBDD /* KesExchangeView.swift */,
@@ -370,6 +373,7 @@
 				2F4578C728330B5B00E232EB /* AccountInsightsView.swift in Sources */,
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F92F7E628A771FF00AC6C87 /* CanExchangeView.swift in Sources */,
+				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,

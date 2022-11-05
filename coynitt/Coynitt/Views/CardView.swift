@@ -279,7 +279,7 @@ struct CardView: View {
                                         Image("facebook")
                                             .resizable()
                                             .frame(width: 25, height: 25)
-                                        Link("Follow Us on Facebook", destination: URL(string: "https://www.instagram.com/coynitt")!)
+                                        Link("Follow Us on Facebook", destination: URL(string: "https://www.facebook.com/appelatteltd")!)
                                             .font(.custom("Avenir", size: 15).bold())
                                             .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
                                     }
