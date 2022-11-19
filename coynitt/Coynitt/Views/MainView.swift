@@ -23,7 +23,7 @@ struct MainView: View {
     @State var isTransferActiveSheetPresented = false
     @State var showDepositActiveSheet = false
     @State var depositActivitySheet: DepositActivitySheet?
-    @State private var showQrSheet = false
+    @State var showQrSheet = false
     
     init() {
         UITableView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
@@ -218,8 +218,13 @@ struct MainView: View {
                             .frame(width: 20, height: 20)
                             .foregroundColor(cynWhite)
                     }).sheet(isPresented: $showQrSheet) {
-                        Text("QR code appears here.....")
-                        
+                        ZStack {
+                            cynWhite
+                            
+                            QrCodeView()
+                        }
+                        .ignoresSafeArea()
+                        .presentationDetents([.medium, .fraction(0.5)])
                     }
                     
                     // MARK: Notifications Button

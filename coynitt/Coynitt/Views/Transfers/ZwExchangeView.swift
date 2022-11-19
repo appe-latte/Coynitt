@@ -19,7 +19,7 @@ struct ZwExchangeView : View {
             // MARK: Conversion rates
             let rate_1 = zwSendFigure * 0.025
             let rate_2 = zwSendFigure * 0.005
-            let rate_3 = zwSendFigure * 0.0035
+            let rate_3 = zwSendFigure * 0.01
             
             // MARK: Tx + rate
             let totalPay_1 = zwSendFigure + rate_1

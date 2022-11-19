@@ -10,25 +10,25 @@ import SwiftUI
 struct TxCompletionView: View {
     var body: some View {
         ZStack {
-            cynGreen
+            cynWhite
             VStack {
                 VStack {
                     Image("circle-check")
                         .resizable()
                         .frame(width: 100, height: 100)
-                        .foregroundColor(cynGreen)
+                        .foregroundColor(cynWhite)
                         .padding(10)
-                        .background(cynWhite)
+                        .background(cynGreen)
                         .clipShape(Circle())
                     
                     Text("Success!")
                         .font(.custom("Avenir", size: 30))
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                     
                     Text("Your transaction was completed successfully")
-                        .font(.custom("Avenir", size: 12))
-                        .foregroundColor(.white)
+                        .font(.custom("Avenir", size: 12)).bold()
+                        .foregroundColor(.black)
                 }
                 .padding(.top, 50)
                 
@@ -43,21 +43,20 @@ struct TxCompletionView: View {
                     Text("close")
                         .font(.custom("Avenir", size: 18))
                         .fontWeight(.bold)
-                        .foregroundColor(cynGreen)
+                        .foregroundColor(cynWhite)
                 })
                 .frame(width: 200, height: 50)
-                .background(cynWhite)
+                .background(cynGreen)
                 .clipShape(Capsule())
                 
             }
             .frame(height: UIScreen.main.bounds.height / 1.25)
             .padding(.vertical, 30)
-        }.ignoresSafeArea()
-    }
-}
-
-struct TxCompletionView_Previews: PreviewProvider {
-    static var previews: some View {
-        TxCompletionView()
+            
+        }
+        .ignoresSafeArea()
+        .overlay(
+            SuccessLottieView(name: "success", loopMode: .loop)
+        )
     }
 }

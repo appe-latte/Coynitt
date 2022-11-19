@@ -62,8 +62,38 @@ struct RecipientsView: View {
     }
 }
 
-struct RecipientsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipientsView()
+// MARK: Recipients Lists - shows last 10 transfers
+struct Recipients: Identifiable {
+    let id = UUID()
+    let lName : String
+    let initials : String
+}
+
+struct RecipientsRow: View {
+    var recipients: Recipients
+    
+    var body: some View {
+        HStack {
+            VStack {
+                Text(recipients.initials)
+                    .foregroundColor(.white)
+                    .frame(width: 30, height: 30)
+                    .padding(10)
+                    .background(cynGreen)
+                    .clipShape(Circle())
+                
+                Text(recipients.lName)
+                    .font(.custom("Avenir", size: 14))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+                    .scaledToFill()
+                    .minimumScaleFactor(0.5)
+                
+            }
+            .padding(2)
+            .listRowBackground(cynWhite) // list background colour
+            .edgesIgnoringSafeArea(.all)
+        }
     }
 }
+

@@ -52,7 +52,7 @@ struct CardView: View {
             }
         }
     }
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -205,10 +205,35 @@ struct CardView: View {
                     
                     Spacer()
                     
-//                  MARK: Share / Upgrade Section
                     VStack {
                         Form {
                             Section {
+                                // MARK: Bill Payment
+                                NavigationLink(destination: BillPayView()){
+                                    Image("house-bill")
+                                        .resizable()
+                                        .renderingMode(.template)
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.green)
+                                    VStack {
+                                        HStack {
+                                            Text("Bill Payment")
+                                                .font(.custom("Avenir", size: 15).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        HStack {
+                                            Text("Pay for utilities and top-up airtime")
+                                                .font(.custom("Avenir", size: 10).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                    }
+                                }
+                                
                                 // MARK: Upgrade
                                 NavigationLink(destination: PaymentsView()){
                                     Image("star")

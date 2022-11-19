@@ -12,4 +12,5 @@ target 'Coynitt' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'lottie-ios'
 end

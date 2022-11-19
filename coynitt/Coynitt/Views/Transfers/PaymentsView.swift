@@ -53,7 +53,7 @@ struct PaymentsView: View {
                             VStack {
                                 // MARK: Balance
                                 HStack {
-                                    Text("CAD Transfers")
+                                    Text("Send to Canada")
                                         .font(.system(size: 15))
                                         .bold()
                                         .foregroundColor(.black)
@@ -99,11 +99,13 @@ struct PaymentsView: View {
                                     
                                     Button(action : {},
                                            label: {
-                                        Text("CONTINUE")
+                                        Text("continue")
+                                            .font(.custom("Avenir", size: 18))
+                                            .fontWeight(.semibold)
                                             .frame(width: 250, height: 50)
                                             .foregroundColor(.white)
                                             .background(cynGreen)
-                                            .cornerRadius(15)
+                                            .clipShape(Capsule())
                                     })
                                 } else {
                                     CanExchangeView().opacity(0.1)
@@ -112,17 +114,13 @@ struct PaymentsView: View {
                                     
                                     Button(action : {},
                                            label: {
-                                        Text("CONTINUE")
+                                        Text("continue")
+                                            .font(.custom("Avenir", size: 18))
+                                            .fontWeight(.semibold)
                                             .frame(width: 250, height: 50)
                                             .foregroundColor(.white)
-                                            .background(cynGreen).opacity(0
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-                                                                          
-                                            )
-                                            .cornerRadius(15)
+                                            .background(cynGreen.opacity(0))
+                                            .clipShape(Capsule())
                                             .disabled(true)
                                     })
                                 }
@@ -160,7 +158,7 @@ struct PaymentsView: View {
                             }
                         })
                         
-                        // SA
+                        // MARK: South Africa
                         Button(action: {
                             zarPaySheet.toggle()
                         }, label: {
@@ -177,8 +175,8 @@ struct PaymentsView: View {
                             VStack {
                                 // MARK: Balance
                                 HStack {
-                                    Text("ZAR Transfers")
-                                        .font(.system(size: 15))
+                                    Text("Send to South Africa")
+                                        .font(.system(size: 13))
                                         .bold()
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 20)
@@ -186,7 +184,7 @@ struct PaymentsView: View {
                                     Spacer()
                                     
                                     Text("Avail. $\(accBalance, specifier: "%.2f")")
-                                        .font(.system(size: 15))
+                                        .font(.system(size: 13))
                                         .bold()
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 20)
@@ -232,11 +230,13 @@ struct PaymentsView: View {
                                 
                                 Button(action : {},
                                        label: {
-                                    Text("CONTINUE")
+                                    Text("continue")
+                                        .font(.custom("Avenir", size: 18))
+                                        .fontWeight(.semibold)
                                         .frame(width: 250, height: 50)
                                         .foregroundColor(.white)
                                         .background(cynGreen)
-                                        .cornerRadius(15)
+                                        .clipShape(Capsule())
                                 })
                             }
                             .accentColor(cynGreen)
@@ -246,7 +246,7 @@ struct PaymentsView: View {
                     
                     // ROW TWO:
                     HStack {
-                        // Nigeria
+                        // MARK: Nigeria
                         Button(action: {
                             //
                         }, label: {
@@ -260,7 +260,7 @@ struct PaymentsView: View {
                             }
                         })
                         
-                        // Kenya
+                        // MARK: Kenya
                         Button(action: {
                             kesPaySheet.toggle()
                         }, label: {
@@ -277,8 +277,8 @@ struct PaymentsView: View {
                             VStack {
                                 // MARK: Balance
                                 HStack {
-                                    Text("KES Transfers")
-                                        .font(.system(size: 15))
+                                    Text("Send to Kenya")
+                                        .font(.system(size: 13))
                                         .bold()
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 20)
@@ -286,7 +286,7 @@ struct PaymentsView: View {
                                     Spacer()
                                     
                                     Text("Avail. $\(accBalance, specifier: "%.2f")")
-                                        .font(.system(size: 15))
+                                        .font(.system(size: 13))
                                         .bold()
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 20)
@@ -303,9 +303,9 @@ struct PaymentsView: View {
                                             Image(systemName: isChecked ? "circle.circle.fill": "circle")
                                         }
                                         
-                                        Image("mpesa")
-                                            .resizable()
-                                            .frame(width: 80, height: 40)
+                                        Text("m-pesa")
+                                            .font(.custom("Avenir", size: 14))
+                                            .fontWeight(.semibold)
                                     }
                                     .frame(width: 350, height: 50)
                                     .background(cynGreen2.opacity(0.1))
@@ -317,20 +317,36 @@ struct PaymentsView: View {
                                 
                                 if isChecked == true {
                                     KesExchangeView()
+                                    
+                                    Spacer()
+                                    
+                                    Button(action : {},
+                                           label: {
+                                        Text("continue")
+                                            .font(.custom("Avenir", size: 18))
+                                            .fontWeight(.semibold)
+                                            .frame(width: 250, height: 50)
+                                            .foregroundColor(.white)
+                                            .background(cynGreen)
+                                            .clipShape(Capsule())
+                                    })
                                 } else {
                                     KesExchangeView().opacity(0.1)
+                                    
+                                    Spacer()
+                                    
+                                    Button(action : {},
+                                           label: {
+                                        Text("continue")
+                                            .font(.custom("Avenir", size: 18))
+                                            .fontWeight(.semibold)
+                                            .frame(width: 250, height: 50)
+                                            .foregroundColor(.white)
+                                            .background(cynGreen.opacity(0))
+                                            .clipShape(Capsule())
+                                            .disabled(true)
+                                    })
                                 }
-                                
-                                Spacer()
-                                
-                                Button(action : {},
-                                       label: {
-                                    Text("CONTINUE")
-                                        .frame(width: 250, height: 50)
-                                        .foregroundColor(.white)
-                                        .background(cynGreen)
-                                        .cornerRadius(15)
-                                })
                             }
                             .accentColor(cynGreen)
                             .padding(.top, 30)
@@ -353,11 +369,11 @@ struct PaymentsView: View {
                             VStack {
                                 // MARK: Balance
                                 HStack {
-                                    Text("ZW Transfers")
-                                        .font(.system(size: 15))
+                                    Text("Send to Zimbabwe")
+                                        .font(.system(size: 13))
                                         .bold()
                                         .foregroundColor(.black)
-                                        .padding(.horizontal, 20)
+                                        .padding(.horizontal, 13)
                                     
                                     Spacer()
                                     
@@ -378,13 +394,11 @@ struct PaymentsView: View {
                                         Button(action: toggle){
                                             Image(systemName: isChecked ? "circle.circle.fill": "circle")
                                         }
-                                        Text("Ecocash")
-                                            .font(.custom("Avenir", size: 15))
-                                            .bold()
                                         
-                                        //                                        Image("ecocash")
-                                        //                                            .resizable()
-                                        //                                            .frame(width: 100, height: 30)
+                                        Text("Ecocash")
+                                            .font(.custom("Avenir", size: 14))
+                                            .fontWeight(.semibold)
+                                        
                                     }
                                     .frame(width: 350, height: 50)
                                     .background(cynGreen2.opacity(0.1))
@@ -394,24 +408,39 @@ struct PaymentsView: View {
                                 Spacer()
                                     .frame(height: 30)
                                 
+                                
                                 if isChecked == true {
                                     ZwExchangeView()
+                                    
+                                    Spacer()
+                                    
+                                    Button(action : {},
+                                           label: {
+                                        Text("continue")
+                                            .font(.custom("Avenir", size: 18))
+                                            .fontWeight(.semibold)
+                                            .frame(width: 250, height: 50)
+                                            .foregroundColor(.white)
+                                            .background(cynGreen)
+                                            .clipShape(Capsule())
+                                    })
                                 } else {
                                     ZwExchangeView().opacity(0.1)
+                                    
+                                    Spacer()
+                                    
+                                    Button(action : {},
+                                           label: {
+                                        Text("continue")
+                                            .font(.custom("Avenir", size: 18))
+                                            .fontWeight(.semibold)
+                                            .frame(width: 250, height: 50)
+                                            .foregroundColor(.white)
+                                            .background(cynGreen.opacity(0))
+                                            .clipShape(Capsule())
+                                            .disabled(true)
+                                    })
                                 }
-                                
-                                Spacer()
-                                
-                                Button(action : {},
-                                       label: {
-                                    Text("continue")
-                                        .font(.custom("Avenir", size: 18))
-                                        .fontWeight(.bold)
-                                        .frame(width: 250, height: 50)
-                                        .foregroundColor(.white)
-                                        .background(cynGreen)
-                                        .clipShape(Capsule())
-                                })
                             }
                             .accentColor(cynGreen)
                             .padding(.top, 30)
@@ -454,37 +483,3 @@ struct PaymentsView: View {
     }
 }
 
-// MARK: Recipients Lists - shows last 10 transfers
-struct Recipients: Identifiable {
-    let id = UUID()
-    let lName : String
-    let initials : String
-}
-
-struct RecipientsRow: View {
-    var recipients: Recipients
-    
-    var body: some View {
-        HStack {
-            VStack {
-                Text(recipients.initials)
-                    .foregroundColor(.white)
-                    .frame(width: 30, height: 30)
-                    .padding(10)
-                    .background(cynGreen)
-                    .clipShape(Circle())
-                
-                Text(recipients.lName)
-                    .font(.custom("Avenir", size: 14))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.black)
-                    .scaledToFill()
-                    .minimumScaleFactor(0.5)
-                
-            }
-            .padding(2)
-            .listRowBackground(cynWhite) // list background colour
-            .edgesIgnoringSafeArea(.all)
-        }
-    }
-}
