@@ -24,6 +24,7 @@ struct MainView: View {
     @State var showDepositActiveSheet = false
     @State var depositActivitySheet: DepositActivitySheet?
     @State var showQrSheet = false
+    @State var showProfileSheet = false
     
     init() {
         UITableView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
@@ -57,43 +58,51 @@ struct MainView: View {
                 VStack {
                     Rectangle()
                         .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+                        .cornerRadius(15, corners: [.bottomRight])
                         .frame(width: UIScreen.main.bounds.width, height: 110)
                         .edgesIgnoringSafeArea(.all)
                         .overlay(
                             VStack {
                                 HStack {
+                                    
                                     // MARK: User Profile View
-                                    NavigationLink(
-                                        destination: UserProfileView()){
-                                            VStack {
-                                                Image("dummy-image")
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .aspectRatio(contentMode: .fill)
-                                                    .clipped()
-                                                    .frame(width: 35, height: 35)
-                                                    .foregroundColor(cynGreen)
-                                                    .clipShape(Circle())
-                                                    .padding(5)
-                                                
-                                                Text("Hi, \(fName)")
-                                                    .font(.system(size: 12))
-                                                    .fontWeight(.semibold)
-                                                    .foregroundColor(.black)
-                                                    .fontWeight(.semibold)
-                                                    .scaledToFill()
-                                                    .minimumScaleFactor(0.5)
-                                            }
+                                    Button(action: {
+                                        showProfileSheet.toggle()
+                                    }, label: {
+                                        VStack {
+                                            Image("dummy-image")
+                                                .resizable()
+                                                .scaledToFill()
+                                                .aspectRatio(contentMode: .fill)
+                                                .clipped()
+                                                .frame(width: 35, height: 35)
+                                                .foregroundColor(cynGreen)
+                                                .clipShape(Circle())
+                                                .padding(5)
+                                            
+                                            Text("Hi, \(fName)")
+                                                .font(.custom("Avenir", size: 12).bold())
+                                                .foregroundColor(.black)
+                                                .scaledToFill()
+                                                .minimumScaleFactor(0.5)
                                         }
+                                        
+                                    }).sheet(isPresented: $showProfileSheet) {
+                                        ZStack {
+                                            cynWhite
+                                            
+                                            UserProfileView()
+                                        }
+                                        .ignoresSafeArea()
+                                        .presentationDetents([.large, .fraction(0.95)])
+                                    }
                                     
                                     Spacer()
                                     
+                                    // MARK: "Available Balance"
                                     VStack {
-                                        
                                         Text("Available Balance: ")
-                                            .font(.custom("Avenir", size: 12))
-                                            .fontWeight(.bold)
+                                            .font(.custom("Avenir", size: 12).bold())
                                             .foregroundColor(Color(uiColor: .darkGray))
                                         
                                         HStack {
@@ -108,15 +117,11 @@ struct MainView: View {
                                                 .fontWeight(.bold)
                                                 .foregroundColor(Color(uiColor: .darkGray))
                                         }
-                                        
                                     }
                                     .frame(width: 200, height: 100)
                                     .padding(.horizontal, 10)
-                                    
-                                    
                                 }
                                 .padding(10)
-                                
                             }
                                 .padding(.top, 20))
                     
@@ -128,16 +133,16 @@ struct MainView: View {
                     }
                     
                     HStack {
-                        // MARK: "Deposit"
+                        // MARK: "Add Funds" Button
                         Button(action: {
                             self.showDepositActiveSheet.toggle()
                         }, label: {
                             HStack {
-                                Image("add") // Notifications button
+                                Image("add")
                                     .resizable()
-                                    .renderingMode(.template)
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 25, height: 25)
                                     .foregroundColor(cynWhite)
+                                
                                 Text("Add Funds")
                                     .font(.system(size: 14))
                                     .fontWeight(.semibold)
@@ -155,6 +160,9 @@ struct MainView: View {
                                 .default(Text("Debit / Credit card")){
                                     depositActivitySheet = .appl_pay
                                 },
+                                .default(Text("Bank Transfer")){
+                                    depositActivitySheet = .appl_pay
+                                },
                                 .cancel()
                             ])
                         }
@@ -164,11 +172,11 @@ struct MainView: View {
                             
                         }, label: {
                             HStack {
-                                Image("send") // Notifications button
+                                Image("send")
                                     .resizable()
-                                    .renderingMode(.template)
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 25, height: 25)
                                     .foregroundColor(cynGreen)
+                                
                                 Text("Quick Send")
                                     .font(.system(size: 14))
                                     .fontWeight(.semibold)
@@ -185,12 +193,6 @@ struct MainView: View {
                 Spacer()
             }
             .background(Color.white)
-            .sheet(isPresented: $showAccountDetailsSheetView) {
-                AccountDetailsView()
-            }
-            .sheet(isPresented: $showDepositSheetView) {
-                AccountDepositView()
-            }
             .accentColor(cynGreen)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -243,6 +245,7 @@ struct MainView: View {
     }
 }
 
+// MARK: KeyPad structure
 struct KeyPad : View {
     @Binding var txDigits : [String]
     

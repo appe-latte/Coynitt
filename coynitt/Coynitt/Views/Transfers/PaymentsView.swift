@@ -20,23 +20,34 @@ struct PaymentsView: View {
     
     var body: some View {
         ZStack {
-            bgWhite()
-            // MARK: Account Balance
+            cynWhite
             VStack {
+                // MARK: Account Balance
+                
+                HStack {
+                    Spacer()
+                    
+                    Text("Avail. $\(accBalance, specifier: "%.2f")")
+                        .font(.custom("Avenir", size: 15).bold())
+                        .foregroundColor(Color(uiColor: .darkGray))
+                }
+                .padding(10)
+                
                 // MARK: Country Picker
+                
                 VStack {
                     HStack {
-                        Text("Select the country and withdrawal method:")
-                            .font(.custom("Avenir", size: 12))
+                        Text("Choose recipient country:")
+                            .font(.custom("Avenir", size: 15))
                             .bold()
                         
                         Spacer()
                     }
                     .padding(.horizontal, 20)
                     
-                    // ROW ONE:
+                    // MARK: First Row
                     HStack {
-                        // Canada
+                        // MARK: Canada
                         Button(action: {
                             canPaySheet.toggle()
                         }, label: {
@@ -51,6 +62,7 @@ struct PaymentsView: View {
                         })
                         .sheet(isPresented: $canPaySheet) {
                             VStack {
+                                
                                 // MARK: Balance
                                 HStack {
                                     Text("Send to Canada")
@@ -130,7 +142,7 @@ struct PaymentsView: View {
                             .padding(.top, 30)
                         }
                         
-                        // USA
+                        // MARK: USA
                         Button(action: {
                             //
                         }, label: {
@@ -244,7 +256,7 @@ struct PaymentsView: View {
                         }
                     }
                     
-                    // ROW TWO:
+                    // MARK: Second Row
                     HStack {
                         // MARK: Nigeria
                         Button(action: {
@@ -352,7 +364,7 @@ struct PaymentsView: View {
                             .padding(.top, 30)
                         }
                         
-                        // Zimbabwe
+                        // MARK: Zimbabwe
                         Button(action: {
                             zwPaySheet.toggle()
                         }, label: {
@@ -446,7 +458,7 @@ struct PaymentsView: View {
                             .padding(.top, 30)
                         }
                         
-                        // Zambia
+                        // MARK: Zambia
                         Button(action: {
                             //
                         }, label: {
@@ -460,26 +472,13 @@ struct PaymentsView: View {
                             }
                         })
                     }
-                    
                 }
-                .padding(.top, 30)
-                
-                
                 
                 Spacer()
             }
-            .accentColor(.black)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack {
-                        Text("Avail. $\(accBalance, specifier: "%.2f")")
-                            .font(.system(size: 15))
-                            .bold()
-                            .foregroundColor(.white)
-                    }
-                }
-            }
         }
+        .accentColor(.black)
     }
 }
+
 

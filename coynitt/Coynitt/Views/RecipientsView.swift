@@ -15,8 +15,8 @@ struct RecipientsView: View {
                 VStack {
                     Rectangle()
                         .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 110)
+                        .cornerRadius(15, corners: [.bottomRight])
+                        .frame(width: UIScreen.main.bounds.width, height: 120)
                         .edgesIgnoringSafeArea(.all)
                     
                     Text("Recipients go here....")

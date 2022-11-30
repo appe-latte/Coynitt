@@ -19,10 +19,9 @@ struct CardView: View {
     @State var showTransferActiveSheet = false
     @State var isTransferActiveSheetPresented = false
     @State var showDepositActiveSheet = false
-    //    @State var transferActivitySheet: TransfersActivitySheet?
     @State var depositActivitySheet: DepositActivitySheet?
-    //    @State var actionViewMode = TransfersActivitySheet.bank_tx
     @State private var showQrSheet = false
+    @State private var showCountryTxSheet = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -60,7 +59,7 @@ struct CardView: View {
                 VStack {
                     Rectangle()
                         .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+                        .cornerRadius(15, corners: [.bottomRight])
                         .frame(width: UIScreen.main.bounds.width, height: 110)
                         .edgesIgnoringSafeArea(.all)
                         .overlay(
@@ -70,23 +69,50 @@ struct CardView: View {
                                     Spacer()
                                     
                                     // MARK: Send Funds View
-                                    NavigationLink(
-                                        destination: PaymentsView()){
-                                            HStack {
-                                                Image("send")
-                                                    .resizable()
-                                                    .renderingMode(.template)
-                                                    .frame(width: 25, height: 25)
-                                                    .foregroundColor(.white)
-                                                Text("Transfer")
-                                                    .font(.system(size: 14))
-                                                    .foregroundColor(.white)
-                                                    .fontWeight(.semibold)
-                                            }
-                                            .frame(width: 120, height: 50)
-                                            .background(cynRed)
-                                            .clipShape(Capsule())
+                                    //                                    NavigationLink(
+                                    //                                        destination: PaymentsView()){
+                                    //                                            HStack {
+                                    //                                                Image("send")
+                                    //                                                    .resizable()
+                                    //                                                    .frame(width: 25, height: 25)
+                                    //                                                    .foregroundColor(.white)
+                                    //
+                                    //                                                Text("Transfer")
+                                    //                                                    .font(.system(size: 14))
+                                    //                                                    .foregroundColor(.white)
+                                    //                                                    .fontWeight(.semibold)
+                                    //                                            }
+                                    //                                            .frame(width: 120, height: 50)
+                                    //                                            .background(cynRed)
+                                    //                                            .clipShape(Capsule())
+                                    //                                        }
+                                    
+                                    Button(action: {
+                                        showCountryTxSheet.toggle()
+                                    }, label: {
+                                        HStack {
+                                            Image("send")
+                                                .resizable()
+                                                .frame(width: 25, height: 25)
+                                                .foregroundColor(.white)
+                                            
+                                            Text("Transfer")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.white)
+                                                .fontWeight(.semibold)
                                         }
+                                        .frame(width: 120, height: 50)
+                                        .background(cynRed)
+                                        .clipShape(Capsule())
+                                    }).sheet(isPresented: $showCountryTxSheet) {
+                                        ZStack {
+                                            cynWhite
+                                            
+                                            PaymentsView()
+                                        }
+                                        .ignoresSafeArea()
+                                        .presentationDetents([.medium, .fraction(0.5)])
+                                    }
                                     
                                     // MARK: Withdraw Funds View
                                     NavigationLink(
@@ -94,10 +120,10 @@ struct CardView: View {
                                             HStack {
                                                 Image("send")
                                                     .resizable()
-                                                    .renderingMode(.template)
                                                     .frame(width: 25, height: 25)
                                                     .foregroundColor(.white)
                                                     .rotationEffect(Angle(degrees: -45))
+                                                
                                                 Text("Withdraw")
                                                     .font(.system(size: 14))
                                                     .foregroundColor(.white)
@@ -114,9 +140,9 @@ struct CardView: View {
                                             HStack {
                                                 Image("rounds")
                                                     .resizable()
-                                                    .renderingMode(.template)
                                                     .frame(width: 30, height: 30)
                                                     .foregroundColor(.white)
+                                                
                                                 Text("Rounds")
                                                     .font(.system(size: 14))
                                                     .foregroundColor(.white)
@@ -328,9 +354,6 @@ struct CardView: View {
             }
             .sheet(isPresented: $showAccountDetailsSheetView) {
                 AccountDetailsView()
-            }
-            .sheet(isPresented: $showDepositSheetView) {
-                AccountDepositView()
             }
             .accentColor(cynGreen)
             .navigationBarTitleDisplayMode(.inline)

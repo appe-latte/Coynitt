@@ -7,29 +7,34 @@
 
 import SwiftUI
 
-struct customHeader : Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let width = rect.width
-        let height = rect.height
-        let posX = rect.origin.x
-        let posY = rect.origin.y
-        
-        path.move(to: CGPoint(x: posX, y: posY))
-        path.addLine(to: CGPoint(x: posX + width, y: posY))
-        path.addLine(to: CGPoint(x: posX, y: posY + height))
-//        path.addQuadCurve(to: <#T##CGPoint#>, control: <#T##CGPoint#>)
-        
-        return path
-    }
-}
-
 struct UserProfileView: View {
     var body: some View {
         ZStack {
-            Text("Displays User Profile")
+            cynWhite
+            VStack {
+                Rectangle()
+                    .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
+                    .frame(width: UIScreen.main.bounds.width, height: 45)
+                    .edgesIgnoringSafeArea(.all)
+                    .overlay(
+                        VStack {
+                            HStack {
+                                Text("User Profile")
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(cynWhite)
+                                
+                                Spacer()
+                                
+                            }
+                            .padding(20)
+                        })
+                
+                Spacer()
+                
+                Text("Displays User Profile")
+                
+            }
         }
-        .navigationTitle("User Profile")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }

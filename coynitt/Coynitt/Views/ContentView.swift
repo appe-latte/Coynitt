@@ -17,7 +17,7 @@ struct ContentView: View {
             
             TransactionView()
                 .tabItem {
-                    Label("History", image: "calendar")
+                    Label("Transactions", image: "calendar")
                 }
             
             CardView()
@@ -25,7 +25,7 @@ struct ContentView: View {
                     Label("Account", image: "wallet")
                 }
             
-            TxCompletionView()
+            RecipientsView()
                 .tabItem {
                     Label("Recipients", image: "users")
                 }

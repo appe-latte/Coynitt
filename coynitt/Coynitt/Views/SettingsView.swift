@@ -17,7 +17,7 @@ struct SettingsView: View {
                 VStack(alignment: .center) {
                     Rectangle()
                         .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+                        .cornerRadius(15, corners: [.bottomRight])
                         .frame(width: UIScreen.main.bounds.width, height: 110)
                         .edgesIgnoringSafeArea(.all)
                     

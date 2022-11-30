@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct TransactionView: View {
     @State var rowHeight = 50.0 // sets row height for list
@@ -32,7 +33,7 @@ struct TransactionView: View {
         DataItem(name: "Feb", value: 87),
         DataItem(name: "Mar", value: 725),
         DataItem(name: "Apr", value: 439),
-        DataItem(name: "May", value: 619),
+        DataItem(name: "May", value: 287),
         DataItem(name: "Jun", value: 771),
         DataItem(name: "Jul", value: 873),
         DataItem(name: "Aug", value: 569),
@@ -49,22 +50,48 @@ struct TransactionView: View {
                 VStack {
                     Rectangle()
                         .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 110)
+                        .cornerRadius(15, corners: [.bottomRight])
+                        .frame(width: UIScreen.main.bounds.width, height: 120)
                         .edgesIgnoringSafeArea(.all)
                     
-                    // MARK: Bar Chart
-                    BarChartView(title: "Monthly Summary", data: chartData)
-                        .font(.custom("Avenir", size: 15).bold())
-                        .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
-                        .padding(.bottom, 20)
-                        .padding(.horizontal, 10)
+                    // MARK: Line Chart
+                    VStack {
+                        HStack {
+                            Text("Monthly Summary")
+                                .font(.custom("Avenir", size: 14).bold())
+                            
+                            Spacer()
+                        }
+                        .padding(.leading, 10)
+                        
+                        Chart {
+                            ForEach(chartData) { item in
+                                LineMark(
+                                    x: .value("Month", item.name),
+                                    y: .value("Amount", item.value)
+                                )
+                                .lineStyle(.init(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                            }
+                            .foregroundStyle(cynGreen2)
+                            .interpolationMethod(.linear)
+                            .symbol(Circle())
+                        }
+                        .chartPlotStyle { plotArea in
+                            plotArea
+                                .background(cynGreen.opacity(0.05))
+                        }
+                    }
+                    .font(.custom("Avenir", size: 10).bold())
+                    .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
+                    .padding(20)
+                    
                     
                     Spacer()
                     
-                    // MARK: Recent transaction list
+                    // MARK: "Recent Transactions"
+                    
                     Form {
-                        Section(header: Text("Transactions")) {
+                        Section(header: Text("Recent Transactions")) {
                             List(dummyActivity) { activity in
                                 ActivityRow(activity: activity)
                             }
@@ -116,21 +143,6 @@ struct TransactionView: View {
         let id = UUID()
     }
     
-    struct BarChartView: View {
-        var title: String
-        var data: [DataItem]
-        
-        var body: some View {
-            GeometryReader { gr in
-                let headHeight = gr.size.height * 0.10
-                VStack {
-                    ChartHeaderView(title: title, height: headHeight)
-                    ChartAreaView(data: data)
-                }
-            }
-        }
-    }
-    
     struct ChartHeaderView: View {
         var title: String
         var height: CGFloat
@@ -138,79 +150,6 @@ struct TransactionView: View {
         var body: some View {
             Text(title)
                 .frame(height: height)
-        }
-    }
-    
-    struct ChartAreaView: View {
-        var data: [DataItem]
-        
-        var body: some View {
-            GeometryReader { gr in
-                let fullBarHeight = gr.size.height * 0.90
-                let maxValue = data.map { $0.value }.max()!
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5.0)
-                        .fill(Color(#colorLiteral(red: 248 / 255, green: 248 / 255, blue: 248 / 255, alpha: 1)))
-                    
-                    VStack {
-                        HStack(spacing:0) {
-                            ForEach(data) { item in
-                                BarView(
-                                    name: item.name,
-                                    value: item.value,
-                                    maxValue: maxValue,
-                                    fullBarHeight: Double(fullBarHeight))
-                            }
-                            .font(.custom("Avenir", size: 10).bold())
-                        }
-                        .padding(4)
-                    }
-                }
-            }
-        }
-    }
-    
-    struct BarView: View {
-        var name: String
-        var value: Double
-        var maxValue: Double
-        var fullBarHeight: Double
-        
-        var body: some View {
-            let barHeight = (Double(fullBarHeight) / maxValue) * value
-            VStack {
-                Spacer()
-                ZStack {
-                    VStack {
-                        Spacer()
-                        
-                        if value < 200 {
-                            RoundedRectangle(cornerRadius:5.0)
-                                .fill(cynRed)
-                                .frame(height: CGFloat(barHeight), alignment: .trailing)
-                        } else if value > 200 && value < 500 {
-                            RoundedRectangle(cornerRadius:5.0)
-                                .fill(cynPurple)
-                                .frame(height: CGFloat(barHeight), alignment: .trailing)
-                        } else {
-                            RoundedRectangle(cornerRadius:5.0)
-                                .fill(cynGreen2)
-                                .frame(height: CGFloat(barHeight), alignment: .trailing)
-                        }
-                    }
-                    
-                    VStack {
-                        Spacer()
-                        Text("\(value, specifier: "%.0F")")
-                            .font(.custom("Avenir", size: 8).bold())
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                    }
-                }
-                Text(name)
-            }
-            .padding(.horizontal, 4)
         }
     }
 }
