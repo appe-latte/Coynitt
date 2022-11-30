@@ -153,7 +153,7 @@ struct MainView: View {
                         .background(cynGreen)
                         .clipShape(Capsule())
                         .actionSheet(isPresented: $showDepositActiveSheet) {
-                            ActionSheet(title: Text("Deposit Funds"), message: Text("Add funds to wallet"), buttons: [
+                            ActionSheet(title: Text("Add Funds"), message: Text("How would you like to deposit the funds?"), buttons: [
                                 .default(Text("Apple Pay")){
                                     depositActivitySheet = .appl_pay
                                 },
@@ -242,6 +242,7 @@ struct MainView: View {
                 }
             }
         }.accentColor(cynWhite)
+            .onAppear()
     }
 }
 

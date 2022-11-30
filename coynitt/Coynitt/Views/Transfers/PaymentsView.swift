@@ -46,6 +46,7 @@ struct PaymentsView: View {
                     .padding(.horizontal, 20)
                     
                     // MARK: First Row
+                    
                     HStack {
                         // MARK: Canada
                         Button(action: {
@@ -58,12 +59,14 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("Canada")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
+                        // MARK: Send to Canada sheet
                         .sheet(isPresented: $canPaySheet) {
                             VStack {
                                 
-                                // MARK: Balance
+                                
                                 HStack {
                                     Text("Send to Canada")
                                         .font(.system(size: 15))
@@ -153,10 +156,11 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("United States")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
                         
-                        // UK
+                        // MARK: UK
                         Button(action: {
                             //
                         }, label: {
@@ -167,6 +171,7 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("United Kingdom")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
                         
@@ -181,11 +186,12 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("South Africa")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
+                        // MARK: Send to South Africa sheet
                         .sheet(isPresented: $zarPaySheet) {
                             VStack {
-                                // MARK: Balance
                                 HStack {
                                     Text("Send to South Africa")
                                         .font(.system(size: 13))
@@ -269,6 +275,7 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("Nigeria")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
                         
@@ -283,11 +290,12 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("Kenya")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
+                        // MARK: Send to Kenya sheet
                         .sheet(isPresented: $kesPaySheet) {
                             VStack {
-                                // MARK: Balance
                                 HStack {
                                     Text("Send to Kenya")
                                         .font(.system(size: 13))
@@ -375,11 +383,12 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("Zimbabwe")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
+                        // MARK: Send to Zimbabwe sheet
                         .sheet(isPresented: $zwPaySheet) {
                             VStack {
-                                // MARK: Balance
                                 HStack {
                                     Text("Send to Zimbabwe")
                                         .font(.system(size: 13))
@@ -469,6 +478,7 @@ struct PaymentsView: View {
                                     .padding(10)
                                 Text("Zambia")
                                     .font(.custom("Avenir", size: 10))
+                                    .bold()
                             }
                         })
                     }

@@ -13,7 +13,7 @@ struct UserProfileView: View {
             cynWhite
             VStack {
                 Rectangle()
-                    .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
+                    .fill(Color(red: 177 / 255, green: 156 / 255, blue: 217 / 255))
                     .frame(width: UIScreen.main.bounds.width, height: 45)
                     .edgesIgnoringSafeArea(.all)
                     .overlay(
@@ -25,14 +25,15 @@ struct UserProfileView: View {
                                     .foregroundColor(cynWhite)
                                 
                                 Spacer()
-                                
                             }
-                            .padding(20)
+                            .padding(.leading, 10)
                         })
                 
                 Spacer()
                 
                 Text("Displays User Profile")
+                
+                Spacer()
                 
             }
         }
