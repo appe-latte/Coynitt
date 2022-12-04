@@ -22,6 +22,7 @@ struct CardView: View {
     @State var depositActivitySheet: DepositActivitySheet?
     @State private var showQrSheet = false
     @State private var showCountryTxSheet = false
+    @State private var showBillPaySheet = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -67,26 +68,7 @@ struct CardView: View {
                                 HStack {
                                     
                                     Spacer()
-                                    
-                                    // MARK: Send Funds View
-                                    //                                    NavigationLink(
-                                    //                                        destination: PaymentsView()){
-                                    //                                            HStack {
-                                    //                                                Image("send")
-                                    //                                                    .resizable()
-                                    //                                                    .frame(width: 25, height: 25)
-                                    //                                                    .foregroundColor(.white)
-                                    //
-                                    //                                                Text("Transfer")
-                                    //                                                    .font(.system(size: 14))
-                                    //                                                    .foregroundColor(.white)
-                                    //                                                    .fontWeight(.semibold)
-                                    //                                            }
-                                    //                                            .frame(width: 120, height: 50)
-                                    //                                            .background(cynRed)
-                                    //                                            .clipShape(Capsule())
-                                    //                                        }
-                                    
+                            
                                     Button(action: {
                                         showCountryTxSheet.toggle()
                                     }, label: {
@@ -235,12 +217,15 @@ struct CardView: View {
                         Form {
                             Section {
                                 // MARK: Bill Payment
-                                NavigationLink(destination: BillPayView()){
+                                
+                                Button(action: {showBillPaySheet.toggle()}, label: {
+                                    HStack {
                                     Image("house-bill")
                                         .resizable()
                                         .renderingMode(.template)
                                         .frame(width: 30, height: 30)
                                         .foregroundColor(.green)
+                                    
                                     VStack {
                                         HStack {
                                             Text("Bill Payment")
@@ -259,7 +244,17 @@ struct CardView: View {
                                         }
                                     }
                                 }
-                                
+                                })
+                                .sheet(isPresented: $showBillPaySheet) {
+                                    ZStack {
+                                        cynWhite
+                                        
+                                        BillPayView()
+                                    }
+                                    .ignoresSafeArea()
+                                    .presentationDetents([.medium, .fraction(0.75)])
+                                }
+                            
                                 // MARK: Upgrade
                                 NavigationLink(destination: PaymentsView()){
                                     Image("star")

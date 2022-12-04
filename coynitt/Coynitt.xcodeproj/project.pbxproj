@@ -153,7 +153,7 @@
 				2F9F074028F5FC9300D6A122 /* TransactionView.swift */,
 				2F78EE1D2900757600B9C5F7 /* SettingsView.swift */,
 				2F7F68AC290360FA00E76310 /* RecipientsView.swift */,
-				2FD40535292813A800771C1B /* QrCodeView.swift */,
+				2F2D853A293C8C44002E4191 /* QrScanner */,
 				2FD4053929284D1E00771C1B /* BillPayView.swift */,
 				2F8C6B3A2806A9FA00A3E7D1 /* Profile */,
 				2FC1643E27DBE0E800FCC267 /* Transfers */,
@@ -206,6 +206,14 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2F2D853A293C8C44002E4191 /* QrScanner */ = {
+			isa = PBXGroup;
+			children = (
+				2FD40535292813A800771C1B /* QrCodeView.swift */,
+			);
+			path = QrScanner;
 			sourceTree = "<group>";
 		};
 		2F36A8E027DC737200E15350 /* Rounds */ = {

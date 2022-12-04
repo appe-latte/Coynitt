@@ -22,19 +22,6 @@ struct PaymentsView: View {
         ZStack {
             cynWhite
             VStack {
-                // MARK: Account Balance
-                
-                HStack {
-                    Spacer()
-                    
-                    Text("Avail. $\(accBalance, specifier: "%.2f")")
-                        .font(.custom("Avenir", size: 15).bold())
-                        .foregroundColor(Color(uiColor: .darkGray))
-                }
-                .padding(10)
-                
-                // MARK: Country Picker
-                
                 VStack {
                     HStack {
                         Text("Choose recipient country:")
@@ -43,9 +30,9 @@ struct PaymentsView: View {
                         
                         Spacer()
                     }
-                    .padding(.horizontal, 20)
+                    .padding(20)
                     
-                    // MARK: First Row
+                    // MARK: First Row Selection
                     
                     HStack {
                         // MARK: Canada
@@ -262,7 +249,7 @@ struct PaymentsView: View {
                         }
                     }
                     
-                    // MARK: Second Row
+                    // MARK: Second Row Selection
                     HStack {
                         // MARK: Nigeria
                         Button(action: {

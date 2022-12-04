@@ -38,3 +38,33 @@ struct ContentView: View {
         .accentColor(cynGreen)
     }
 }
+
+// MARK: Loading View struct
+struct ProgressLoadingView: View {
+    var body: some View {
+        ZStack {
+            GeometryReader { geo in
+                Rectangle()
+                    .aspectRatio(contentMode: .fill)
+                    .background(cynGreen)
+                    .frame(width: geo.size.width, height: geo.size.height)
+            }
+            .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                ProgressView()
+                    .frame(width: 60, height: 60)
+                    .progressViewStyle(CircularProgressViewStyle(tint: cynPurple))
+                    .scaleEffect(2)
+                
+                Text("Please Wait")
+                    .foregroundColor(.black)
+                    .font(.system(size: 10))
+                    
+            }
+            .frame(width: 80, height: 100)
+            .background(cynWhite)
+            .cornerRadius(10)
+        }
+    }
+}

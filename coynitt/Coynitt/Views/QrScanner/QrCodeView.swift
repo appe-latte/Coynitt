@@ -23,7 +23,7 @@ struct QrCodeView: View {
             VStack {
                 
                 VStack {
-                    // MARK: QR Code image
+                    // MARK: QR Code
                     Image(uiImage: generateQRCode(from: " Name: \(userTag)"))
                         .resizable()
                         .interpolation(.none)
@@ -31,16 +31,16 @@ struct QrCodeView: View {
                         .frame(width: 250, height: 250)
                         .padding(5)
                         .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 1))
+                            .stroke(Color.black, lineWidth: 0.25))
                     
-                    Text("Scan cyTag to quick send funds")
-                        .font(.custom("Avenir", size: 15).bold())
+                    Text("Scan to send funds")
+                        .font(.custom("Avenir", size: 12).bold())
                         .foregroundColor(.black)
                 }
                 .padding(.top, 10)
                 
                 
-                // Opens Camera to scan QR code
+                // MARK: Scan QR
                 HStack {
                     Spacer()
                     

@@ -16,98 +16,181 @@ struct BillPayView: View {
     var body: some View {
         ZStack {
             cynWhite
-            // MARK: Account Balance
-            VStack {
-                // MARK: Country Picker
-                VStack {
-                    HStack {
-                        Text("Pick service provider:")
-                            .font(.custom("Avenir", size: 12))
-                            .bold()
+            
+            // MARK: Pick Service Provider
+            NavigationView {
+                ZStack {
+                    cynWhite
+                    Form {
                         
-                        Spacer()
-                    }
-                    .padding(.horizontal, 20)
-                    
-                    // ROW ONE:
-                    HStack {
-                        
-                        // MARK: Multichoice
-                        Button(action: {
-                            //
-                        }, label: {
-                            VStack {
+                        Section(header: Text("Multichoice Africa")) {
+                            // MARK: Multichoice-ZA
+                            NavigationLink(destination: PaymentsView()){
                                 Image("multichoice")
                                     .resizable()
-                                    .frame(width: 80, height: 50)
-                                    .padding(10)
-                                Text("Multichoice")
-                                    .font(.custom("Avenir", size: 10))
-                                    .foregroundColor(.black)
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Multichoice (ZA)")
+                                            .font(.custom("Avenir", size: 13).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Text("Pay for your DSTV subscription in South Africa")
+                                            .font(.custom("Avenir", size: 10).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                }
                             }
-                        })
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5))
-                        
-                        // MARK: Checkers
-                        Button(action: {
-                            //
-                        }, label: {
-                            VStack {
-                                Image("checkers")
+                            
+                            // MARK: Multichoice-ZW
+                            NavigationLink(destination: PaymentsView()){
+                                Image("multichoice")
                                     .resizable()
-                                    .frame(width: 80, height: 60)
-                                    .cornerRadius(5)
-                                    .padding(5)
-                                Text("Checkers")
-                                    .font(.custom("Avenir", size: 10))
-                                    .foregroundColor(.black)
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Multichoice (ZW)")
+                                            .font(.custom("Avenir", size: 13).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Text("Pay for your DSTV subscription in Zimbabwe")
+                                            .font(.custom("Avenir", size: 10).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                }
                             }
-                        })
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5))
+                        }
                         
-                        // MARK: MTN
-                        Button(action: {
-                            //
-                        }, label: {
-                            VStack {
+                        // MARK: Airtime / Top-Up
+                        Section(header: Text("Airtime/ Top-up")){
+                            
+                            // MARK: MTN (ZA)
+                            NavigationLink(destination: PaymentsView()){
                                 Image("mtn")
                                     .resizable()
-                                    .frame(width: 80, height: 60)
-                                    .cornerRadius(5)
-                                    .padding(5)
-                                Text("MTN-ZA")
-                                    .font(.custom("Avenir", size: 10))
-                                    .foregroundColor(.black)
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("MTN (ZA)")
+                                            .font(.custom("Avenir", size: 13).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Text("Pay for airtime / top-up mobile number")
+                                            .font(.custom("Avenir", size: 10).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                }
                             }
-                        })
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5))
-                        
-                        // MARK: Econet
-                        Button(action: {
-                            //
-                        }, label: {
-                            VStack {
+                            
+                            // MARK: Econet (ZW)
+                            NavigationLink(destination: PaymentsView()){
                                 Image("econet")
                                     .resizable()
-                                    .frame(width: 80, height: 60)
-                                    .cornerRadius(5)
-                                    .padding(5)
-                                Text("Econet-ZW")
-                                    .font(.custom("Avenir", size: 10))
-                                    .foregroundColor(.black)
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Econet (ZW)")
+                                            .font(.custom("Avenir", size: 13).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Text("Pay for airtime / top-up mobile number")
+                                            .font(.custom("Avenir", size: 10).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                }
                             }
-                        })
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.5))
+                            
+                            // MARK: Vodacom (ZA)
+                            
+                            NavigationLink(destination: PaymentsView()){
+                                Image("vodacom")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Vodacom (ZA)")
+                                            .font(.custom("Avenir", size: 13).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Text("Pay for airtime / top-up mobile number")
+                                            .font(.custom("Avenir", size: 10).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                }
+                            }
+                        }
                         
+                        // MARK: Utility Bill payments
+                        Section(header: Text("Utilities")){
+                            
+                            // MARK: Eskom-ZA
+                            NavigationLink(destination: PaymentsView()){
+                                Image("eskom")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Eskom")
+                                            .font(.custom("Avenir", size: 13).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Text("Pay Eskom utility bill")
+                                            .font(.custom("Avenir", size: 10).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                .padding(.top, 30)
-                
-                Spacer()
             }
         }
     }
