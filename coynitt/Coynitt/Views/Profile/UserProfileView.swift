@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    @State var fName : String = "Samuel"
-    @State var lName : String = "James"
+    @State var userFName : String = "Samuel"
+    @State var userLName : String = "James"
     @State var userID : String = "18636390"
-    @State var acctType : String = "Premium"
+    @State var userMemberAcctType : String = "Premium"
     @State var userEmail : String = "sam_james90@coynitt.com"
     @State var userAddr : String = "125 Lethbridge Way, Calgary, AB"
     @State var userPhn : String = "(587) 187-9272"
@@ -77,7 +77,7 @@ struct UserProfileView: View {
                         
                         VStack {
                             HStack {
-                                Text("\(fName) \(lName)")
+                                Text("\(userFName) \(userLName)")
                                     .font(.custom("Avenir", size: 14).bold())
                                     .textCase(.uppercase)
                                     .foregroundColor(.black)
@@ -100,7 +100,7 @@ struct UserProfileView: View {
                                 }
                                 
                                 HStack {
-                                    Text("Account Type: \(acctType)")
+                                    Text("Account Type: \(userMemberAcctType)")
                                         .font(.custom("Avenir", size: 11).bold())
                                         .textCase(.uppercase)
                                         .foregroundColor(.gray)

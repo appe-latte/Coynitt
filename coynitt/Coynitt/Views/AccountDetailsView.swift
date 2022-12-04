@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountDetailsView: View {
-    @State private var accNum : Int = 3738122
+    @State private var userAccNum : Int = 3738122
     @State private var institutionNum : Int = 707
     @State private var transitNum : Int = 87362
     @State private var swiftCode : String = "CYNT182"
@@ -57,7 +57,7 @@ struct AccountDetailsView: View {
                             // MARK: Account Number
                             VStack {
                                 HStack {
-                                    Text("\(String(accNum))")
+                                    Text("\(String(userAccNum))")
                                         .font(.custom("Avenir", size: 15).bold())
                                     
                                     Spacer()

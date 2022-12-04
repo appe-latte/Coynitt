@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
-    @State private var accNum : Int = 373812093
-    @State var fName : String = "Samuel"
+    @State private var userAccNum : Int = 373812093
+    @State var userFName : String = "Samuel"
     @State private var userTag : String = "samthing90"
     
     @State var rowHeight = 65.0 // sets row height for list

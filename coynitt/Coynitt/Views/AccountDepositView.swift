@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct AccountDepositView: View {
-    @State var accBalance : Double = 1498.18
-    @State private var accNum : Int = 3738122
+    @State var userAccBal : Double = 1498.18
+    @State private var userAccNum : Int = 3738122
     @State private var transitNum : Int = 87362
-    @State var accType : String = "Current"
+    @State var userBankAccType : String = "Current"
     @State var bankName : String = "Scotiabank"
     @State var depositAmt = ""
     
@@ -28,7 +28,7 @@ struct AccountDepositView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)
                     
-                    Text("Balance: $\(accBalance, specifier: "%.2f")")
+                    Text("Balance: $\(userAccBal, specifier: "%.2f")")
                         .font(.system(size: 12))
                         .fontWeight(.semibold)
                         .foregroundColor(.gray)
@@ -100,7 +100,7 @@ struct AccountDepositView: View {
                                 .clipShape(Circle())
                             
                             VStack {
-                                Text("\(accType) Account")
+                                Text("\(userBankAccType) Account")
                                     .font(.system(size: 16))
                                     .bold()
                                     .textCase(.uppercase)
@@ -108,7 +108,7 @@ struct AccountDepositView: View {
                                     .minimumScaleFactor(0.5)
                                 
                                 HStack {
-                                    Text("\(String(accNum))")
+                                    Text("\(String(userAccNum))")
                                         .font(.system(size: 14))
                                         .foregroundColor(.gray)
                                     Text("·")

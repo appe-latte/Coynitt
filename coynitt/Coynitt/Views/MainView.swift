@@ -13,9 +13,9 @@ import AlertToast
 
 struct MainView: View {
     
-    @State var accBalance : Double = 1498.18
-    @State private var accNum : Int = 373812093
-    @State var fName : String = "Samuel"
+    @State var userAccBal : Double = 1498.18
+    @State private var userAccNum : Int = 373812093
+    @State var userFName : String = "Samuel"
     @State private var userTag : String = "samthing90"
     @State var txAmount : Double  = 0.00
     
@@ -84,7 +84,7 @@ struct MainView: View {
                                                 .clipShape(Circle())
                                                 .padding(5)
                                             
-                                            Text("Hi, \(fName)")
+                                            Text("Hi, \(userFName)")
                                                 .font(.custom("Avenir", size: 12).bold())
                                                 .foregroundColor(.black)
                                                 .scaledToFill()
@@ -115,7 +115,7 @@ struct MainView: View {
                                                 .frame(width: 18, height: 18)
                                                 .padding(5)
                                             
-                                            Text("$\(accBalance, specifier: "%.2f")")
+                                            Text("$\(userAccBal, specifier: "%.2f")")
                                                 .font(.custom("Avenir", size: 18
                                                              ))
                                                 .fontWeight(.bold)
