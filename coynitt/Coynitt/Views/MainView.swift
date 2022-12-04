@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import UIKit
+import CarBode
+import Combine
+import AlertToast
 
 struct MainView: View {
     
@@ -347,7 +351,6 @@ struct row : Identifiable {
 }
 
 var datas = [
-    
     type(id: 0, row: [row(id: 0, value: "1"), row(id: 1, value: "2"), row(id: 2, value: "3")]),
     type(id: 1, row: [row(id: 0, value: "4"), row(id: 1, value: "5"), row(id: 2, value: "6")]),
     type(id: 2, row: [row(id: 0, value: "7"), row(id: 1, value: "8"), row(id: 2, value: "9")]),

@@ -7,15 +7,21 @@
 
 import SwiftUI
 import Combine
+import UIKit
+import CarBode
+import AlertToast
 import CoreImage.CIFilterBuiltins
 
 struct QrCodeView: View {
     @State private var userTag : String = "samthing90"
     
+    @State var halfModal_shown = false
+    @State var isHide = false
+    @State var showQrScanner = false
+    
     // MARK: for QR Code generation
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
-    
     
     var body: some View {
         
@@ -44,7 +50,7 @@ struct QrCodeView: View {
                 HStack {
                     Spacer()
                     
-                    Button(action: {},
+                    Button(action: {self.showQrScanner.toggle()},
                            label: {
                         VStack {
                             Image("qr-scan")
@@ -57,7 +63,9 @@ struct QrCodeView: View {
                                 .foregroundColor(.black)
                                 .padding(5)
                         }
-                    })
+                    }).sheet(isPresented: $showQrScanner) {
+                        ModalScannerView()
+                    }
                 }
                 .padding(.horizontal, 20)
             }

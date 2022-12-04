@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F184EB2293C9F66006CE2D7 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA2293C9F66006CE2D7 /* PublicKey.swift */; };
+		2F184EB3293C9F66006CE2D7 /* EncryptedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA3293C9F66006CE2D7 /* EncryptedMessage.swift */; };
+		2F184EB4293C9F66006CE2D7 /* NSData+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA4293C9F66006CE2D7 /* NSData+SHA.m */; };
+		2F184EB5293C9F66006CE2D7 /* ClearMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA5293C9F66006CE2D7 /* ClearMessage.swift */; };
+		2F184EB6293C9F66006CE2D7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA6293C9F66006CE2D7 /* Message.swift */; };
+		2F184EB7293C9F66006CE2D7 /* Asn1Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA7293C9F66006CE2D7 /* Asn1Parser.swift */; };
+		2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA8293C9F66006CE2D7 /* X509Certificate.swift */; };
+		2F184EB9293C9F66006CE2D7 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EA9293C9F66006CE2D7 /* Signature.swift */; };
+		2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAA293C9F66006CE2D7 /* PrivateKey.swift */; };
+		2F184EBB293C9F66006CE2D7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAB293C9F66006CE2D7 /* Key.swift */; };
+		2F184EBC293C9F66006CE2D7 /* Info-tvOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F184EAC293C9F66006CE2D7 /* Info-tvOS.plist */; };
+		2F184EBD293C9F66006CE2D7 /* SwiftyRSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAE293C9F66006CE2D7 /* SwiftyRSA.swift */; };
+		2F184EBE293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */; };
+		2F184EBF293C9F66006CE2D7 /* SwiftyRSAError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */; };
 		2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039427D7BE8C00009465 /* CoynittApp.swift */; };
 		2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039627D7BE8C00009465 /* ContentView.swift */; };
 		2F1F039927D7BE8D00009465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1F039827D7BE8D00009465 /* Assets.xcassets */; };
@@ -16,6 +30,12 @@
 		2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AD27D7C10900009465 /* CardFrontView.swift */; };
 		2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03AF27D7C14000009465 /* TransactionSect.swift */; };
 		2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F03B127D7DFBB00009465 /* ActivityView.swift */; };
+		2F2D853C293C9789002E4191 /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2D853B293C9789002E4191 /* QrCodeCameraDelegate.swift */; };
+		2F2D853E293C9814002E4191 /* QrScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2D853D293C9814002E4191 /* QrScanViewModel.swift */; };
+		2F2D8540293C98D8002E4191 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2D853F293C98D8002E4191 /* CameraPreview.swift */; };
+		2F2D8542293C990D002E4191 /* ModalScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2D8541293C990D002E4191 /* ModalScannerView.swift */; };
+		2F2D8545293C99D4002E4191 /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2D8544293C99D4002E4191 /* CarBode */; };
+		2F2D8548293C9A4B002E4191 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2D8547293C9A4B002E4191 /* CryptoSwift */; };
 		2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */; };
 		2F4578C728330B5B00E232EB /* AccountInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4578C628330B5B00E232EB /* AccountInsightsView.swift */; };
 		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
@@ -45,6 +65,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F184EA1293C9F66006CE2D7 /* SwiftyRSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyRSA.h; sourceTree = "<group>"; };
+		2F184EA2293C9F66006CE2D7 /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		2F184EA3293C9F66006CE2D7 /* EncryptedMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedMessage.swift; sourceTree = "<group>"; };
+		2F184EA4293C9F66006CE2D7 /* NSData+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SHA.m"; sourceTree = "<group>"; };
+		2F184EA5293C9F66006CE2D7 /* ClearMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearMessage.swift; sourceTree = "<group>"; };
+		2F184EA6293C9F66006CE2D7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2F184EA7293C9F66006CE2D7 /* Asn1Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asn1Parser.swift; sourceTree = "<group>"; };
+		2F184EA8293C9F66006CE2D7 /* X509Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = X509Certificate.swift; sourceTree = "<group>"; };
+		2F184EA9293C9F66006CE2D7 /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
+		2F184EAA293C9F66006CE2D7 /* PrivateKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
+		2F184EAB293C9F66006CE2D7 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		2F184EAC293C9F66006CE2D7 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		2F184EAD293C9F66006CE2D7 /* NSData+SHA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SHA.h"; sourceTree = "<group>"; };
+		2F184EAE293C9F66006CE2D7 /* SwiftyRSA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRSA.swift; sourceTree = "<group>"; };
+		2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyRSA+ObjC.swift"; sourceTree = "<group>"; };
+		2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRSAError.swift; sourceTree = "<group>"; };
 		2F1F039127D7BE8C00009465 /* Coynitt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coynitt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1F039427D7BE8C00009465 /* CoynittApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoynittApp.swift; sourceTree = "<group>"; };
 		2F1F039627D7BE8C00009465 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +91,10 @@
 		2F1F03AD27D7C10900009465 /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		2F1F03AF27D7C14000009465 /* TransactionSect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSect.swift; sourceTree = "<group>"; };
 		2F1F03B127D7DFBB00009465 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		2F2D853B293C9789002E4191 /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
+		2F2D853D293C9814002E4191 /* QrScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrScanViewModel.swift; sourceTree = "<group>"; };
+		2F2D853F293C98D8002E4191 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		2F2D8541293C990D002E4191 /* ModalScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalScannerView.swift; sourceTree = "<group>"; };
 		2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsPotsView.swift; sourceTree = "<group>"; };
 		2F4578C628330B5B00E232EB /* AccountInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountInsightsView.swift; path = Coynitt/AccountInfo/AccountInsightsView.swift; sourceTree = SOURCE_ROOT; };
 		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
@@ -90,6 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F2D8545293C99D4002E4191 /* CarBode in Frameworks */,
+				2F2D8548293C9A4B002E4191 /* CryptoSwift in Frameworks */,
 				C95806E36D32F2DFEE42468B /* Pods_Coynitt.framework in Frameworks */,
 				2F715C912928049B00D0CC57 /* Lottie in Frameworks */,
 			);
@@ -98,6 +140,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F184EA0293C9F66006CE2D7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F184EA1293C9F66006CE2D7 /* SwiftyRSA.h */,
+				2F184EA2293C9F66006CE2D7 /* PublicKey.swift */,
+				2F184EA3293C9F66006CE2D7 /* EncryptedMessage.swift */,
+				2F184EA4293C9F66006CE2D7 /* NSData+SHA.m */,
+				2F184EA5293C9F66006CE2D7 /* ClearMessage.swift */,
+				2F184EA6293C9F66006CE2D7 /* Message.swift */,
+				2F184EA7293C9F66006CE2D7 /* Asn1Parser.swift */,
+				2F184EA8293C9F66006CE2D7 /* X509Certificate.swift */,
+				2F184EA9293C9F66006CE2D7 /* Signature.swift */,
+				2F184EAA293C9F66006CE2D7 /* PrivateKey.swift */,
+				2F184EAB293C9F66006CE2D7 /* Key.swift */,
+				2F184EAC293C9F66006CE2D7 /* Info-tvOS.plist */,
+				2F184EAD293C9F66006CE2D7 /* NSData+SHA.h */,
+				2F184EAE293C9F66006CE2D7 /* SwiftyRSA.swift */,
+				2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */,
+				2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		2F1F038827D7BE8C00009465 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +230,7 @@
 		2F1F03A327D7BEB800009465 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2F184EA0293C9F66006CE2D7 /* Source */,
 				2F1F03AB27D7C00E00009465 /* Colors.swift */,
 				2F1F03AD27D7C10900009465 /* CardFrontView.swift */,
 				2F94C2FE27DA90E800B97B58 /* CardBackView.swift */,
@@ -189,6 +255,7 @@
 		2F1F03A527D7BEC800009465 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				2F2D853B293C9789002E4191 /* QrCodeCameraDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -197,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				2FD405322928084F00771C1B /* Lottie */,
+				2F2D853D293C9814002E4191 /* QrScanViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -212,6 +280,8 @@
 			isa = PBXGroup;
 			children = (
 				2FD40535292813A800771C1B /* QrCodeView.swift */,
+				2F2D853F293C98D8002E4191 /* CameraPreview.swift */,
+				2F2D8541293C990D002E4191 /* ModalScannerView.swift */,
 			);
 			path = QrScanner;
 			sourceTree = "<group>";
@@ -299,6 +369,8 @@
 			name = Coynitt;
 			packageProductDependencies = (
 				2F715C902928049B00D0CC57 /* Lottie */,
+				2F2D8544293C99D4002E4191 /* CarBode */,
+				2F2D8547293C9A4B002E4191 /* CryptoSwift */,
 			);
 			productName = Coyne;
 			productReference = 2F1F039127D7BE8C00009465 /* Coynitt.app */;
@@ -330,6 +402,8 @@
 			mainGroup = 2F1F038827D7BE8C00009465;
 			packageReferences = (
 				2F715C8F2928049B00D0CC57 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				2F2D8543293C99D4002E4191 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
+				2F2D8546293C9A4B002E4191 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			productRefGroup = 2F1F039227D7BE8C00009465 /* Products */;
 			projectDirPath = "";
@@ -347,6 +421,7 @@
 			files = (
 				2F1F039C27D7BE8D00009465 /* Preview Assets.xcassets in Resources */,
 				2F1F039927D7BE8D00009465 /* Assets.xcassets in Resources */,
+				2F184EBC293C9F66006CE2D7 /* Info-tvOS.plist in Resources */,
 				2FD405342928084F00771C1B /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,32 +475,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F184EB2293C9F66006CE2D7 /* PublicKey.swift in Sources */,
 				2FD4053A29284D1E00771C1B /* BillPayView.swift in Sources */,
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
+				2F2D853C293C9789002E4191 /* QrCodeCameraDelegate.swift in Sources */,
 				2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */,
+				2F2D853E293C9814002E4191 /* QrScanViewModel.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
+				2F2D8540293C98D8002E4191 /* CameraPreview.swift in Sources */,
+				2F184EB4293C9F66006CE2D7 /* NSData+SHA.m in Sources */,
+				2F184EB6293C9F66006CE2D7 /* Message.swift in Sources */,
 				2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */,
 				2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */,
 				2F7F68AD290360FA00E76310 /* RecipientsView.swift in Sources */,
+				2F184EBB293C9F66006CE2D7 /* Key.swift in Sources */,
 				2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */,
+				2F184EB3293C9F66006CE2D7 /* EncryptedMessage.swift in Sources */,
 				2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */,
+				2F184EBF293C9F66006CE2D7 /* SwiftyRSAError.swift in Sources */,
 				2F1F03A927D7BF6600009465 /* MainView.swift in Sources */,
 				2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */,
 				2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */,
+				2F184EBE293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift in Sources */,
 				2F4578C728330B5B00E232EB /* AccountInsightsView.swift in Sources */,
 				2FD405382928156B00771C1B /* StringExtension.swift in Sources */,
+				2F2D8542293C990D002E4191 /* ModalScannerView.swift in Sources */,
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F92F7E628A771FF00AC6C87 /* CanExchangeView.swift in Sources */,
 				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
+				2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */,
 				2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */,
+				2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,
+				2F184EBD293C9F66006CE2D7 /* SwiftyRSA.swift in Sources */,
+				2F184EB9293C9F66006CE2D7 /* Signature.swift in Sources */,
 				2FE3476528A8249700E0DBDD /* KesExchangeView.swift in Sources */,
 				2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */,
 				2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */,
+				2F184EB5293C9F66006CE2D7 /* ClearMessage.swift in Sources */,
 				2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
+				2F184EB7293C9F66006CE2D7 /* Asn1Parser.swift in Sources */,
 				2FD40536292813A800771C1B /* QrCodeView.swift in Sources */,
 				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
 				2F9F073F28F5C7EA00D6A122 /* CardView.swift in Sources */,
@@ -650,6 +742,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2F2D8543293C99D4002E4191 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/heart/CarBode-Barcode-Scanner-For-SwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		2F2D8546293C9A4B002E4191 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		2F715C8F2928049B00D0CC57 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -661,6 +769,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2F2D8544293C99D4002E4191 /* CarBode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F2D8543293C99D4002E4191 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
+			productName = CarBode;
+		};
+		2F2D8547293C9A4B002E4191 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F2D8546293C9A4B002E4191 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
 		2F715C902928049B00D0CC57 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F715C8F2928049B00D0CC57 /* XCRemoteSwiftPackageReference "lottie-ios" */;

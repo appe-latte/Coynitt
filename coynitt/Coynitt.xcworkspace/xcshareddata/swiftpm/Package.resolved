@@ -1,6 +1,24 @@
 {
   "pins" : [
     {
+      "identity" : "carbode-barcode-scanner-for-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/heart/CarBode-Barcode-Scanner-For-SwiftUI",
+      "state" : {
+        "revision" : "6167624ec47174900434f1c03dfa0b2dd5d19c0d",
+        "version" : "2.2.3"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "19b3c3ceed117c5cc883517c4e658548315ba70b",
+        "version" : "1.6.0"
+      }
+    },
+    {
       "identity" : "lottie-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios.git",

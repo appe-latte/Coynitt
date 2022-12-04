@@ -13,4 +13,5 @@ target 'Coynitt' do
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'lottie-ios'
+  pod 'AlertToast'
 end
