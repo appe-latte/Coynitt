@@ -21,6 +21,7 @@
 		2F184EBD293C9F66006CE2D7 /* SwiftyRSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAE293C9F66006CE2D7 /* SwiftyRSA.swift */; };
 		2F184EBE293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */; };
 		2F184EBF293C9F66006CE2D7 /* SwiftyRSAError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */; };
+		2F184EC2293CA37F006CE2D7 /* ScannerHalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EC1293CA37F006CE2D7 /* ScannerHalfModalView.swift */; };
 		2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039427D7BE8C00009465 /* CoynittApp.swift */; };
 		2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039627D7BE8C00009465 /* ContentView.swift */; };
 		2F1F039927D7BE8D00009465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1F039827D7BE8D00009465 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		2F184EAE293C9F66006CE2D7 /* SwiftyRSA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRSA.swift; sourceTree = "<group>"; };
 		2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyRSA+ObjC.swift"; sourceTree = "<group>"; };
 		2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRSAError.swift; sourceTree = "<group>"; };
+		2F184EC1293CA37F006CE2D7 /* ScannerHalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerHalfModalView.swift; sourceTree = "<group>"; };
 		2F1F039127D7BE8C00009465 /* Coynitt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coynitt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1F039427D7BE8C00009465 /* CoynittApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoynittApp.swift; sourceTree = "<group>"; };
 		2F1F039627D7BE8C00009465 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				2F2D853B293C9789002E4191 /* QrCodeCameraDelegate.swift */,
+				2F184EC1293CA37F006CE2D7 /* ScannerHalfModalView.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			files = (
 				2F184EB2293C9F66006CE2D7 /* PublicKey.swift in Sources */,
 				2FD4053A29284D1E00771C1B /* BillPayView.swift in Sources */,
+				2F184EC2293CA37F006CE2D7 /* ScannerHalfModalView.swift in Sources */,
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
 				2F2D853C293C9789002E4191 /* QrCodeCameraDelegate.swift in Sources */,
 				2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */,

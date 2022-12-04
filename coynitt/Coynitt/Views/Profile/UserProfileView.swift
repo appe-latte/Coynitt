@@ -13,9 +13,10 @@ struct UserProfileView: View {
     @State var userID : String = "18636390"
     @State var acctType : String = "Premium"
     @State var userEmail : String = "sam_james90@coynitt.com"
-    @State var userAddr : String = "125 Lethbridge Way, Calgary, AB, T2P 6V5"
+    @State var userAddr : String = "125 Lethbridge Way, Calgary, AB"
     @State var userPhn : String = "(587) 187-9272"
     @State var userDob : String = "11-May-92"
+    @State var userCountry : String = "Canada"
     
     var viewWidth = UIScreen.main.bounds.width
     var viewHeight = UIScreen.main.bounds.height
@@ -204,6 +205,32 @@ struct UserProfileView: View {
                                     
                                     HStack {
                                         Text(userAddr)
+                                            .font(.custom("Avenir", size: 15).bold())
+                                            .foregroundColor(.black)
+                                            .minimumScaleFactor(0.5)
+                                        
+                                        Spacer()
+                                    }
+                                }
+                                
+                                // MARK: Country
+                                VStack {
+                                    HStack {
+                                        Text("Country")
+                                            .font(.custom("Avenir", size: 12).bold())
+                                            .foregroundColor(.black)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack {
+                                        Image("canada")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 15, height: 10)
+                                        
+                                        Text(userCountry)
                                             .font(.custom("Avenir", size: 15).bold())
                                             .foregroundColor(.black)
                                             .minimumScaleFactor(0.5)
