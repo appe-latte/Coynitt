@@ -47,7 +47,7 @@
 		2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78EE1D2900757600B9C5F7 /* SettingsView.swift */; };
 		2F7F68AD290360FA00E76310 /* RecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F68AC290360FA00E76310 /* RecipientsView.swift */; };
 		2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */; };
-		2F92F7E628A771FF00AC6C87 /* CanExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92F7E528A771FF00AC6C87 /* CanExchangeView.swift */; };
+		2F92F7E628A771FF00AC6C87 /* TxCanadaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92F7E528A771FF00AC6C87 /* TxCanadaView.swift */; };
 		2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C2FE27DA90E800B97B58 /* CardBackView.swift */; };
 		2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30227DAD53E00B97B58 /* LatestActivity.swift */; };
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
@@ -62,9 +62,9 @@
 		2FD40536292813A800771C1B /* QrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD40535292813A800771C1B /* QrCodeView.swift */; };
 		2FD405382928156B00771C1B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD405372928156B00771C1B /* StringExtension.swift */; };
 		2FD4053A29284D1E00771C1B /* BillPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4053929284D1E00771C1B /* BillPayView.swift */; };
-		2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */; };
-		2FE3476528A8249700E0DBDD /* KesExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476428A8249700E0DBDD /* KesExchangeView.swift */; };
-		2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476628A8301400E0DBDD /* ZarExchangeView.swift */; };
+		2FE3476328A8198500E0DBDD /* TxZimbabweView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476228A8198500E0DBDD /* TxZimbabweView.swift */; };
+		2FE3476528A8249700E0DBDD /* TxKenyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476428A8249700E0DBDD /* TxKenyaView.swift */; };
+		2FE3476728A8301400E0DBDD /* TxSouthAfricaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3476628A8301400E0DBDD /* TxSouthAfricaView.swift */; };
 		C95806E36D32F2DFEE42468B /* Pods_Coynitt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9225846BEBB1AA64D14C151D /* Pods_Coynitt.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +109,7 @@
 		2F78EE1D2900757600B9C5F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F7F68AC290360FA00E76310 /* RecipientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientsView.swift; sourceTree = "<group>"; };
 		2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
-		2F92F7E528A771FF00AC6C87 /* CanExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanExchangeView.swift; sourceTree = "<group>"; };
+		2F92F7E528A771FF00AC6C87 /* TxCanadaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxCanadaView.swift; sourceTree = "<group>"; };
 		2F94C2FE27DA90E800B97B58 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		2F94C30227DAD53E00B97B58 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
@@ -125,9 +125,9 @@
 		2FD40535292813A800771C1B /* QrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeView.swift; sourceTree = "<group>"; };
 		2FD405372928156B00771C1B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2FD4053929284D1E00771C1B /* BillPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPayView.swift; sourceTree = "<group>"; };
-		2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZwExchangeView.swift; sourceTree = "<group>"; };
-		2FE3476428A8249700E0DBDD /* KesExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KesExchangeView.swift; sourceTree = "<group>"; };
-		2FE3476628A8301400E0DBDD /* ZarExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZarExchangeView.swift; sourceTree = "<group>"; };
+		2FE3476228A8198500E0DBDD /* TxZimbabweView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxZimbabweView.swift; sourceTree = "<group>"; };
+		2FE3476428A8249700E0DBDD /* TxKenyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxKenyaView.swift; sourceTree = "<group>"; };
+		2FE3476628A8301400E0DBDD /* TxSouthAfricaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxSouthAfricaView.swift; sourceTree = "<group>"; };
 		9225846BEBB1AA64D14C151D /* Pods_Coynitt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coynitt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D750DF656B01DB09481FBE75 /* Pods-Coynitt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coynitt.release.xcconfig"; path = "Target Support Files/Pods-Coynitt/Pods-Coynitt.release.xcconfig"; sourceTree = "<group>"; };
 		DC2B600F64304B0B6E54BA3C /* Pods-Coynitt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coynitt.debug.xcconfig"; path = "Target Support Files/Pods-Coynitt/Pods-Coynitt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -335,10 +335,10 @@
 			children = (
 				2FC1643F27DBE10000FCC267 /* PaymentsView.swift */,
 				2F9E45E72916886A006F82BE /* TxCompletionView.swift */,
-				2F92F7E528A771FF00AC6C87 /* CanExchangeView.swift */,
-				2FE3476228A8198500E0DBDD /* ZwExchangeView.swift */,
-				2FE3476428A8249700E0DBDD /* KesExchangeView.swift */,
-				2FE3476628A8301400E0DBDD /* ZarExchangeView.swift */,
+				2F92F7E528A771FF00AC6C87 /* TxCanadaView.swift */,
+				2FE3476228A8198500E0DBDD /* TxZimbabweView.swift */,
+				2FE3476428A8249700E0DBDD /* TxKenyaView.swift */,
+				2FE3476628A8301400E0DBDD /* TxSouthAfricaView.swift */,
 			);
 			path = Transfers;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 				2F184EC2293CA37F006CE2D7 /* ScannerHalfModalView.swift in Sources */,
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
 				2F2D853C293C9789002E4191 /* QrCodeCameraDelegate.swift in Sources */,
-				2FE3476328A8198500E0DBDD /* ZwExchangeView.swift in Sources */,
+				2FE3476328A8198500E0DBDD /* TxZimbabweView.swift in Sources */,
 				2F2D853E293C9814002E4191 /* QrScanViewModel.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
 				2F2D8540293C98D8002E4191 /* CameraPreview.swift in Sources */,
@@ -522,7 +522,7 @@
 				2FD405382928156B00771C1B /* StringExtension.swift in Sources */,
 				2F2D8542293C990D002E4191 /* ModalScannerView.swift in Sources */,
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
-				2F92F7E628A771FF00AC6C87 /* CanExchangeView.swift in Sources */,
+				2F92F7E628A771FF00AC6C87 /* TxCanadaView.swift in Sources */,
 				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
 				2F48CD44293D6DEB0027CDE2 /* PasscodeView.swift in Sources */,
 				2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */,
@@ -530,11 +530,11 @@
 				2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */,
 				2F48CD46293D6E150027CDE2 /* BiometricView.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
-				2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */,
+				2FE3476728A8301400E0DBDD /* TxSouthAfricaView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,
 				2F184EBD293C9F66006CE2D7 /* SwiftyRSA.swift in Sources */,
 				2F184EB9293C9F66006CE2D7 /* Signature.swift in Sources */,
-				2FE3476528A8249700E0DBDD /* KesExchangeView.swift in Sources */,
+				2FE3476528A8249700E0DBDD /* TxKenyaView.swift in Sources */,
 				2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */,
 				2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */,
 				2F184EB5293C9F66006CE2D7 /* ClearMessage.swift in Sources */,

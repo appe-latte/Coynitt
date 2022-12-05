@@ -30,7 +30,8 @@ struct PaymentsView: View {
                         
                         Spacer()
                     }
-                    .padding(20)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
                     
                     // MARK: First Row Selection
                     
@@ -95,7 +96,7 @@ struct PaymentsView: View {
                                     .frame(height: 30)
                                 
                                 if isChecked == true {
-                                    CanExchangeView()
+                                    TxCanadaView()
                                     
                                     Spacer()
                                     
@@ -110,7 +111,7 @@ struct PaymentsView: View {
                                             .clipShape(Capsule())
                                     })
                                 } else {
-                                    CanExchangeView().opacity(0.1)
+                                    TxCanadaView().opacity(0.1)
                                     
                                     Spacer()
                                     
@@ -226,9 +227,9 @@ struct PaymentsView: View {
                                     .frame(height: 30)
                                 
                                 if isChecked == true {
-                                    ZarExchangeView()
+                                    TxSouthAfricaView()
                                 } else {
-                                    ZarExchangeView().opacity(0.1)
+                                    TxSouthAfricaView().opacity(0.1)
                                 }
                                 
                                 Spacer()
@@ -323,7 +324,7 @@ struct PaymentsView: View {
                                     .frame(height: 30)
                                 
                                 if isChecked == true {
-                                    KesExchangeView()
+                                    TxKenyaView()
                                     
                                     Spacer()
                                     
@@ -338,7 +339,7 @@ struct PaymentsView: View {
                                             .clipShape(Capsule())
                                     })
                                 } else {
-                                    KesExchangeView().opacity(0.1)
+                                    TxKenyaView().opacity(0.1)
                                     
                                     Spacer()
                                     
@@ -418,7 +419,7 @@ struct PaymentsView: View {
                                 
                                 
                                 if isChecked == true {
-                                    ZwExchangeView()
+                                    TxZimbabweView()
                                     
                                     Spacer()
                                     
@@ -433,7 +434,7 @@ struct PaymentsView: View {
                                             .clipShape(Capsule())
                                     })
                                 } else {
-                                    ZwExchangeView().opacity(0.1)
+                                    TxZimbabweView().opacity(0.1)
                                     
                                     Spacer()
                                     
@@ -464,6 +465,70 @@ struct PaymentsView: View {
                                     .frame(width: 60, height: 60)
                                     .padding(10)
                                 Text("Zambia")
+                                    .font(.custom("Avenir", size: 10))
+                                    .bold()
+                            }
+                        })
+                    }
+                    
+                    // MARK: Third Row Selection
+                    HStack {
+                        // MARK: Egypt
+                        Button(action: {
+                            //
+                        }, label: {
+                            VStack {
+                                Image("egypt")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .padding(10)
+                                Text("Egypt")
+                                    .font(.custom("Avenir", size: 10))
+                                    .bold()
+                            }
+                        })
+                        
+                        // MARK: Ethiopia
+                        Button(action: {
+                            kesPaySheet.toggle()
+                        }, label: {
+                            VStack {
+                                Image("ethiopia")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .padding(10)
+                                Text("Ethiopia")
+                                    .font(.custom("Avenir", size: 10))
+                                    .bold()
+                            }
+                        })
+                        
+                        // MARK: Rwanda
+                        Button(action: {
+                            kesPaySheet.toggle()
+                        }, label: {
+                            VStack {
+                                Image("rwanda")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .padding(10)
+                                Text("Rwanda")
+                                    .font(.custom("Avenir", size: 10))
+                                    .bold()
+                            }
+                        })
+                        
+                        
+                        // MARK: Tanzania
+                        Button(action: {
+                            //
+                        }, label: {
+                            VStack {
+                                Image("tanzania")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .padding(10)
+                                Text("Tanzania")
                                     .font(.custom("Avenir", size: 10))
                                     .bold()
                             }

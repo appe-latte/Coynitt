@@ -1,5 +1,5 @@
 //
-//  KesExchangeView.swift
+//  ZwExchangeView.swift
 //  Coynitt
 //
 //  Created by Stanford L. Khumalo on 13/08/2022.
@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct KesExchangeView : View {
-    @State private var kesSendFigure : Float = 0.00
-    @State private var liveKESrate : Float = 119.25
-    @State private var arrivalDate = "30 minutes"
+struct TxZimbabweView : View {
+    @State private var zwSendFigure : Float = 0.00
+    @State private var arrivalDate = "10 minutes"
     
     @State var rowHeight = 35.0
     
@@ -18,17 +17,17 @@ struct KesExchangeView : View {
         
         ZStack {
             // MARK: Conversion rates
-            let rate_1 = kesSendFigure * 0.025
-            let rate_2 = kesSendFigure * 0.005
-            let rate_3 = kesSendFigure * 0.0035
+            let rate_1 = zwSendFigure * 0.025
+            let rate_2 = zwSendFigure * 0.005
+            let rate_3 = zwSendFigure * 0.01
             
             // MARK: Tx + rate
-            let totalPay_1 = kesSendFigure + rate_1
-            let totalPay_2 = kesSendFigure + rate_2
-            let totalPay_3 = kesSendFigure + rate_3
+            let totalPay_1 = zwSendFigure + rate_1
+            let totalPay_2 = zwSendFigure + rate_2
+            let totalPay_3 = zwSendFigure + rate_3
             
             // MARK: Recvr Amount
-            let kesRecvFigure = (liveKESrate * kesSendFigure)
+            let zwRecvFigure = zwSendFigure
             
             Form {
                 Section {
@@ -43,7 +42,7 @@ struct KesExchangeView : View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         
-                        TextField("0.00", value: $kesSendFigure, format: .number)
+                        TextField("0.00", value: $zwSendFigure, format: .number)
                             .font(.custom("Avenir", size: 16))
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.numberPad)
@@ -54,17 +53,17 @@ struct KesExchangeView : View {
                     HStack {
                         Text("Our Fee:")
                             .font(.custom("Avenir", size: 11))
-                        if (kesSendFigure <= 100) {
+                        if (zwSendFigure <= 100) {
                             Text("\(Float(rate_1), specifier: "%.2f")")
                                 .font(.custom("Avenir", size: 11))
                                 .foregroundColor(.blue)
                                 .bold()
-                        } else if (kesSendFigure > 100 && kesSendFigure < 500) {
+                        } else if (zwSendFigure > 100 && zwSendFigure < 500) {
                             Text("\(Float(rate_2), specifier: "%.2f")")
                                 .font(.custom("Avenir", size: 11))
                                 .foregroundColor(.blue)
                                 .bold()
-                        } else if (kesSendFigure > 500) {
+                        } else {
                             Text("\(Float(rate_3), specifier: "%.2f")")
                                 .font(.custom("Avenir", size: 11))
                                 .foregroundColor(.blue)
@@ -75,7 +74,7 @@ struct KesExchangeView : View {
                     }.padding(.leading, 5)
                     
                     // MARK: Total Payment
-                    if (kesSendFigure <= 100) {
+                    if (zwSendFigure <= 100) {
                         HStack {
                             Text("You pay:")
                                 .font(.custom("Avenir", size: 11))
@@ -86,7 +85,7 @@ struct KesExchangeView : View {
                             
                             Spacer()
                         }.padding(.leading, 5)
-                    } else if (kesSendFigure > 100 && kesSendFigure < 500) {
+                    } else if (zwSendFigure > 100 && zwSendFigure < 500) {
                         HStack {
                             Text("You pay:")
                                 .font(.custom("Avenir", size: 11))
@@ -117,11 +116,11 @@ struct KesExchangeView : View {
                             .foregroundColor(.black)
                             .padding(.trailing, 10)
                         
-                        Image("kenya")
+                        Image("united-states")
                             .resizable()
                             .frame(width: 20, height: 20)
                         
-                        Text("$\(Float(kesRecvFigure), specifier: "%.2f")")
+                        Text("$\(Float(zwRecvFigure), specifier: "%.2f")")
                             .font(.custom("Avenir", size: 16))
                             .bold()
                         

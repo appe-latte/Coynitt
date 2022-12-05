@@ -1,18 +1,17 @@
 //
-//  TxExchangeView.swift
+//  zarExchangeView.swift
 //  Coynitt
 //
-//  Created by Stanford L. Khumalo on 12/08/2022.
+//  Created by Stanford L. Khumalo on 13/08/2022.
 //
 
 import SwiftUI
 
-struct CanExchangeView : View {
-    @State private var cdnSendFigure : Float = 0.00
-    @State private var liveCDNrate : Float = 1.2373
-    @State private var arrivalDate = "4 hours"
-    //    @State private var feeCalc : Float = 0
-    //    @State private var cdnRecvFigure = liveCDNrate*cdnSendFigure
+struct TxSouthAfricaView: View {
+    
+    @State private var zarSendFigure : Float = 0.00
+    @State private var liveZARrate : Float = 16.196753
+    @State private var arrivalDate = "1 hour"
     
     var body: some View {
         ZStack {
@@ -29,7 +28,7 @@ struct CanExchangeView : View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         
-                        TextField("0.00", value: $cdnSendFigure, format: .number)
+                        TextField("0.00", value: $zarSendFigure, format: .number)
                             .font(.custom("Avenir", size: 16))
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.numberPad)
@@ -50,7 +49,7 @@ struct CanExchangeView : View {
                     HStack {
                         Text("Exchange Rate ~")
                             .font(.custom("Avenir", size: 13))
-                        Text("1 : \(liveCDNrate, specifier: "%.5f")")
+                        Text("1 : \(liveZARrate, specifier: "%.5f")")
                             .font(.custom("Avenir", size: 13))
                             .foregroundColor(.blue)
                             .bold()
@@ -60,19 +59,19 @@ struct CanExchangeView : View {
                     .padding(.leading, 30)
                     
                     // MARK: Our Fee
-                    let rate_1 = cdnSendFigure * 0.025
-                    let rate_2 = cdnSendFigure * 0.005
-                    let rate_3 = cdnSendFigure * 0.0035
+                    let rate_1 = zarSendFigure * 0.025
+                    let rate_2 = zarSendFigure * 0.005
+                    let rate_3 = zarSendFigure * 0.0035
                     
                     HStack {
                         Text("Our Fee:")
                             .font(.custom("Avenir", size: 13))
-                        if (cdnSendFigure <= 100) {
+                        if (zarSendFigure <= 100) {
                             Text("\(Float(rate_1), specifier: "%.2f")")
                                 .font(.custom("Avenir", size: 13))
                                 .foregroundColor(.blue)
                                 .bold()
-                        } else if (cdnSendFigure > 100 && cdnSendFigure < 500) {
+                        } else if (zarSendFigure > 100 && zarSendFigure < 500) {
                             Text("\(Float(rate_2), specifier: "%.2f")")
                                 .font(.custom("Avenir", size: 13))
                                 .foregroundColor(.blue)
@@ -88,12 +87,12 @@ struct CanExchangeView : View {
                     }
                     .padding(.leading, 30)
                     
-                    let totalPay_1 = cdnSendFigure + rate_1
-                    let totalPay_2 = cdnSendFigure + rate_2
-                    let totalPay_3 = cdnSendFigure + rate_3
+                    let totalPay_1 = zarSendFigure + rate_1
+                    let totalPay_2 = zarSendFigure + rate_2
+                    let totalPay_3 = zarSendFigure + rate_3
                     
                     // MARK: Total Payment
-                    if (cdnSendFigure <= 100) {
+                    if (zarSendFigure <= 100) {
                         HStack {
                             Text("You pay:")
                                 .font(.custom("Avenir", size: 13))
@@ -104,7 +103,7 @@ struct CanExchangeView : View {
                             
                             Spacer()
                         }.padding(.leading, 30)
-                    } else if (cdnSendFigure > 100 && cdnSendFigure < 500) {
+                    } else if (zarSendFigure > 100 && zarSendFigure < 500) {
                         HStack {
                             Text("You pay:")
                                 .font(.custom("Avenir", size: 13))
@@ -131,7 +130,7 @@ struct CanExchangeView : View {
                 .padding(10)
                 
                 // MARK: Recvr Amount
-                let cdnRecvFigure = (liveCDNrate * cdnSendFigure)
+                let zarRecvFigure = (liveZARrate * zarSendFigure)
                 
                 VStack {
                     HStack {
@@ -140,11 +139,11 @@ struct CanExchangeView : View {
                             .foregroundColor(.black)
                             .padding(.trailing, 10)
                         
-                        Image("canada")
+                        Image("south-africa")
                             .resizable()
                             .frame(width: 20, height: 20)
                         
-                        Text("$\(Float(cdnRecvFigure), specifier: "%.2f")")
+                        Text("\(Float(zarRecvFigure), specifier: "%.2f")ZAR")
                             .font(.custom("Avenir", size: 16))
                             .bold()
                         
