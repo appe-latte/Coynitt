@@ -13,7 +13,7 @@ struct SettingsView: View {
     @State var showBiometricSheet = false
     
     var body: some View {
-        var screenHeight = UIScreen.main.bounds.height
+        let screenHeight = UIScreen.main.bounds.height
         
         NavigationView {
             ZStack {

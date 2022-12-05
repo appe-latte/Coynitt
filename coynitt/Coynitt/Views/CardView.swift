@@ -118,7 +118,7 @@ struct CardView: View {
                                     
                                     // MARK: "Rounds" View
                                     NavigationLink(
-                                        destination: SavingsPotsView()){
+                                        destination: MainRoundsView()){
                                             HStack {
                                                 Image("rounds")
                                                     .resizable()
