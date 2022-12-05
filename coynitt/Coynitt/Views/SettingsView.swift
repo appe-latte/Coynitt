@@ -9,8 +9,12 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var rowHeight = 65.0
+    @State var showPasscodeSheet = false
+    @State var showBiometricSheet = false
     
     var body: some View {
+        var screenHeight = UIScreen.main.bounds.height
+        
         NavigationView {
             ZStack {
                 //                cynWhite
@@ -97,58 +101,92 @@ struct SettingsView: View {
                         // MARK: Security
                         Section(header: Text("Security")) {
                             
-                            // Biometric Settings
-                            NavigationLink(destination: PaymentsView()){
-                                Image("face-id")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.orange)
-                                
-                                VStack {
-                                    HStack {
-                                        Text("Biometric Login")
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
+                            // MARK: Biometric Settings
+                            
+                            Button(action: {showBiometricSheet.toggle()}, label: {
+                                HStack {
+                                    Image("face-id")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.orange)
+                                    
+                                    VStack {
+                                        HStack {
+                                            Text("Biometric Login")
+                                                .font(.custom("Avenir", size: 15).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
                                         
-                                        Spacer()
+                                        HStack {
+                                            Text("Enable FaceID or TouchID to login")
+                                                .font(.custom("Avenir", size: 10).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
                                     }
                                     
-                                    HStack {
-                                        Text("Enable FaceID or TouchID to login")
-                                            .font(.custom("Avenir", size: 10).bold())
-                                            .foregroundColor(.black)
-                                        
-                                        Spacer()
-                                    }
+                                    Image(systemName: "chevron.right")
+                                        .frame(width: 9, height: 9)
+                                        .foregroundColor(Color(UIColor.lightGray).opacity(0.8))
                                 }
+                            })
+                            .sheet(isPresented: $showBiometricSheet) {
+                                ZStack {
+                                    cynWhite
+                                    
+                                    BiometricView()
+                                }
+                                .ignoresSafeArea()
+                                .presentationDetents([.height(screenHeight / 4), .fraction(0.25)])
                             }
                             
-                            // Passcode Settings
-                            NavigationLink(destination: PaymentsView()){
-                                Image("passcode")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.orange)
-                                
-                                VStack {
-                                    HStack {
-                                        Text("Passcode")
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
+                            // MARK: "Passcode" Settings
+                            
+                            Button(action: {showPasscodeSheet.toggle()}, label: {
+                                HStack {
+                                    Image("passcode")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.orange)
+                                    
+                                    VStack {
+                                        HStack {
+                                            Text("Passcode Login")
+                                                .font(.custom("Avenir", size: 15).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
                                         
-                                        Spacer()
+                                        HStack {
+                                            Text("Use passcode to secure the app")
+                                                .font(.custom("Avenir", size: 10).bold())
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
                                     }
                                     
-                                    HStack {
-                                        Text("Use passcode to secure the app")
-                                            .font(.custom("Avenir", size: 10).bold())
-                                            .foregroundColor(.black)
-                                        
-                                        Spacer()
-                                    }
+                                    Image(systemName: "chevron.right")
+                                        .frame(width: 9, height: 9)
+                                        .foregroundColor(Color(UIColor.lightGray).opacity(0.8))
                                 }
+                            })
+                            .sheet(isPresented: $showPasscodeSheet) {
+                                ZStack {
+                                    cynWhite
+                                    
+                                    PasscodeView()
+                                }
+                                .ignoresSafeArea()
+                                .presentationDetents([.height(screenHeight / 4), .fraction(0.25)])
                             }
                         }
+                        
+                        
                         
                         // MARK: Account Settings
                         Section(header: Text("Security")) {

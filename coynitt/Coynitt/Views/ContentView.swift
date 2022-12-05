@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Combine
+import LocalAuthentication
 
 struct ContentView: View {
+    @StateObject var appLockModel = AppLockViewModel()
+    
     var body: some View {
         TabView {
             MainView()
@@ -26,7 +30,7 @@ struct ContentView: View {
                 }
             
             RecipientsView()
-                .tabItem {
+                .tabItem { 
                     Label("Recipients", image: "users")
                 }
             

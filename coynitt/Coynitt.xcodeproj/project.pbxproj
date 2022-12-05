@@ -39,6 +39,9 @@
 		2F2D8548293C9A4B002E4191 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2D8547293C9A4B002E4191 /* CryptoSwift */; };
 		2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */; };
 		2F4578C728330B5B00E232EB /* AccountInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4578C628330B5B00E232EB /* AccountInsightsView.swift */; };
+		2F48CD44293D6DEB0027CDE2 /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD43293D6DEB0027CDE2 /* PasscodeView.swift */; };
+		2F48CD46293D6E150027CDE2 /* BiometricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD45293D6E150027CDE2 /* BiometricView.swift */; };
+		2F48CD48293D74CA0027CDE2 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD47293D74CA0027CDE2 /* AppLockViewModel.swift */; };
 		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
 		2F715C912928049B00D0CC57 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F715C902928049B00D0CC57 /* Lottie */; };
 		2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78EE1D2900757600B9C5F7 /* SettingsView.swift */; };
@@ -99,6 +102,9 @@
 		2F2D8541293C990D002E4191 /* ModalScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalScannerView.swift; sourceTree = "<group>"; };
 		2F36A8E127DC73A800E15350 /* SavingsPotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsPotsView.swift; sourceTree = "<group>"; };
 		2F4578C628330B5B00E232EB /* AccountInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountInsightsView.swift; path = Coynitt/AccountInfo/AccountInsightsView.swift; sourceTree = SOURCE_ROOT; };
+		2F48CD43293D6DEB0027CDE2 /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
+		2F48CD45293D6E150027CDE2 /* BiometricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricView.swift; sourceTree = "<group>"; };
+		2F48CD47293D74CA0027CDE2 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
 		2F78EE1D2900757600B9C5F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F7F68AC290360FA00E76310 /* RecipientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientsView.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 				2F2D853A293C8C44002E4191 /* QrScanner */,
 				2FD4053929284D1E00771C1B /* BillPayView.swift */,
 				2F8C6B3A2806A9FA00A3E7D1 /* Profile */,
+				2F48CD42293D6DD10027CDE2 /* Security */,
 				2FC1643E27DBE0E800FCC267 /* Transfers */,
 				2F36A8E027DC737200E15350 /* Rounds */,
 			);
@@ -268,6 +275,7 @@
 			children = (
 				2FD405322928084F00771C1B /* Lottie */,
 				2F2D853D293C9814002E4191 /* QrScanViewModel.swift */,
+				2F48CD47293D74CA0027CDE2 /* AppLockViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -303,6 +311,15 @@
 				2F4578C628330B5B00E232EB /* AccountInsightsView.swift */,
 			);
 			path = AccountInfo;
+			sourceTree = "<group>";
+		};
+		2F48CD42293D6DD10027CDE2 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				2F48CD43293D6DEB0027CDE2 /* PasscodeView.swift */,
+				2F48CD45293D6E150027CDE2 /* BiometricView.swift */,
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 		2F8C6B3A2806A9FA00A3E7D1 /* Profile */ = {
@@ -507,9 +524,11 @@
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F92F7E628A771FF00AC6C87 /* CanExchangeView.swift in Sources */,
 				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
+				2F48CD44293D6DEB0027CDE2 /* PasscodeView.swift in Sources */,
 				2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */,
 				2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */,
 				2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */,
+				2F48CD46293D6E150027CDE2 /* BiometricView.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2FE3476728A8301400E0DBDD /* ZarExchangeView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,
@@ -519,6 +538,7 @@
 				2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */,
 				2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */,
 				2F184EB5293C9F66006CE2D7 /* ClearMessage.swift in Sources */,
+				2F48CD48293D74CA0027CDE2 /* AppLockViewModel.swift in Sources */,
 				2F36A8E227DC73A800E15350 /* SavingsPotsView.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
 				2F184EB7293C9F66006CE2D7 /* Asn1Parser.swift in Sources */,
