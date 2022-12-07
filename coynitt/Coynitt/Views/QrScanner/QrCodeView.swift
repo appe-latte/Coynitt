@@ -39,7 +39,7 @@ struct QrCodeView: View {
                         .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.black, lineWidth: 0.25))
                     
-                    Text("Scan to send funds")
+                    Text("Scan to receive funds")
                         .font(.custom("Avenir", size: 12).bold())
                         .foregroundColor(.black)
                 }

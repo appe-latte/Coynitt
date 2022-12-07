@@ -46,6 +46,8 @@
 		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
 		2F715C912928049B00D0CC57 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F715C902928049B00D0CC57 /* Lottie */; };
 		2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78EE1D2900757600B9C5F7 /* SettingsView.swift */; };
+		2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */; };
+		2F7A8E05293FDF7E00B5A558 /* ReferralInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A8E04293FDF7E00B5A558 /* ReferralInviteView.swift */; };
 		2F7F68AD290360FA00E76310 /* RecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F68AC290360FA00E76310 /* RecipientsView.swift */; };
 		2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */; };
 		2F92F7E628A771FF00AC6C87 /* TxCanadaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F92F7E528A771FF00AC6C87 /* TxCanadaView.swift */; };
@@ -54,10 +56,9 @@
 		2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */; };
 		2F94C30727DAE28500B97B58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F94C30627DAE28500B97B58 /* User.swift */; };
 		2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E45E72916886A006F82BE /* TxCompletionView.swift */; };
-		2F9F073F28F5C7EA00D6A122 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F073E28F5C7EA00D6A122 /* CardView.swift */; };
+		2F9F073F28F5C7EA00D6A122 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F073E28F5C7EA00D6A122 /* AccountView.swift */; };
 		2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F074028F5FC9300D6A122 /* TransactionView.swift */; };
 		2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1643F27DBE10000FCC267 /* PaymentsView.swift */; };
-		2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */; };
 		2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD405302928080F00771C1B /* SuccessLottieView.swift */; };
 		2FD405342928084F00771C1B /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD405332928084F00771C1B /* success.json */; };
 		2FD40536292813A800771C1B /* QrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD40535292813A800771C1B /* QrCodeView.swift */; };
@@ -109,6 +110,8 @@
 		2F48CD49293DCC500027CDE2 /* RoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundsView.swift; sourceTree = "<group>"; };
 		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
 		2F78EE1D2900757600B9C5F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccUpgradeView.swift; sourceTree = "<group>"; };
+		2F7A8E04293FDF7E00B5A558 /* ReferralInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralInviteView.swift; sourceTree = "<group>"; };
 		2F7F68AC290360FA00E76310 /* RecipientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientsView.swift; sourceTree = "<group>"; };
 		2F8C6B3B2806AA0F00A3E7D1 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		2F92F7E528A771FF00AC6C87 /* TxCanadaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxCanadaView.swift; sourceTree = "<group>"; };
@@ -117,11 +120,10 @@
 		2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsView.swift; sourceTree = "<group>"; };
 		2F94C30627DAE28500B97B58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2F9E45E72916886A006F82BE /* TxCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxCompletionView.swift; sourceTree = "<group>"; };
-		2F9F073E28F5C7EA00D6A122 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		2F9F073E28F5C7EA00D6A122 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		2F9F074028F5FC9300D6A122 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		2FC1643F27DBE10000FCC267 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
 		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDepositView.swift; sourceTree = "<group>"; };
 		2FD405302928080F00771C1B /* SuccessLottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuccessLottieView.swift; path = Coynitt/Utils/SuccessLottieView.swift; sourceTree = SOURCE_ROOT; };
 		2FD405332928084F00771C1B /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		2FD40535292813A800771C1B /* QrCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeView.swift; sourceTree = "<group>"; };
@@ -222,9 +224,7 @@
 			children = (
 				2F1F039627D7BE8C00009465 /* ContentView.swift */,
 				2F1F03A827D7BF6600009465 /* MainView.swift */,
-				2F9F073E28F5C7EA00D6A122 /* CardView.swift */,
-				2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */,
-				2FD18BBD27DB053A00FED6B9 /* AccountDepositView.swift */,
+				2F7A8E01293FDF3900B5A558 /* AccountInfo */,
 				2F9F074028F5FC9300D6A122 /* TransactionView.swift */,
 				2F78EE1D2900757600B9C5F7 /* SettingsView.swift */,
 				2F7F68AC290360FA00E76310 /* RecipientsView.swift */,
@@ -324,6 +324,17 @@
 				2F48CD45293D6E150027CDE2 /* BiometricView.swift */,
 			);
 			path = Security;
+			sourceTree = "<group>";
+		};
+		2F7A8E01293FDF3900B5A558 /* AccountInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2F9F073E28F5C7EA00D6A122 /* AccountView.swift */,
+				2F94C30427DAD80800B97B58 /* AccountDetailsView.swift */,
+				2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */,
+				2F7A8E04293FDF7E00B5A558 /* ReferralInviteView.swift */,
+			);
+			path = AccountInfo;
 			sourceTree = "<group>";
 		};
 		2F8C6B3A2806A9FA00A3E7D1 /* Profile */ = {
@@ -504,6 +515,7 @@
 				2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */,
 				2F2D853C293C9789002E4191 /* QrCodeCameraDelegate.swift in Sources */,
 				2FE3476328A8198500E0DBDD /* TxZimbabweView.swift in Sources */,
+				2F7A8E05293FDF7E00B5A558 /* ReferralInviteView.swift in Sources */,
 				2F2D853E293C9814002E4191 /* QrScanViewModel.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
 				2F2D8540293C98D8002E4191 /* CameraPreview.swift in Sources */,
@@ -529,6 +541,7 @@
 				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
 				2F48CD44293D6DEB0027CDE2 /* PasscodeView.swift in Sources */,
 				2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */,
+				2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */,
 				2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */,
 				2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */,
 				2F48CD4A293DCC500027CDE2 /* RoundsView.swift in Sources */,
@@ -548,8 +561,7 @@
 				2F184EB7293C9F66006CE2D7 /* Asn1Parser.swift in Sources */,
 				2FD40536292813A800771C1B /* QrCodeView.swift in Sources */,
 				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
-				2F9F073F28F5C7EA00D6A122 /* CardView.swift in Sources */,
-				2FD18BBE27DB053B00FED6B9 /* AccountDepositView.swift in Sources */,
+				2F9F073F28F5C7EA00D6A122 /* AccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

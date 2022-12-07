@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct AccountView: View {
     @State private var userAccNum : Int = 373812093
     @State var userFName : String = "Samuel"
     @State private var userTag : String = "samthing90"
@@ -19,10 +19,15 @@ struct CardView: View {
     @State var showTransferActiveSheet = false
     @State var isTransferActiveSheetPresented = false
     @State var showDepositActiveSheet = false
-    @State var depositActivitySheet: DepositActivitySheet?
+    @State var showCardInfoSheet = false
+    @State var CardDetailsSheet: CardInfoSheet?
+    
+    // MARK: Bottom Sheets
     @State private var showQrSheet = false
     @State private var showCountryTxSheet = false
     @State private var showBillPaySheet = false
+    @State private var showReferSheet = false
+    @State private var showAccUpgradeSheet = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -68,7 +73,7 @@ struct CardView: View {
                                 HStack {
                                     
                                     Spacer()
-                            
+                                    
                                     Button(action: {
                                         showCountryTxSheet.toggle()
                                     }, label: {
@@ -160,28 +165,54 @@ struct CardView: View {
                             })
                             
                             // MARK: Flip Card
-                            Button(action: {
-                                self.cardAnimation()
-                            }, label: {
-                                VStack {
-                                    if isCardFlipped == true {
-                                        Image(systemName: "creditcard.fill")
-                                            .resizable()
-                                            .frame(width: 25, height: 20)
-                                            .padding(10)
-                                            .background(cynGreen.opacity(0.1))
-                                            .clipShape(Circle())
-                                    } else {
-                                        Image(systemName: "creditcard.and.123")
-                                            .resizable()
-                                            .frame(width: 25, height: 20)
-                                            .padding(10)
-                                            .background(cynGreen.opacity(0.1))
-                                            .clipShape(Circle())
-                                    }
-                                }
-                            }).onTapGesture {
-                                cardAnimation()
+                            
+                            //                            Button(action: {
+                            //                                self.cardAnimation()
+                            //                            }, label: {
+                            //                                VStack {
+                            //                                    if isCardFlipped == true {
+                            //                                        Image(systemName: "creditcard.fill")
+                            //                                            .resizable()
+                            //                                            .frame(width: 25, height: 20)
+                            //                                            .padding(10)
+                            //                                            .background(cynGreen.opacity(0.1))
+                            //                                            .clipShape(Circle())
+                            //                                    } else {
+                            //                                        Image(systemName: "creditcard.and.123")
+                            //                                            .resizable()
+                            //                                            .frame(width: 25, height: 20)
+                            //                                            .padding(10)
+                            //                                            .background(cynGreen.opacity(0.1))
+                            //                                            .clipShape(Circle())
+                            //                                    }
+                            //                                }
+                            //                            }).onTapGesture {
+                            //                                cardAnimation()
+                            //                            }
+                            
+                            Button(action: { showCardInfoSheet.toggle() }, label: {
+                                Image(systemName: "creditcard.fill")
+                                    .resizable()
+                                    .frame(width: 25, height: 20)
+                                    .padding(10)
+                                    .background(cynGreen.opacity(0.1))
+                                    .clipShape(Circle())
+                            }).actionSheet(isPresented: $showCardInfoSheet) {
+                                ActionSheet(title: Text("Card Details"), buttons: [
+                                    .default(Text("view Pin number")){
+                                        CardDetailsSheet = .pin_number
+                                    },
+                                    .default(Text("view Card number")){
+                                        CardDetailsSheet = .card_number
+                                    },
+                                    .default(Text("view CVC number")){
+                                        CardDetailsSheet = .card_cvc
+                                    },
+                                    .default(Text("view Card expiry")){
+                                        CardDetailsSheet = .card_expiry
+                                    },
+                                    .cancel()
+                                ])
                             }
                             
                             // MARK: Freeze Account
@@ -220,30 +251,30 @@ struct CardView: View {
                                 
                                 Button(action: {showBillPaySheet.toggle()}, label: {
                                     HStack {
-                                    Image("house-bill")
-                                        .resizable()
-                                        .renderingMode(.template)
-                                        .frame(width: 30, height: 30)
-                                        .foregroundColor(.green)
-                                    
-                                    VStack {
-                                        HStack {
-                                            Text("Bill Payment")
-                                                .font(.custom("Avenir", size: 15).bold())
-                                                .foregroundColor(.black)
-                                            
-                                            Spacer()
-                                        }
+                                        Image("house-bill")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(.green)
                                         
-                                        HStack {
-                                            Text("Pay for utilities and top-up airtime")
-                                                .font(.custom("Avenir", size: 10).bold())
-                                                .foregroundColor(.black)
+                                        VStack {
+                                            HStack {
+                                                Text("Bill Payment")
+                                                    .font(.custom("Avenir", size: 15).bold())
+                                                    .foregroundColor(.black)
+                                                
+                                                Spacer()
+                                            }
                                             
-                                            Spacer()
+                                            HStack {
+                                                Text("Pay for utilities and top-up airtime")
+                                                    .font(.custom("Avenir", size: 10).bold())
+                                                    .foregroundColor(.black)
+                                                
+                                                Spacer()
+                                            }
                                         }
                                     }
-                                }
                                 })
                                 .sheet(isPresented: $showBillPaySheet) {
                                     ZStack {
@@ -254,57 +285,84 @@ struct CardView: View {
                                     .ignoresSafeArea()
                                     .presentationDetents([.medium, .fraction(0.75)])
                                 }
-                            
-                                // MARK: Upgrade
-                                NavigationLink(destination: PaymentsView()){
-                                    Image("star")
-                                        .resizable()
-                                        .renderingMode(.template)
-                                        .frame(width: 30, height: 30)
-                                        .foregroundColor(.yellow)
-                                    VStack {
-                                        HStack {
-                                            Text("Upgrade Account")
-                                                .font(.custom("Avenir", size: 15).bold())
-                                                .foregroundColor(.black)
-                                            
-                                            Spacer()
-                                        }
+                                
+                                // MARK: Account Upgrade
+                                
+                                Button(action: {showAccUpgradeSheet.toggle()}, label: {
+                                    HStack {
+                                        Image("star")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(.yellow)
                                         
-                                        HStack {
-                                            Text("Upgrade your account and receive a physical debit card")
-                                                .font(.custom("Avenir", size: 10).bold())
-                                                .foregroundColor(.black)
+                                        VStack {
+                                            HStack {
+                                                Text("Upgrade Account")
+                                                    .font(.custom("Avenir", size: 15).bold())
+                                                    .foregroundColor(.black)
+                                                
+                                                Spacer()
+                                            }
                                             
-                                            Spacer()
+                                            HStack {
+                                                Text("Upgrade your account and receive a physical debit card")
+                                                    .font(.custom("Avenir", size: 10).bold())
+                                                    .foregroundColor(.black)
+                                                
+                                                Spacer()
+                                            }
+                                            
                                         }
                                     }
+                                })
+                                .sheet(isPresented: $showAccUpgradeSheet) {
+                                    ZStack {
+                                        cynWhite
+                                        
+                                        AccUpgradeView()
+                                    }
+                                    .ignoresSafeArea()
+                                    .presentationDetents([.large, .fraction(0.95)])
                                 }
                                 
                                 // MARK: Invite
-                                NavigationLink(destination: PaymentsView()){
-                                    Image("ticket")
-                                        .resizable()
-                                        .renderingMode(.template)
-                                        .frame(width: 30, height: 30)
-                                        .foregroundColor(.red)
-                                    VStack {
-                                        HStack {
-                                            Text("Refer A Friend")
-                                                .font(.custom("Avenir", size: 15).bold())
-                                                .foregroundColor(.black)
-                                            
-                                            Spacer()
-                                        }
+                                
+                                Button(action: {showReferSheet.toggle()}, label: {
+                                    HStack {
+                                        Image("ticket")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(.red)
                                         
-                                        HStack {
-                                            Text("Earn money when you refer a friend")
-                                                .font(.custom("Avenir", size: 10).bold())
-                                                .foregroundColor(.black)
+                                        VStack {
+                                            HStack {
+                                                Text("Refer A Friend")
+                                                    .font(.custom("Avenir", size: 15).bold())
+                                                    .foregroundColor(.black)
+                                                
+                                                Spacer()
+                                            }
                                             
-                                            Spacer()
+                                            HStack {
+                                                Text("Earn money when you refer a friend")
+                                                    .font(.custom("Avenir", size: 10).bold())
+                                                    .foregroundColor(.black)
+                                                
+                                                Spacer()
+                                            }
                                         }
                                     }
+                                })
+                                .sheet(isPresented: $showReferSheet) {
+                                    ZStack {
+                                        cynWhite
+                                        
+                                        ReferralInviteView()
+                                    }
+                                    .ignoresSafeArea()
+                                    .presentationDetents([.large, .fraction(0.95)])
                                 }
                                 
                                 // MARK: Instagram
@@ -385,25 +443,20 @@ struct CardView: View {
                                 .foregroundColor(cynWhite)
                         }
                     })
-                    
-                    // MARK: Help Button
-                    Button(action: {
-                        
-                    }, label: {
-                        VStack {
-                            Image("question")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(cynWhite)
-                                .clipShape(Circle())
-                            
-                            Text("Help")
-                                .font(.system(size: 10))
-                                .foregroundColor(cynWhite)
-                        }
-                    })
                 }
             }
         }.accentColor(cynWhite)
+    }
+}
+
+// MARK: Card Info
+enum CardInfoSheet: Identifiable {
+    case pin_number
+    case card_number
+    case card_cvc
+    case card_expiry
+    
+    var id: Int {
+        hashValue
     }
 }

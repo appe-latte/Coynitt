@@ -24,7 +24,7 @@ struct ContentView: View {
                     Label("Transactions", image: "calendar")
                 }
             
-            CardView()
+            AccountView()
                 .tabItem {
                     Label("Account", image: "wallet")
                 }
