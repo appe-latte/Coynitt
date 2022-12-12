@@ -137,7 +137,7 @@ struct SettingsView: View {
                                 ZStack {
                                     cynWhite
                                     
-                                    BiometricView()
+                                    BiometricSettingsView()
                                 }
                                 .ignoresSafeArea()
                                 .presentationDetents([.height(screenHeight / 4), .fraction(0.25)])
@@ -179,7 +179,7 @@ struct SettingsView: View {
                                 ZStack {
                                     cynWhite
                                     
-                                    PasscodeView()
+                                    PasscodeSettingsView()
                                 }
                                 .ignoresSafeArea()
                                 .presentationDetents([.height(screenHeight / 4), .fraction(0.25)])

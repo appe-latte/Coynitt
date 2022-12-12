@@ -2,81 +2,85 @@
 //  PasscodeView.swift
 //  Coynitt
 //
-//  Created by Stanford L. Khumalo on 2022-12-04.
+//  Created by Stanford L. Khumalo on 2022-12-12.
 //
 
-import UIKit
 import SwiftUI
-import Combine
 import AlertToast
-import LocalAuthentication
 
-struct PasscodeView: View {
-    @EnvironmentObject var appLockModel : AppLockViewModel
-    @State var isAppLockEnabled = false
+public struct PasscodeView: View {
     
-    @State var rowHeight = 80.0
+    @Environment(\.dismiss) var dismiss
+    //    @ObservedObject var viewModel: ContentView.ViewModel
     
-    var body: some View {
+    private let maxDigits: Int = 6
+    private let userPasscode = "123456"
+    
+    @State var enteredPasscode: String = ""
+    @FocusState var keyboardFocused: Bool
+    
+    @State private var showAlert = false
+    @State private var alertMessage = "Passcode is wrong, try again!"
+    
+    public var body: some View {
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        
         ZStack {
             cynWhite
             
-            NavigationView {
-                Form {
-                    Section {
-                        // MARK: Toggle Switch
-                        VStack {
-                            HStack {
-                                Toggle("Turn Passcode On", isOn: $isAppLockEnabled) // <-- change code to use AppLockViewModel
-                                    .font(.custom("Avenir", size: 15).bold())
-                                    .foregroundColor(.black)
-                            }.toggleStyle(SwitchToggleStyle(tint: cynGreen2))
-                                .HapticFeedback()
-                            //                                .onChange(of: appLockModel.isAppLockEnabled, perform: { value in
-                            //                                    appLockModel.appLockStateChange(appLockState: value)
-                            //                                })
-                            
-                            HStack {
-                                Text("Secure your information from unauthorised users by enabling a passcode.")
-                                    .lineLimit(nil)
-                                    .font(.custom("Avenir", size: 10).bold())
-                                    .foregroundColor(Color.black)
-                                    .minimumScaleFactor(0.5)
-                                
-                                Spacer()
-                            }
-                        }
-                        
-                        // MARK: Change passcode
-                        HStack {
-                            Text("Change passcode")
-                                .font(.custom("Avenir", size: 15).bold())
-                                .foregroundColor(.black)
-                            
-                            Spacer()
-                            
-                            Button(action: {}, label: {
-                                Text("change")
-                                    .font(.custom("Avenir", size: 10).bold())
-                                    .foregroundColor(.black)
-                                    .frame(width: 60, height: 20)
-                                    .padding(2)
-                                    .overlay(
-                                        Capsule(style: .continuous)
-                                            .stroke(.black, style: StrokeStyle(lineWidth: 1))
-                                    )
-                            })
+            VStack(spacing: 20) {
+                Text("Enter passcode to unlock")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+                
+                HStack(spacing: 10) {
+                    ForEach(0 ..< maxDigits) {
+                        ($0 + 1) > enteredPasscode.count ?
+                        Image(systemName: "circle") :
+                        Image(systemName: "circle.fill")
+                    }
+                    .foregroundColor(cynGreen2)
+                    .font(.system(size: 35))
+                }
+//                .alert("Incorrect passcode", isPresented: $showAlert) {
+//                    Button("OK", role: .cancel) { }
+//                }
+                .toast(isPresenting: $showAlert){
+                    AlertToast(type: .error(cynRed), title: "Wrong Passcode")
+                                }
+   
+                TextField("Enter your passcode", text: $enteredPasscode)
+                    .opacity(0)
+                    .keyboardType(.decimalPad)
+                    .focused($keyboardFocused)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            keyboardFocused = true
                         }
                     }
-                }
+                
+                Spacer()
+                    .frame(height: 150)
+            }
+            .padding()
+            .onChange(of: enteredPasscode) { _ in
+                guard enteredPasscode.count == maxDigits else { return }
+                
+                passcodeValidation()
             }
         }
-        .environment(\.defaultMinListRowHeight, rowHeight)
+        .edgesIgnoringSafeArea(.all)
     }
-}
-
-struct PasscodeView_Previews: PreviewProvider {
-    static var previews: some View {
-        PasscodeView()
+    
+    func passcodeValidation() {
+        if enteredPasscode == userPasscode {
+            //            viewModel.isUnlocked = true
+            dismiss()
+        } else {
+            enteredPasscode = ""
+            showAlert = true
+        }
     }
 }

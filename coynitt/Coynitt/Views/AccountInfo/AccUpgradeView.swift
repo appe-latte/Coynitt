@@ -18,7 +18,7 @@ struct AccUpgradeView: View {
                 
                 // MARK: Card Sample
                 Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynGreen]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynPurple]), startPoint: .topLeading, endPoint: .bottomTrailing))
                     .frame(width: 300, height: 200)
                     .cornerRadius(15, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
                     .edgesIgnoringSafeArea(.all)
@@ -191,7 +191,7 @@ struct AccUpgradeView: View {
                         .fontWeight(.semibold)
                         .frame(width: 250, height: 60)
                         .background(cynGreen)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .clipShape(Capsule())
                         .foregroundColor(.white)
                 })
             }

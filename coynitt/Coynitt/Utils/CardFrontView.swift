@@ -23,7 +23,7 @@ struct CardFrontView: View {
         ZStack {
             GeometryReader { geo in
                 Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynGreen]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynPurple]), startPoint: .topLeading, endPoint: .bottomTrailing))
                     .frame(width: cardWidth, height: cardHeight)
                     .cornerRadius(15, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
                     .edgesIgnoringSafeArea(.all)

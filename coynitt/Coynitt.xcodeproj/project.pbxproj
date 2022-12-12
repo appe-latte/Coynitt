@@ -39,11 +39,12 @@
 		2F2D8548293C9A4B002E4191 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2D8547293C9A4B002E4191 /* CryptoSwift */; };
 		2F36A8E227DC73A800E15350 /* MainRoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36A8E127DC73A800E15350 /* MainRoundsView.swift */; };
 		2F4578C728330B5B00E232EB /* AccountInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4578C628330B5B00E232EB /* AccountInsightsView.swift */; };
-		2F48CD44293D6DEB0027CDE2 /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD43293D6DEB0027CDE2 /* PasscodeView.swift */; };
-		2F48CD46293D6E150027CDE2 /* BiometricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD45293D6E150027CDE2 /* BiometricView.swift */; };
+		2F48CD44293D6DEB0027CDE2 /* PasscodeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD43293D6DEB0027CDE2 /* PasscodeSettingsView.swift */; };
+		2F48CD46293D6E150027CDE2 /* BiometricSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD45293D6E150027CDE2 /* BiometricSettingsView.swift */; };
 		2F48CD48293D74CA0027CDE2 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD47293D74CA0027CDE2 /* AppLockViewModel.swift */; };
 		2F48CD4A293DCC500027CDE2 /* RoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD49293DCC500027CDE2 /* RoundsView.swift */; };
 		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
+		2F5911512947BE00007079DE /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5911502947BE00007079DE /* PasscodeView.swift */; };
 		2F715C912928049B00D0CC57 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F715C902928049B00D0CC57 /* Lottie */; };
 		2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78EE1D2900757600B9C5F7 /* SettingsView.swift */; };
 		2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */; };
@@ -105,11 +106,12 @@
 		2F2D8541293C990D002E4191 /* ModalScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalScannerView.swift; sourceTree = "<group>"; };
 		2F36A8E127DC73A800E15350 /* MainRoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoundsView.swift; sourceTree = "<group>"; };
 		2F4578C628330B5B00E232EB /* AccountInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountInsightsView.swift; path = Coynitt/AccountInfo/AccountInsightsView.swift; sourceTree = SOURCE_ROOT; };
-		2F48CD43293D6DEB0027CDE2 /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
-		2F48CD45293D6E150027CDE2 /* BiometricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricView.swift; sourceTree = "<group>"; };
+		2F48CD43293D6DEB0027CDE2 /* PasscodeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingsView.swift; sourceTree = "<group>"; };
+		2F48CD45293D6E150027CDE2 /* BiometricSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricSettingsView.swift; sourceTree = "<group>"; };
 		2F48CD47293D74CA0027CDE2 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		2F48CD49293DCC500027CDE2 /* RoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundsView.swift; sourceTree = "<group>"; };
 		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
+		2F5911502947BE00007079DE /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
 		2F78EE1D2900757600B9C5F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccUpgradeView.swift; sourceTree = "<group>"; };
 		2F7A8E04293FDF7E00B5A558 /* ReferralInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralInviteView.swift; sourceTree = "<group>"; };
@@ -323,8 +325,9 @@
 		2F48CD42293D6DD10027CDE2 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				2F48CD43293D6DEB0027CDE2 /* PasscodeView.swift */,
-				2F48CD45293D6E150027CDE2 /* BiometricView.swift */,
+				2F48CD43293D6DEB0027CDE2 /* PasscodeSettingsView.swift */,
+				2F48CD45293D6E150027CDE2 /* BiometricSettingsView.swift */,
+				2F5911502947BE00007079DE /* PasscodeView.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -542,18 +545,19 @@
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F92F7E628A771FF00AC6C87 /* TxCanadaView.swift in Sources */,
 				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
-				2F48CD44293D6DEB0027CDE2 /* PasscodeView.swift in Sources */,
+				2F48CD44293D6DEB0027CDE2 /* PasscodeSettingsView.swift in Sources */,
 				2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */,
 				2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */,
 				2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */,
 				2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */,
 				2F48CD4A293DCC500027CDE2 /* RoundsView.swift in Sources */,
-				2F48CD46293D6E150027CDE2 /* BiometricView.swift in Sources */,
+				2F48CD46293D6E150027CDE2 /* BiometricSettingsView.swift in Sources */,
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2FE3476728A8301400E0DBDD /* TxSouthAfricaView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,
 				2FBCEEC32946A09600CE574F /* HapticFeeback.swift in Sources */,
 				2F184EBD293C9F66006CE2D7 /* SwiftyRSA.swift in Sources */,
+				2F5911512947BE00007079DE /* PasscodeView.swift in Sources */,
 				2F184EB9293C9F66006CE2D7 /* Signature.swift in Sources */,
 				2FE3476528A8249700E0DBDD /* TxKenyaView.swift in Sources */,
 				2F8C6B3C2806AA0F00A3E7D1 /* UserProfileView.swift in Sources */,

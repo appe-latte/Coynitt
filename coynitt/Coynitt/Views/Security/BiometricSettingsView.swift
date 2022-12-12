@@ -11,7 +11,7 @@ import Combine
 import AlertToast
 import LocalAuthentication
 
-struct BiometricView: View {
+struct BiometricSettingsView: View {
     @EnvironmentObject var appLockModel : AppLockViewModel
     @State var isAppLockEnabled = false
     
@@ -56,6 +56,6 @@ struct BiometricView: View {
 
 struct BiometricView_Previews: PreviewProvider {
     static var previews: some View {
-        BiometricView()
+        BiometricSettingsView()
     }
 }
