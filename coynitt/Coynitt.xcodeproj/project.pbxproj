@@ -58,6 +58,7 @@
 		2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E45E72916886A006F82BE /* TxCompletionView.swift */; };
 		2F9F073F28F5C7EA00D6A122 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F073E28F5C7EA00D6A122 /* AccountView.swift */; };
 		2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F074028F5FC9300D6A122 /* TransactionView.swift */; };
+		2FBCEEC32946A09600CE574F /* HapticFeeback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCEEC22946A09600CE574F /* HapticFeeback.swift */; };
 		2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1643F27DBE10000FCC267 /* PaymentsView.swift */; };
 		2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD405302928080F00771C1B /* SuccessLottieView.swift */; };
 		2FD405342928084F00771C1B /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD405332928084F00771C1B /* success.json */; };
@@ -122,6 +123,7 @@
 		2F9E45E72916886A006F82BE /* TxCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxCompletionView.swift; sourceTree = "<group>"; };
 		2F9F073E28F5C7EA00D6A122 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		2F9F074028F5FC9300D6A122 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		2FBCEEC22946A09600CE574F /* HapticFeeback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeeback.swift; sourceTree = "<group>"; };
 		2FC1643F27DBE10000FCC267 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
 		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2FD405302928080F00771C1B /* SuccessLottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuccessLottieView.swift; path = Coynitt/Utils/SuccessLottieView.swift; sourceTree = SOURCE_ROOT; };
@@ -286,6 +288,7 @@
 		2F1F03A727D7BF0300009465 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2FBCEEC22946A09600CE574F /* HapticFeeback.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				2F94C30327DAD53E00B97B58 /* LatestActivity.swift in Sources */,
 				2FE3476728A8301400E0DBDD /* TxSouthAfricaView.swift in Sources */,
 				2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */,
+				2FBCEEC32946A09600CE574F /* HapticFeeback.swift in Sources */,
 				2F184EBD293C9F66006CE2D7 /* SwiftyRSA.swift in Sources */,
 				2F184EB9293C9F66006CE2D7 /* Signature.swift in Sources */,
 				2FE3476528A8249700E0DBDD /* TxKenyaView.swift in Sources */,

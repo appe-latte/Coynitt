@@ -231,6 +231,7 @@ struct MainView: View {
                         }
                         .ignoresSafeArea()
                         .presentationDetents([.medium, .fraction(0.5)])
+                        .HapticFeedback()
                     }
                     
                     // MARK: Notifications Button

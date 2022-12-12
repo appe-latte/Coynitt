@@ -57,7 +57,7 @@ struct ReferralInviteView: View {
                 }
                 .frame(width: 300, height: 60)
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(cynGreen2, style: StrokeStyle(lineWidth: 0.5, dash: [10, 5])))
+                    .stroke(.black, style: StrokeStyle(lineWidth: 0.5, dash: [10, 5])))
                 
                 // MARK: Requirements
                 

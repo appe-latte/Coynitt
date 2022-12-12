@@ -56,7 +56,7 @@ struct TxCompletionView: View {
         }
         .ignoresSafeArea()
         .overlay(
-            SuccessLottieView(name: "success", loopMode: .loop)
+            SuccessLottieView(name: "success", loopMode: .repeat(2))
         )
     }
 }

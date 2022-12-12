@@ -31,6 +31,7 @@ struct BiometricView: View {
                                     .font(.custom("Avenir", size: 15).bold())
                                     .foregroundColor(.black)
                             }.toggleStyle(SwitchToggleStyle(tint: cynGreen2))
+                                .HapticFeedback()
                             //                                .onChange(of: appLockModel.isAppLockEnabled, perform: { value in
                             //                                    appLockModel.appLockStateChange(appLockState: value)
                             //                                })
