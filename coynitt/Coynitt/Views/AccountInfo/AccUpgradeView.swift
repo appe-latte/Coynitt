@@ -14,19 +14,20 @@ struct AccUpgradeView: View {
         
         ZStack {
             cynWhite
+//            
             VStack {
                 
                 // MARK: Card Sample
                 Rectangle()
                     .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynPurple]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .frame(width: 300, height: 200)
+                    .frame(width: 325, height: 200)
                     .cornerRadius(15, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
                     .edgesIgnoringSafeArea(.all)
                     .overlay(
                         VStack {
                             // MARK: Mock Card sample
                             HStack {
-                                Image("logo")
+                                Image("logo-trans")
                                     .resizable()
                                     .scaledToFill()
                                     .aspectRatio(contentMode: .fill)
@@ -37,7 +38,8 @@ struct AccUpgradeView: View {
                                 Spacer()
                                 
                                 Text("COYNITT")
-                                    .font(.custom("Avenir", size: 20).bold())
+                                    .font(.title)
+                                    .fontWeight(.semibold)
                                     .foregroundColor(cynWhite)
                             }
                             .padding(.horizontal, 10)
@@ -49,41 +51,41 @@ struct AccUpgradeView: View {
                                     Spacer()
                                     
                                     Text("YOUR NAME HERE")
-                                        .font(.custom("Avenir", size: 13))
-                                        .fontWeight(.semibold)
+                                        .font(.footnote)
                                         .foregroundColor(cynWhite)
                                         .padding(.horizontal, 5)
                                         .padding(.bottom, 10)
                                 }
                             }
-                            
                         }
                             .padding(10))
                 
                 Text("Your Coynitt Card")
-                    .font(.system(size: 40))
+                    .font(.title)
                     .bold()
                     .foregroundColor(.black)
                     .minimumScaleFactor(0.5)
                 
                 Text("The digital world in your wallet")
-                    .font(.system(size: 22))
-                    .bold()
+                    .font(.title2)
+                    .fontWeight(.semibold)
                     .foregroundColor(cynGreen2)
                     .minimumScaleFactor(0.5)
                 
                 VStack(alignment: .leading, spacing: 15) {
                     
                     // MARK: ATM withdrawal
+                    
                     HStack {
                         Image("withdraw")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 35, height: 35)
+                            .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(.white)
                             .background(cynRed)
                             .clipShape(Circle())
+                        
                         
                         VStack(alignment: .leading) {
                             Text("Withdraw Cash")
@@ -91,7 +93,7 @@ struct AccUpgradeView: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
                             
-                            Text("Use your card to withdraw cash from all ATM machines across the world that support MasterCard.")
+                            Text("Use your card to withdraw cash from any ATM machines that support MasterCard.")
                                 .font(.system(size: 12))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.leading)
@@ -99,18 +101,19 @@ struct AccUpgradeView: View {
                     }
                     .frame(width: screenWidth, height: 60)
                     .padding(.horizontal, 20)
+                    .padding(.leading, 10)
                     
                     // MARK: Shop online
                     HStack {
                         Image("store")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 35, height: 35)
+                            .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(.white)
                             .background(cynOrange)
                             .clipShape(Circle())
-                            
+                        
                         
                         VStack(alignment: .leading) {
                             Text("Shop Online")
@@ -133,7 +136,7 @@ struct AccUpgradeView: View {
                         Image("earth")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 35, height: 35)
+                            .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(.white)
                             .background(cynPurple)
@@ -159,7 +162,7 @@ struct AccUpgradeView: View {
                         Image("graph-2")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 35, height: 35)
+                            .frame(width: 30, height: 30)
                             .padding(5)
                             .foregroundColor(.white)
                             .background(cynGreen2)
@@ -180,7 +183,8 @@ struct AccUpgradeView: View {
                     .frame(width: screenWidth, height: 60)
                     .padding(.horizontal, 20)
                 }
-                .frame(width: screenWidth)
+                .frame(width: 300)
+                .padding(.horizontal, 10)
                 
                 Spacer()
                     .frame(height: 50)

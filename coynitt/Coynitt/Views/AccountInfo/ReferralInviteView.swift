@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReferralInviteView: View {
-    @State private var refCode: String = "KICYN"
+    @State private var refCode: String = "KIPCYN"
     @State private var copyText: String = "Copy"
     
     private let pasteboard = UIPasteboard.general
@@ -85,11 +85,17 @@ struct ReferralInviteView: View {
                 }.padding(.horizontal, 20)
                 
                 Spacer()
-                    .frame(height: 20)
+                    
+                    // MARK: "Terms" button
+                    Button(action: {}, label: {
+                        Text("View our Terms and Conditions")
+                            .font(.system(size: 13))
+                            .fontWeight(.semibold)
+                            .frame(width: 250, height: 60)
+                            .foregroundColor(.blue)
+                    })
                 
-               
-                
-                Spacer()
+//                Spacer()
                 
             }
             .padding(.top, 35)

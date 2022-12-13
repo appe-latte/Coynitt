@@ -29,7 +29,7 @@ struct ContentView: View {
                     Label("Account", image: "wallet")
                 }
             
-            PasscodeView()
+            RecipientsView()
                 .tabItem { 
                     Label("Recipients", image: "users")
                 }

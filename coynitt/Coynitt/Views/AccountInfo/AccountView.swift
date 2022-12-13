@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct AccountView: View {
     @State private var userAccNum : Int = 373812093
@@ -21,6 +22,7 @@ struct AccountView: View {
     @State var showDepositActiveSheet = false
     @State var showCardInfoSheet = false
     @State var CardDetailsSheet: CardInfoSheet?
+    @State private var showAlert = false
     
     // MARK: Bottom Sheets
     @State private var showQrSheet = false
@@ -28,6 +30,7 @@ struct AccountView: View {
     @State private var showBillPaySheet = false
     @State private var showReferSheet = false
     @State private var showAccUpgradeSheet = false
+    @State private var showPinReminderSheet = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -147,7 +150,7 @@ struct AccountView: View {
                     HStack {
                         ZStack {
                             CardFrontView(width: width, height: height, degree: $rotationAngleBack)
-                            CardBackView(width: width, height: height, degree: $rotationAngleFront)
+//                            CardBackView(width: width, height: height, degree: $rotationAngleFront)
                         }
                         .frame(width: 260, height: 160)
                         
@@ -198,17 +201,19 @@ struct AccountView: View {
                                     .background(cynGreen.opacity(0.1))
                                     .clipShape(Circle())
                             }).actionSheet(isPresented: $showCardInfoSheet) {
-                                ActionSheet(title: Text("Card Details"), buttons: [
-                                    .default(Text("view Pin number")){
+                                ActionSheet(title: Text("View card details"), buttons: [
+                                    .default(Text("PIN reminder")){
                                         CardDetailsSheet = .pin_number
+                                        showPinReminderSheet.toggle()
                                     },
-                                    .default(Text("view Card number")){
-                                        CardDetailsSheet = .card_number
+                                    .default(Text("show card number")){
+//                                        CardDetailsSheet = .card_number
+                                            
                                     },
-                                    .default(Text("view CVC number")){
+                                    .default(Text("show CVC number")){
                                         CardDetailsSheet = .card_cvc
                                     },
-                                    .default(Text("view Card expiry")){
+                                    .default(Text("show card expiry")){
                                         CardDetailsSheet = .card_expiry
                                     },
                                     .cancel()
@@ -363,6 +368,15 @@ struct AccountView: View {
                                     }
                                     .ignoresSafeArea()
                                     .presentationDetents([.large, .fraction(0.95)])
+                                }
+                                .sheet(isPresented: $showPinReminderSheet) {
+                                    ZStack {
+                                        cynWhite
+                                        
+                                        PinReminderView()
+                                    }
+                                    .ignoresSafeArea()
+                                    .presentationDetents([.medium, .fraction(0.50)])
                                 }
                                 
                                 // MARK: Instagram

@@ -23,8 +23,6 @@ public struct PasscodeView: View {
     @State private var alertMessage = "Passcode is wrong, try again!"
     
     public var body: some View {
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
         
         ZStack {
             cynWhite

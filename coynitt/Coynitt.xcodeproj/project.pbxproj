@@ -45,6 +45,7 @@
 		2F48CD4A293DCC500027CDE2 /* RoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48CD49293DCC500027CDE2 /* RoundsView.swift */; };
 		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
 		2F5911512947BE00007079DE /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5911502947BE00007079DE /* PasscodeView.swift */; };
+		2F5911532947F8BE007079DE /* PinReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5911522947F8BE007079DE /* PinReminderView.swift */; };
 		2F715C912928049B00D0CC57 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F715C902928049B00D0CC57 /* Lottie */; };
 		2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78EE1D2900757600B9C5F7 /* SettingsView.swift */; };
 		2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */; };
@@ -112,6 +113,7 @@
 		2F48CD49293DCC500027CDE2 /* RoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundsView.swift; sourceTree = "<group>"; };
 		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
 		2F5911502947BE00007079DE /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
+		2F5911522947F8BE007079DE /* PinReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinReminderView.swift; sourceTree = "<group>"; };
 		2F78EE1D2900757600B9C5F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccUpgradeView.swift; sourceTree = "<group>"; };
 		2F7A8E04293FDF7E00B5A558 /* ReferralInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralInviteView.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				2F48CD43293D6DEB0027CDE2 /* PasscodeSettingsView.swift */,
 				2F48CD45293D6E150027CDE2 /* BiometricSettingsView.swift */,
 				2F5911502947BE00007079DE /* PasscodeView.swift */,
+				2F5911522947F8BE007079DE /* PinReminderView.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				2F1F03AE27D7C10900009465 /* CardFrontView.swift in Sources */,
 				2F7F68AD290360FA00E76310 /* RecipientsView.swift in Sources */,
 				2F184EBB293C9F66006CE2D7 /* Key.swift in Sources */,
+				2F5911532947F8BE007079DE /* PinReminderView.swift in Sources */,
 				2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */,
 				2F184EB3293C9F66006CE2D7 /* EncryptedMessage.swift in Sources */,
 				2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */,
