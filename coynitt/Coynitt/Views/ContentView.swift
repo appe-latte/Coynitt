@@ -8,8 +8,15 @@
 import SwiftUI
 import Combine
 import LocalAuthentication
+import CoreImage.CIFilterBuiltins
 
 struct ContentView: View {
+    @State private var top = UIApplication.shared.windows.first?.safeAreaInsets.top
+    @State private var isHide = false
+    @State private var isLoading = false
+    @Namespace var animation
+    
+    @EnvironmentObject var viewModel : AuthViewModel
     @StateObject var appLockModel = AppLockViewModel()
     
     var body: some View {
@@ -29,7 +36,7 @@ struct ContentView: View {
                     Label("Account", image: "wallet")
                 }
             
-            RecipientsView()
+            LoginView()
                 .tabItem { 
                     Label("Recipients", image: "users")
                 }

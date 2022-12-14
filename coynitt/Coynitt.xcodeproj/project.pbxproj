@@ -22,6 +22,9 @@
 		2F184EBE293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */; };
 		2F184EBF293C9F66006CE2D7 /* SwiftyRSAError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */; };
 		2F184EC2293CA37F006CE2D7 /* ScannerHalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F184EC1293CA37F006CE2D7 /* ScannerHalfModalView.swift */; };
+		2F1DDAB22948EAD800F0BCC4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DDAB12948EAD800F0BCC4 /* LoginView.swift */; };
+		2F1DDAB52948EDE900F0BCC4 /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2F1DDAB42948EDE900F0BCC4 /* CountryPicker */; };
+		2F1DDAB729490DDE00F0BCC4 /* CountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DDAB629490DDE00F0BCC4 /* CountryPicker.swift */; };
 		2F1F039527D7BE8C00009465 /* CoynittApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039427D7BE8C00009465 /* CoynittApp.swift */; };
 		2F1F039727D7BE8C00009465 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F039627D7BE8C00009465 /* ContentView.swift */; };
 		2F1F039927D7BE8D00009465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F1F039827D7BE8D00009465 /* Assets.xcassets */; };
@@ -46,6 +49,7 @@
 		2F4E5C7C2806B0A400859276 /* TopSheetShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */; };
 		2F5911512947BE00007079DE /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5911502947BE00007079DE /* PasscodeView.swift */; };
 		2F5911532947F8BE007079DE /* PinReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5911522947F8BE007079DE /* PinReminderView.swift */; };
+		2F6C1CD929497CE1001279CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C1CD829497CE1001279CA /* AppDelegate.swift */; };
 		2F715C912928049B00D0CC57 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F715C902928049B00D0CC57 /* Lottie */; };
 		2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F78EE1D2900757600B9C5F7 /* SettingsView.swift */; };
 		2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */; };
@@ -60,8 +64,19 @@
 		2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E45E72916886A006F82BE /* TxCompletionView.swift */; };
 		2F9F073F28F5C7EA00D6A122 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F073E28F5C7EA00D6A122 /* AccountView.swift */; };
 		2F9F074128F5FC9300D6A122 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F074028F5FC9300D6A122 /* TransactionView.swift */; };
+		2FA05F032949854B00D50907 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F022949854B00D50907 /* SceneDelegate.swift */; };
+		2FA05F05294987BC00D50907 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F04294987BC00D50907 /* SignUpView.swift */; };
+		2FA05F0729498D8500D50907 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F0629498D8500D50907 /* CustomTextField.swift */; };
+		2FA05F0929498E8500D50907 /* CustomSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F0829498E8500D50907 /* CustomSecureTextField.swift */; };
+		2FA05F0B2949A16C00D50907 /* KeyboardHeightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F0A2949A16C00D50907 /* KeyboardHeightHelper.swift */; };
+		2FA05F0D2949A1A100D50907 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F0C2949A1A100D50907 /* ImagePicker.swift */; };
+		2FA05F0F2949A3AB00D50907 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F0E2949A3AB00D50907 /* Constants.swift */; };
+		2FA05F112949A3E000D50907 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA05F102949A3E000D50907 /* AsyncImage.swift */; };
 		2FBCEEC32946A09600CE574F /* HapticFeeback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCEEC22946A09600CE574F /* HapticFeeback.swift */; };
+		2FBE7C93294977ED003A4B56 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBE7C92294977ED003A4B56 /* Persistence.swift */; };
 		2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1643F27DBE10000FCC267 /* PaymentsView.swift */; };
+		2FC94A8329491DA200B0603F /* PhoneOtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94A8229491DA200B0603F /* PhoneOtpView.swift */; };
+		2FC94A852949412500B0603F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94A842949412500B0603F /* AuthViewModel.swift */; };
 		2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD405302928080F00771C1B /* SuccessLottieView.swift */; };
 		2FD405342928084F00771C1B /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD405332928084F00771C1B /* success.json */; };
 		2FD40536292813A800771C1B /* QrCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD40535292813A800771C1B /* QrCodeView.swift */; };
@@ -91,6 +106,8 @@
 		2F184EAF293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyRSA+ObjC.swift"; sourceTree = "<group>"; };
 		2F184EB0293C9F66006CE2D7 /* SwiftyRSAError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRSAError.swift; sourceTree = "<group>"; };
 		2F184EC1293CA37F006CE2D7 /* ScannerHalfModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerHalfModalView.swift; sourceTree = "<group>"; };
+		2F1DDAB12948EAD800F0BCC4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2F1DDAB629490DDE00F0BCC4 /* CountryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPicker.swift; sourceTree = "<group>"; };
 		2F1F039127D7BE8C00009465 /* Coynitt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coynitt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1F039427D7BE8C00009465 /* CoynittApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoynittApp.swift; sourceTree = "<group>"; };
 		2F1F039627D7BE8C00009465 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +131,7 @@
 		2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSheetShape.swift; sourceTree = "<group>"; };
 		2F5911502947BE00007079DE /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
 		2F5911522947F8BE007079DE /* PinReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinReminderView.swift; sourceTree = "<group>"; };
+		2F6C1CD829497CE1001279CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F78EE1D2900757600B9C5F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F7A8E02293FDF6600B5A558 /* AccUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccUpgradeView.swift; sourceTree = "<group>"; };
 		2F7A8E04293FDF7E00B5A558 /* ReferralInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralInviteView.swift; sourceTree = "<group>"; };
@@ -127,8 +145,19 @@
 		2F9E45E72916886A006F82BE /* TxCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxCompletionView.swift; sourceTree = "<group>"; };
 		2F9F073E28F5C7EA00D6A122 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		2F9F074028F5FC9300D6A122 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		2FA05F022949854B00D50907 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2FA05F04294987BC00D50907 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		2FA05F0629498D8500D50907 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2FA05F0829498E8500D50907 /* CustomSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureTextField.swift; sourceTree = "<group>"; };
+		2FA05F0A2949A16C00D50907 /* KeyboardHeightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightHelper.swift; sourceTree = "<group>"; };
+		2FA05F0C2949A1A100D50907 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		2FA05F0E2949A3AB00D50907 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2FA05F102949A3E000D50907 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		2FBCEEC22946A09600CE574F /* HapticFeeback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeeback.swift; sourceTree = "<group>"; };
+		2FBE7C92294977ED003A4B56 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2FC1643F27DBE10000FCC267 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
+		2FC94A8229491DA200B0603F /* PhoneOtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOtpView.swift; sourceTree = "<group>"; };
+		2FC94A842949412500B0603F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		2FD18BBB27DAE81600FED6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2FD405302928080F00771C1B /* SuccessLottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuccessLottieView.swift; path = Coynitt/Utils/SuccessLottieView.swift; sourceTree = SOURCE_ROOT; };
 		2FD405332928084F00771C1B /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
@@ -148,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F1DDAB52948EDE900F0BCC4 /* CountryPicker in Frameworks */,
 				2F2D8545293C99D4002E4191 /* CarBode in Frameworks */,
 				2F2D8548293C9A4B002E4191 /* CryptoSwift in Frameworks */,
 				C95806E36D32F2DFEE42468B /* Pods_Coynitt.framework in Frameworks */,
@@ -181,6 +211,15 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		2F1DDAB02948EAC100F0BCC4 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				2F1DDAB12948EAD800F0BCC4 /* LoginView.swift */,
+				2FA05F04294987BC00D50907 /* SignUpView.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		2F1F038827D7BE8C00009465 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +249,7 @@
 				2F1F03A627D7BEF200009465 /* ViewModels */,
 				2F1F039827D7BE8D00009465 /* Assets.xcassets */,
 				2F1F039427D7BE8C00009465 /* CoynittApp.swift */,
+				2FBE7C92294977ED003A4B56 /* Persistence.swift */,
 				2F1F03A227D7BEA800009465 /* Views */,
 				2F4578C828330B6F00E232EB /* AccountInfo */,
 				2F1F039A27D7BE8D00009465 /* Preview Content */,
@@ -230,6 +270,7 @@
 			children = (
 				2F1F039627D7BE8C00009465 /* ContentView.swift */,
 				2F1F03A827D7BF6600009465 /* MainView.swift */,
+				2F1DDAB02948EAC100F0BCC4 /* Registration */,
 				2F7A8E01293FDF3900B5A558 /* AccountInfo */,
 				2F9F074028F5FC9300D6A122 /* TransactionView.swift */,
 				2F78EE1D2900757600B9C5F7 /* SettingsView.swift */,
@@ -257,6 +298,11 @@
 				2FD405302928080F00771C1B /* SuccessLottieView.swift */,
 				2F4E5C7B2806B0A400859276 /* TopSheetShape.swift */,
 				2FD405372928156B00771C1B /* StringExtension.swift */,
+				2FA05F0629498D8500D50907 /* CustomTextField.swift */,
+				2FA05F0829498E8500D50907 /* CustomSecureTextField.swift */,
+				2FA05F0C2949A1A100D50907 /* ImagePicker.swift */,
+				2FA05F0E2949A3AB00D50907 /* Constants.swift */,
+				2FA05F102949A3E000D50907 /* AsyncImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -275,6 +321,8 @@
 			children = (
 				2F2D853B293C9789002E4191 /* QrCodeCameraDelegate.swift */,
 				2F184EC1293CA37F006CE2D7 /* ScannerHalfModalView.swift */,
+				2F6C1CD829497CE1001279CA /* AppDelegate.swift */,
+				2FA05F022949854B00D50907 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -285,6 +333,7 @@
 				2FD405322928084F00771C1B /* Lottie */,
 				2F2D853D293C9814002E4191 /* QrScanViewModel.swift */,
 				2F48CD47293D74CA0027CDE2 /* AppLockViewModel.swift */,
+				2FC94A842949412500B0603F /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -293,6 +342,9 @@
 			isa = PBXGroup;
 			children = (
 				2FBCEEC22946A09600CE574F /* HapticFeeback.swift */,
+				2F1DDAB629490DDE00F0BCC4 /* CountryPicker.swift */,
+				2FC94A8229491DA200B0603F /* PhoneOtpView.swift */,
+				2FA05F0A2949A16C00D50907 /* KeyboardHeightHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -403,7 +455,7 @@
 				2F1F038D27D7BE8C00009465 /* Sources */,
 				2F1F038E27D7BE8C00009465 /* Frameworks */,
 				2F1F038F27D7BE8C00009465 /* Resources */,
-				12FC079F05934908433A51EC /* [CP] Embed Pods Frameworks */,
+				4DD17E4639D6A87137434010 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,6 +466,7 @@
 				2F715C902928049B00D0CC57 /* Lottie */,
 				2F2D8544293C99D4002E4191 /* CarBode */,
 				2F2D8547293C9A4B002E4191 /* CryptoSwift */,
+				2F1DDAB42948EDE900F0BCC4 /* CountryPicker */,
 			);
 			productName = Coyne;
 			productReference = 2F1F039127D7BE8C00009465 /* Coynitt.app */;
@@ -447,6 +500,7 @@
 				2F715C8F2928049B00D0CC57 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				2F2D8543293C99D4002E4191 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
 				2F2D8546293C9A4B002E4191 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				2F1DDAB32948EDE900F0BCC4 /* XCRemoteSwiftPackageReference "CountryPicker" */,
 			);
 			productRefGroup = 2F1F039227D7BE8C00009465 /* Products */;
 			projectDirPath = "";
@@ -472,23 +526,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12FC079F05934908433A51EC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Coynitt/Pods-Coynitt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Coynitt/Pods-Coynitt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coynitt/Pods-Coynitt-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		13C3A2AFB7A80B0CBDFA415A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +548,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4DD17E4639D6A87137434010 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coynitt/Pods-Coynitt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coynitt/Pods-Coynitt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coynitt/Pods-Coynitt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -518,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA05F112949A3E000D50907 /* AsyncImage.swift in Sources */,
 				2F184EB2293C9F66006CE2D7 /* PublicKey.swift in Sources */,
 				2FD4053A29284D1E00771C1B /* BillPayView.swift in Sources */,
 				2F184EC2293CA37F006CE2D7 /* ScannerHalfModalView.swift in Sources */,
@@ -525,6 +580,7 @@
 				2F2D853C293C9789002E4191 /* QrCodeCameraDelegate.swift in Sources */,
 				2FE3476328A8198500E0DBDD /* TxZimbabweView.swift in Sources */,
 				2F7A8E05293FDF7E00B5A558 /* ReferralInviteView.swift in Sources */,
+				2FA05F0929498E8500D50907 /* CustomSecureTextField.swift in Sources */,
 				2F2D853E293C9814002E4191 /* QrScanViewModel.swift in Sources */,
 				2F1F03AC27D7C00E00009465 /* Colors.swift in Sources */,
 				2F2D8540293C98D8002E4191 /* CameraPreview.swift in Sources */,
@@ -538,20 +594,28 @@
 				2F94C30527DAD80800B97B58 /* AccountDetailsView.swift in Sources */,
 				2F184EB3293C9F66006CE2D7 /* EncryptedMessage.swift in Sources */,
 				2F94C2FF27DA90E800B97B58 /* CardBackView.swift in Sources */,
+				2FC94A852949412500B0603F /* AuthViewModel.swift in Sources */,
 				2F184EBF293C9F66006CE2D7 /* SwiftyRSAError.swift in Sources */,
+				2F6C1CD929497CE1001279CA /* AppDelegate.swift in Sources */,
 				2F1F03A927D7BF6600009465 /* MainView.swift in Sources */,
+				2F1DDAB729490DDE00F0BCC4 /* CountryPicker.swift in Sources */,
 				2F1F03B227D7DFBB00009465 /* ActivityView.swift in Sources */,
 				2F78EE1E2900757600B9C5F7 /* SettingsView.swift in Sources */,
 				2F184EBE293C9F66006CE2D7 /* SwiftyRSA+ObjC.swift in Sources */,
+				2FA05F0F2949A3AB00D50907 /* Constants.swift in Sources */,
+				2FA05F05294987BC00D50907 /* SignUpView.swift in Sources */,
 				2F4578C728330B5B00E232EB /* AccountInsightsView.swift in Sources */,
+				2FA05F032949854B00D50907 /* SceneDelegate.swift in Sources */,
 				2FD405382928156B00771C1B /* StringExtension.swift in Sources */,
 				2F2D8542293C990D002E4191 /* ModalScannerView.swift in Sources */,
 				2FC1644027DBE10000FCC267 /* PaymentsView.swift in Sources */,
 				2F92F7E628A771FF00AC6C87 /* TxCanadaView.swift in Sources */,
 				2F9E45E82916886A006F82BE /* TxCompletionView.swift in Sources */,
+				2FA05F0D2949A1A100D50907 /* ImagePicker.swift in Sources */,
 				2F48CD44293D6DEB0027CDE2 /* PasscodeSettingsView.swift in Sources */,
 				2F184EB8293C9F66006CE2D7 /* X509Certificate.swift in Sources */,
 				2F7A8E03293FDF6600B5A558 /* AccUpgradeView.swift in Sources */,
+				2FA05F0729498D8500D50907 /* CustomTextField.swift in Sources */,
 				2FD405312928080F00771C1B /* SuccessLottieView.swift in Sources */,
 				2F184EBA293C9F66006CE2D7 /* PrivateKey.swift in Sources */,
 				2F48CD4A293DCC500027CDE2 /* RoundsView.swift in Sources */,
@@ -569,9 +633,13 @@
 				2F184EB5293C9F66006CE2D7 /* ClearMessage.swift in Sources */,
 				2F48CD48293D74CA0027CDE2 /* AppLockViewModel.swift in Sources */,
 				2F36A8E227DC73A800E15350 /* MainRoundsView.swift in Sources */,
+				2FC94A8329491DA200B0603F /* PhoneOtpView.swift in Sources */,
 				2F1F03B027D7C14000009465 /* TransactionSect.swift in Sources */,
+				2FBE7C93294977ED003A4B56 /* Persistence.swift in Sources */,
+				2FA05F0B2949A16C00D50907 /* KeyboardHeightHelper.swift in Sources */,
 				2F184EB7293C9F66006CE2D7 /* Asn1Parser.swift in Sources */,
 				2FD40536292813A800771C1B /* QrCodeView.swift in Sources */,
+				2F1DDAB22948EAD800F0BCC4 /* LoginView.swift in Sources */,
 				2F94C30727DAE28500B97B58 /* User.swift in Sources */,
 				2F9F073F28F5C7EA00D6A122 /* AccountView.swift in Sources */,
 			);
@@ -794,6 +862,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2F1DDAB32948EDE900F0BCC4 /* XCRemoteSwiftPackageReference "CountryPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mobven/CountryPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		2F2D8543293C99D4002E4191 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/heart/CarBode-Barcode-Scanner-For-SwiftUI";
@@ -821,6 +897,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2F1DDAB42948EDE900F0BCC4 /* CountryPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F1DDAB32948EDE900F0BCC4 /* XCRemoteSwiftPackageReference "CountryPicker" */;
+			productName = CountryPicker;
+		};
 		2F2D8544293C99D4002E4191 /* CarBode */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F2D8543293C99D4002E4191 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;

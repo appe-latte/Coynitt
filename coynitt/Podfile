@@ -14,4 +14,6 @@ target 'Coynitt' do
   pod 'Firebase/Storage'
   pod 'lottie-ios'
   pod 'AlertToast'
+  pod 'SDWebImageSwiftUI'
+  pod 'Kingfisher'
 end
