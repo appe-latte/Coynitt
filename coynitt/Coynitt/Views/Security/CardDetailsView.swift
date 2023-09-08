@@ -69,6 +69,7 @@ struct CardDetailsView: View {
                     .foregroundColor(cynBlack)
                     .padding(10)
                     .padding(.top, 5)
+                
             }
             .frame(maxHeight: .infinity, alignment: .top)
         }

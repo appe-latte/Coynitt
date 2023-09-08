@@ -60,21 +60,21 @@ struct UserProfileView: View {
                                 .clipped()
                                 .frame(width: 90, height: 90)
                                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynBlack, lineWidth: 1))
+                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
                                 .padding(5)
-                                
+                            
                             Button(action: {},
                                    label:  {
                                 Text("EDIT")
                                     .font(.system(size: 10))
                                     .fontWeight(.semibold)
-                                    .foregroundColor(cynGreen2)
+                                    .foregroundColor(cynWhite)
                                     .textCase(.uppercase)
                             })
                             .frame(width: 30, height: 15)
                             .padding(2)
                             .overlay(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.black, lineWidth: 0.5))
+                                .stroke(cynWhite, lineWidth: 0.5))
                             
                         }
                         
@@ -86,7 +86,6 @@ struct UserProfileView: View {
                                     .fontWeight(.heavy)
                                     .kerning(2)
                                     .textCase(.uppercase)
-                                    .foregroundColor(cynBlack)
                                     .scaledToFill()
                                     .minimumScaleFactor(0.5)
                                 
@@ -100,7 +99,6 @@ struct UserProfileView: View {
                                         .fontWeight(.medium)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(.gray)
                                         .scaledToFill()
                                         .minimumScaleFactor(0.5)
                                     
@@ -113,7 +111,6 @@ struct UserProfileView: View {
                                         .fontWeight(.medium)
                                         .kerning(2)
                                         .textCase(.uppercase)
-                                        .foregroundColor(.gray)
                                         .scaledToFill()
                                         .minimumScaleFactor(0.5)
                                     
@@ -123,6 +120,7 @@ struct UserProfileView: View {
                             
                             Spacer()
                         }
+                        .foregroundColor(cynWhite)
                     }
                 }
                 .frame(width: viewWidth, height: viewHeight / 8, alignment: .leading)
@@ -215,14 +213,13 @@ struct UserProfileView: View {
                                         
                                         Button(action: {}, label: {
                                             Text("change")
-                                                .font(.custom("Avenir", size: 10).bold())
-                                                .foregroundColor(.black)
+                                                .font(.system(size: 10))
+                                                .fontWeight(.medium)
                                                 .frame(width: 60, height: 20)
+                                                .textCase(.uppercase)
                                                 .padding(2)
-                                                .overlay(
-                                                    Capsule(style: .continuous)
-                                                        .stroke(.black, style: StrokeStyle(lineWidth: 1))
-                                                )
+                                                .overlay(RoundedRectangle(cornerRadius: 5)
+                                                    .stroke(cynBlack, lineWidth: 0.5))
                                         })
                                     }
                                 }

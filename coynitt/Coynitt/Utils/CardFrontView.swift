@@ -26,7 +26,7 @@ struct CardFrontView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(cynWhite)
                 .frame(width: cardWidth, height: cardHeight)
-                .shadow(color: .black, radius: 0.1, x: 4, y: 4)
+                .shadow(color: cynBlack, radius: 0.1, x: 4, y: 4)
                 .edgesIgnoringSafeArea(.all)
                 .overlay(
                     ZStack {
@@ -79,89 +79,85 @@ struct CardFrontView: View {
                                         .fontWeight(.semibold)
                                         .kerning(3)
                                         .textCase(.uppercase)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(cynBlack)
                                     
                                     Text("\(String(lastFourDigits))")
                                         .font(.custom("Impact", size: 18))
                                         .kerning(3)
                                         .textCase(.uppercase)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(cynBlack)
                                 }
                                 .padding(.trailing, 20)
                                 .padding(.bottom, 10)
                                 
-                                HStack {
-                                    
-                                    // MARK: Display Card Details
-                                    VStack {
-                                        Button(action: {
-                                            showCardDetailsSheet.toggle()
-                                        }, label: {
-                                            Image("c-card")
-                                                .resizable()
-                                                .frame(width: 20, height: 20)
-                                                .foregroundColor(cynWhite)
-                                                .padding(5)
-                                                .background(cynOlive)
-                                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
-                                        })
+                                ZStack {
+                                    HStack {
+                                        Spacer()
+                                            .frame(width: 100)
                                         
-                                        Text("Details")
-                                            .font(.system(size: 6))
-                                            .fontWeight(.medium)
-                                            .kerning(2)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(cynWhite)
-                                    }
-                                    
-                                    // MARK: Pin Reminder
-                                    VStack {
-                                        Button(action: {
-                                            showPinNumberSheet.toggle()
-                                        }, label: {
-                                            Image("lock")
-                                                .resizable()
-                                                .frame(width: 20, height: 20)
-                                                .foregroundColor(cynWhite)
-                                                .padding(5)
-                                                .background(cynOlive)
-                                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
-                                        })
-                                        
-                                        Text("Pin")
-                                            .font(.system(size: 6))
-                                            .fontWeight(.medium)
-                                            .kerning(2)
-                                            .textCase(.uppercase)
-                                            .foregroundColor(cynWhite)
-                                    }
-                                    
-                                    Spacer()
-                                        .frame(width: 50)
-                                    
-                                    // MARK: Account Balance
-                                    VStack {
+                                        // MARK: Show Pin and Card Details
                                         HStack {
-                                            Text("$\(accBalance, specifier: "%.2f")")
-                                                .font(.custom("Impact", size: 24))
-                                                .textCase(.uppercase)
-                                                .kerning(3)
-                                                .foregroundColor(.black)
+                                            // MARK: Card Details
+                                            Button(action: {
+                                                showCardDetailsSheet.toggle()
+                                            }, label: {
+                                                VStack {
+                                                    Image("c-card")
+                                                        .resizable()
+                                                        .frame(width: 20, height: 20)
+                                                        .foregroundColor(cynWhite)
+                                                        .padding(5)
+                                                        .background(cynOlive)
+                                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
+                                                    
+                                                    Text("Details")
+                                                        .font(.system(size: 8))
+                                                        .foregroundColor(cynBlack)
+                                                        .textCase(.uppercase)
+                                                }
+                                            })
                                             
-                                            Spacer()
+                                            // MARK: Pin Number
+                                            Button(action: {
+                                                showPinNumberSheet.toggle()
+                                            }, label: {
+                                                VStack {
+                                                    Image("lock")
+                                                        .resizable()
+                                                        .frame(width: 20, height: 20)
+                                                        .foregroundColor(cynWhite)
+                                                        .padding(5)
+                                                        .background(cynOlive)
+                                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
+                                                    
+                                                    Text("Show PIN")
+                                                        .font(.system(size: 8))
+                                                        .foregroundColor(cynBlack)
+                                                        .textCase(.uppercase)
+                                                }
+                                            })
                                         }
                                         
-                                        HStack {
+                                        // MARK: Account Balance
+                                        VStack(alignment: .leading) {
+                                            HStack {
+                                                Text("$\(accBalance, specifier: "%.2f")")
+                                                    .font(.custom("Impact", size: 24))
+                                                    .textCase(.uppercase)
+                                                    .kerning(3)
+                                                    .foregroundColor(cynBlack)
+                                                
+                                                Spacer()
+                                            }
+                                            
                                             Text("Available Balance")
                                                 .font(.system(size: 7))
                                                 .fontWeight(.semibold)
                                                 .kerning(3)
                                                 .textCase(.uppercase)
-                                                .foregroundColor(.black)
-                                            
-                                            Spacer()
+                                                .foregroundColor(cynBlack)
                                         }
                                     }
                                 }
