@@ -7,11 +7,12 @@
 
 import SwiftUI
 import AlertToast
+import PassKit
 
 struct AccountView: View {
-    @State private var userAccNum : Int = 373812093
     @State var userFName : String = "Samuel"
     @State private var userTag : String = "samthing90"
+    @State private var userAccNum : Int = 1001773
     
     @State var rowHeight = 65.0 // sets row height for list
     @State private var showAccountDetailsSheetView = false
@@ -19,10 +20,14 @@ struct AccountView: View {
     @State var showAccFreezeAlert = false
     @State var showTransferActiveSheet = false
     @State var isTransferActiveSheetPresented = false
-    @State var showDepositActiveSheet = false
-    @State var showCardInfoSheet = false
-    @State var CardDetailsSheet: CardInfoSheet?
     @State private var showAlert = false
+    
+    // MARK: "Add Funds"
+    @State var showDepositActiveSheet = false
+    @State var depositActivitySheet: DepositActivitySheet?
+    
+    // MARK: Apple Pay
+    let paymentHandler = PaymentHandler()
     
     // MARK: Bottom Sheets
     @State private var showQrSheet = false
@@ -31,6 +36,7 @@ struct AccountView: View {
     @State private var showReferSheet = false
     @State private var showAccUpgradeSheet = false
     @State private var showPinReminderSheet = false
+    @State private var showCardDetailsSheet = false
     
     // MARK: Card Rotate
     @State var rotationAngleBack = 0.0
@@ -41,388 +47,312 @@ struct AccountView: View {
     let height : CGFloat = 250
     let animationDelay : CGFloat = 0.3
     
-    //MARK: Flip Card Function
-    func cardAnimation() {
-        isCardFlipped = !isCardFlipped
-        if isCardFlipped {
-            withAnimation(.linear(duration: animationDelay)) {
-                rotationAngleBack = 90
-            }
-            withAnimation(.linear(duration: animationDelay).delay(animationDelay)){
-                rotationAngleFront = 0
-            }
-        } else {
-            withAnimation(.linear(duration: animationDelay)) {
-                rotationAngleFront = -90
-            }
-            withAnimation(.linear(duration: animationDelay).delay(animationDelay)){
-                rotationAngleBack = 0
-            }
-        }
-    }
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
         NavigationView {
             ZStack {
-                cynWhite
-                VStack {
+                cynOlive
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 15) {
                     Rectangle()
-                        .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 110)
-                        .edgesIgnoringSafeArea(.all)
+                        .fill(cynWhite)
+                        .cornerRadius(45, corners: [.bottomRight])
+                        .frame(width: screenWidth, height: 110)
                         .overlay(
                             VStack {
-                                HStack {
+                                HStack(spacing: 25) {
                                     
-                                    Spacer()
-                                    
-                                    Button(action: {
-                                        showCountryTxSheet.toggle()
-                                    }, label: {
-                                        HStack {
-                                            Image("send")
+                                    // MARK: "Add Funds" button
+                                    VStack {
+                                        Button(action: {
+                                            self.showDepositActiveSheet.toggle()
+                                        }, label: {
+                                            Image("add")
                                                 .resizable()
                                                 .frame(width: 25, height: 25)
-                                                .foregroundColor(.white)
-                                            
-                                            Text("Transfer")
-                                                .font(.system(size: 14))
-                                                .foregroundColor(.white)
-                                                .fontWeight(.semibold)
-                                        }
-                                        .frame(width: 120, height: 50)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
                                         .background(cynRed)
-                                        .clipShape(Capsule())
-                                    }).sheet(isPresented: $showCountryTxSheet) {
-                                        ZStack {
-                                            cynWhite
-                                            
-                                            PaymentsView()
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        .actionSheet(isPresented: $showDepositActiveSheet) {
+                                            ActionSheet(title: Text("Add Funds"), message: Text("How would you like to deposit the funds?"), buttons: [
+                                                .default(Text("Apple Pay")){
+                                                    depositActivitySheet = .appl_pay
+                                                    //
+                                                    paymentHandler.startPayment { (success) in
+                                                        if success {
+                                                            print("Success")
+                                                        } else {
+                                                            print("Failed")
+                                                        }
+                                                    }
+                                                },
+                                                .default(Text("Debit / Credit card")){
+                                                    depositActivitySheet = .debit_card
+                                                },
+                                                .default(Text("Bank Transfer")){
+                                                    depositActivitySheet = .bank_tx
+                                                },
+                                                .cancel()
+                                            ])
                                         }
-                                        .ignoresSafeArea()
-                                        .presentationDetents([.medium, .fraction(0.5)])
+                                        
+                                        Text("Add Funds")
+                                            .font(.system(size: 8))
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                            .padding(.vertical, 2)
                                     }
+                                    .padding(.bottom, 10)
                                     
-                                    // MARK: Withdraw Funds View
-                                    NavigationLink(
-                                        destination: PaymentsView()){
-                                            HStack {
+                                    // MARK: "Transfer Funds" button
+                                    VStack(spacing: 5) {
+                                        NavigationLink(
+                                            destination: PaymentsView()){
                                                 Image("send")
                                                     .resizable()
                                                     .frame(width: 25, height: 25)
-                                                    .foregroundColor(.white)
+                                                    .foregroundColor(cynWhite)
                                                     .rotationEffect(Angle(degrees: -45))
-                                                
-                                                Text("Withdraw")
-                                                    .font(.system(size: 14))
-                                                    .foregroundColor(.white)
-                                                    .fontWeight(.semibold)
                                             }
-                                            .frame(width: 120, height: 50)
+                                            .frame(width: 50, height: 50)
                                             .background(cynGreen2)
-                                            .clipShape(Capsule())
-                                        }
+                                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                                            .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        Text("Transfer")
+                                            .font(.system(size: 8))
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                            .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
                                     
-                                    // MARK: "Rounds" View
-                                    NavigationLink(
-                                        destination: MainRoundsView()){
-                                            HStack {
+                                    // MARK: "Rounds" button
+                                    VStack(spacing: 5) {
+                                        NavigationLink(
+                                            destination: MainRoundsView()){
                                                 Image("rounds")
                                                     .resizable()
                                                     .frame(width: 30, height: 30)
-                                                    .foregroundColor(.white)
-                                                
-                                                Text("Rounds")
-                                                    .font(.system(size: 14))
-                                                    .foregroundColor(.white)
-                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(cynWhite)
                                             }
-                                            .frame(width: 120, height: 50)
+                                            .frame(width: 50, height: 50)
                                             .background(cynPurple)
-                                            .clipShape(Capsule())
-                                        }
-                                }
-                                .padding(20)
-                            })
-                    
-                    // MARK: Card Views
-                    HStack {
-                        ZStack {
-                            CardFrontView(width: width, height: height, degree: $rotationAngleBack)
-//                            CardBackView(width: width, height: height, degree: $rotationAngleFront)
-                        }
-                        .frame(width: 260, height: 160)
-                        
-                        // MARK: Account Information
-                        VStack {
-                            Button(action: {
-                                self.showAccountDetailsSheetView.toggle()
-                            }, label: {
-                                Image(systemName: "info.circle.fill")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(10)
-                                    .background(cynGreen.opacity(0.1))
-                                    .clipShape(Circle())
-                            })
-                            
-                            // MARK: Flip Card
-                            
-                            //                            Button(action: {
-                            //                                self.cardAnimation()
-                            //                            }, label: {
-                            //                                VStack {
-                            //                                    if isCardFlipped == true {
-                            //                                        Image(systemName: "creditcard.fill")
-                            //                                            .resizable()
-                            //                                            .frame(width: 25, height: 20)
-                            //                                            .padding(10)
-                            //                                            .background(cynGreen.opacity(0.1))
-                            //                                            .clipShape(Circle())
-                            //                                    } else {
-                            //                                        Image(systemName: "creditcard.and.123")
-                            //                                            .resizable()
-                            //                                            .frame(width: 25, height: 20)
-                            //                                            .padding(10)
-                            //                                            .background(cynGreen.opacity(0.1))
-                            //                                            .clipShape(Circle())
-                            //                                    }
-                            //                                }
-                            //                            }).onTapGesture {
-                            //                                cardAnimation()
-                            //                            }
-                            
-                            Button(action: { showCardInfoSheet.toggle() }, label: {
-                                Image(systemName: "creditcard.fill")
-                                    .resizable()
-                                    .frame(width: 25, height: 20)
-                                    .padding(10)
-                                    .background(cynGreen.opacity(0.1))
-                                    .clipShape(Circle())
-                            }).actionSheet(isPresented: $showCardInfoSheet) {
-                                ActionSheet(title: Text("View card details"), buttons: [
-                                    .default(Text("PIN reminder")){
-                                        CardDetailsSheet = .pin_number
-                                        showPinReminderSheet.toggle()
-                                    },
-                                    .default(Text("show card number")){
-//                                        CardDetailsSheet = .card_number
-                                            
-                                    },
-                                    .default(Text("show CVC number")){
-                                        CardDetailsSheet = .card_cvc
-                                    },
-                                    .default(Text("show card expiry")){
-                                        CardDetailsSheet = .card_expiry
-                                    },
-                                    .cancel()
-                                ])
-                            }
-                            
-                            // MARK: Freeze Account
-                            Button(action: {
-                                self.showAccFreezeAlert.toggle()
-                            }, label: {
-                                Image(systemName: "snowflake.circle")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(10)
-                                    .background(cynGreen.opacity(0.1))
-                                    .clipShape(Circle())
-                            }).alert(isPresented: $showAccFreezeAlert) {
-                                Alert(
-                                    title: Text("Freeze Your Account"),
-                                    message: Text("Use this feature to temporarily block your account if your card is lost/stolen."),
-                                    primaryButton: .destructive(Text("Freeze")) {
+                                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                                            .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
                                         
-                                    },
-                                    secondaryButton: .cancel()
-                                )
-                            }
-                            
-                            Spacer()
-                        }
-                        .frame(height: 150)
-                        .padding(.trailing, 5)
-                    }
+                                        Text("Rounds")
+                                            .font(.system(size: 8))
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                            .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    
+                                    // MARK: "Bills" button
+                                    VStack(spacing: 5) {
+                                        Button(action: {showBillPaySheet.toggle()}, label: {
+                                            Image("house-bill")
+                                                .resizable()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
+                                        .background(cynOlive)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        Text("Bills")
+                                            .font(.system(size: 8))
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                            .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    .sheet(isPresented: $showBillPaySheet) {
+                                        ZStack {
+                                            cynWhite
+                                            
+                                            BillPayView()
+                                        }
+                                        .ignoresSafeArea()
+                                        .presentationDetents([.medium, .fraction(0.75)])
+                                    }
+                                    
+                                    // MARK: "Upgrade" button
+                                    VStack(spacing: 5) {
+                                        Button(action: {showAccUpgradeSheet.toggle()}, label: {
+                                            Image("star")
+                                                .resizable()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
+                                        .background(cynOrange)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        Text("Upgrade")
+                                            .font(.system(size: 8))
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                            .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    .blurredSheet(.init(.ultraThinMaterial), show: $showAccUpgradeSheet) {
+                                        //
+                                    } content: {
+                                        AccUpgradeView()
+                                            .ignoresSafeArea()
+                                            .presentationDetents([.large, .fraction(0.95)])
+                                    }
+                                }
+                                .padding(.top, 20)
+                            })
                     
                     Spacer()
                     
-                    VStack {
-                        Form {
-                            Section {
-                                // MARK: Bill Payment
-                                
-                                Button(action: {showBillPaySheet.toggle()}, label: {
-                                    HStack {
-                                        Image("house-bill")
-                                            .resizable()
-                                            .renderingMode(.template)
-                                            .frame(width: 30, height: 30)
-                                            .foregroundColor(.green)
-                                        
-                                        VStack {
-                                            HStack {
-                                                Text("Bill Payment")
-                                                    .font(.custom("Avenir", size: 15).bold())
-                                                    .foregroundColor(.black)
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                            HStack {
-                                                Text("Pay for utilities and top-up airtime")
-                                                    .font(.custom("Avenir", size: 10).bold())
-                                                    .foregroundColor(.black)
-                                                
-                                                Spacer()
-                                            }
-                                        }
-                                    }
-                                })
-                                .sheet(isPresented: $showBillPaySheet) {
-                                    ZStack {
-                                        cynWhite
-                                        
-                                        BillPayView()
-                                    }
-                                    .ignoresSafeArea()
-                                    .presentationDetents([.medium, .fraction(0.75)])
-                                }
-                                
-                                // MARK: Account Upgrade
-                                
-                                Button(action: {showAccUpgradeSheet.toggle()}, label: {
-                                    HStack {
-                                        Image("star")
-                                            .resizable()
-                                            .renderingMode(.template)
-                                            .frame(width: 30, height: 30)
-                                            .foregroundColor(.yellow)
-                                        
-                                        VStack {
-                                            HStack {
-                                                Text("Upgrade Account")
-                                                    .font(.custom("Avenir", size: 15).bold())
-                                                    .foregroundColor(.black)
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                            HStack {
-                                                Text("Upgrade your account and receive a physical debit card")
-                                                    .font(.custom("Avenir", size: 10).bold())
-                                                    .foregroundColor(.black)
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                        }
-                                    }
-                                })
-                                .sheet(isPresented: $showAccUpgradeSheet) {
-                                    ZStack {
-                                        cynWhite
-                                        
-                                        AccUpgradeView()
-                                    }
-                                    .ignoresSafeArea()
-                                    .presentationDetents([.large, .fraction(0.95)])
-                                }
-                                
-                                // MARK: Invite
-                                
-                                Button(action: {showReferSheet.toggle()}, label: {
-                                    HStack {
-                                        Image("ticket")
-                                            .resizable()
-                                            .renderingMode(.template)
-                                            .frame(width: 30, height: 30)
-                                            .foregroundColor(.red)
-                                        
-                                        VStack {
-                                            HStack {
-                                                Text("Refer A Friend")
-                                                    .font(.custom("Avenir", size: 15).bold())
-                                                    .foregroundColor(.black)
-                                                
-                                                Spacer()
-                                            }
-                                            
-                                            HStack {
-                                                Text("Earn money when you refer a friend")
-                                                    .font(.custom("Avenir", size: 10).bold())
-                                                    .foregroundColor(.black)
-                                                
-                                                Spacer()
-                                            }
-                                        }
-                                    }
-                                })
-                                .sheet(isPresented: $showReferSheet) {
-                                    ZStack {
-                                        cynWhite
-                                        
-                                        ReferralInviteView()
-                                    }
-                                    .ignoresSafeArea()
-                                    .presentationDetents([.large, .fraction(0.95)])
-                                }
-                                .sheet(isPresented: $showPinReminderSheet) {
-                                    ZStack {
-                                        cynWhite
-                                        
-                                        PinReminderView()
-                                    }
-                                    .ignoresSafeArea()
-                                    .presentationDetents([.medium, .fraction(0.50)])
-                                }
-                                
-                                // MARK: Instagram
-                                VStack(spacing: 10) {
-                                    HStack {
-                                        Image("instagram")
-                                            .resizable()
-                                            .frame(width: 34, height: 34)
-                                        Link("Follow Us on Instagram", destination: URL(string: "https://www.instagram.com/coynitt")!)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
-                                    }
-                                }
-                                
-                                // MARK: Facebook
-                                VStack(spacing: 10) {
-                                    HStack {
-                                        Image("facebook")
-                                            .resizable()
-                                            .frame(width: 25, height: 25)
-                                        Link("Follow Us on Facebook", destination: URL(string: "https://www.facebook.com/appelatteltd")!)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
-                                    }
-                                }
-                                
-                                // MARK: TikTok
-                                VStack(spacing: 10) {
-                                    HStack {
-                                        Image("tiktok")
-                                            .resizable()
-                                            .frame(width: 25, height: 25)
-                                        Link("Follow Us on TikTok", destination: URL(string: "https://www.tiktok.com/@appe.latte")!)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
-                                    }
-                                }
-                            }
-                        }
+                    // MARK: Card View
+                    ZStack {
+                        CardFrontView(width: width, height: height)
                     }
+                    .frame(width: screenWidth, height: 160)
+                    
+                    Spacer()
+                    
+                    // MARK: Account Information
+                    //                        VStack {
+                    //                            Button(action: {
+                    //                                self.showAccountDetailsSheetView.toggle()
+                    //                            }, label: {
+                    //                                Image(systemName: "info.circle.fill")
+                    //                                    .resizable()
+                    //                                    .frame(width: 25, height: 25)
+                    //                                    .padding(10)
+                    //                                    .background(cynWhite.opacity(0.1))
+                    //                                    .clipShape(Circle())
+                    //                            })
+                    //
+                    //                            // MARK: Freeze Account
+                    //                            Button(action: {
+                    //                                self.showAccFreezeAlert.toggle()
+                    //                            }, label: {
+                    //                                Image(systemName: "snowflake.circle")
+                    //                                    .resizable()
+                    //                                    .frame(width: 25, height: 25)
+                    //                                    .padding(10)
+                    //                                    .background(cynWhite.opacity(0.1))
+                    //                                    .clipShape(Circle())
+                    //                            })
+                    //                            .alert(isPresented: $showAccFreezeAlert) {
+                    //                                Alert(
+                    //                                    title: Text("Freeze Your Account"),
+                    //                                    message: Text("Use this feature to temporarily block your account if your card is lost/stolen."),
+                    //                                    primaryButton: .destructive(Text("Freeze")) {
+                    //
+                    //                                    },
+                    //                                    secondaryButton: .cancel()
+                    //                                )
+                    //                            }
+                    //
+                    //                            Spacer()
+                    //                        }
+                    //                        .frame(height: 150)
+                    //                        .padding(.leading, 10)
+                    //                    }
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        // MARK: Rewards
+                        VStack(spacing: 10) {
+                            Rectangle()
+                                .fill(cynOlive)
+                                .frame(height: 50)
+                                .cornerRadius(20, corners: [.topRight, .topLeft])
+                                .overlay {
+                                    ZStack {
+                                        VStack {
+                                            HStack {
+                                                Text("Special Offer 🎉🎉🎊")
+                                                    .font(.system(size: 17))
+                                                    .fontWeight(.heavy)
+                                                    .foregroundColor(cynWhite)
+                                                    .textCase(.uppercase)
+                                                    .kerning(3)
+                                                
+                                                Spacer()
+                                            }
+                                            .padding(10)
+                                        }
+                                    }
+                                }
+                            
+                            HStack(spacing: 10) {
+                                Image("check")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(cynOlive)
+                                
+                                Text("First transfer is ....")
+                                    .font(.system(size: 13))
+                                    .fontWeight(.medium)
+                                    .foregroundColor(cynBlack)
+                                    .textCase(.uppercase)
+                                
+                                Spacer()
+                            }
+                            .padding()
+                            
+                            Spacer()
+                            
+                        }
+                        .frame(width: screenWidth * 0.8, height: screenHeight * 0.25)
+                        .background(cynWhite)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .shadow(color: .black, radius: 0.1, x: 4, y: 4)
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(cynWhite, lineWidth: 1))
+                        .padding(5)
+                    }
+                    .frame(width: screenWidth)
+                    .padding(.top, 20)
+                    
+                    
+                    VStack(spacing: 10) {
+                        Image("cdic-logo")
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .padding(.horizontal, 2)
+                        
+                        Text("All customer deposits are monitored and protected by the CDIC.")
+                            .font(.system(size: 8))
+                            .fontWeight(.medium)
+                            .textCase(.uppercase)
+                            .kerning(2)
+                            .padding(2)
+                    }
+                    .frame(width: screenWidth * 0.8)
+                    .foregroundColor(cynWhite)
+                    
+                    Spacer()
                 }
             }
-            .sheet(isPresented: $showAccountDetailsSheetView) {
-                AccountDetailsView()
+            .sheet(isPresented: $showPinReminderSheet) {
+                PinReminderView()
+                    .presentationDetents([.medium, .fraction(0.40)])
+                    .ignoresSafeArea()
             }
-            .accentColor(cynGreen)
             .navigationBarTitleDisplayMode(.inline)
             .environment(\.defaultMinListRowHeight, rowHeight)
             .toolbar {
@@ -431,46 +361,53 @@ struct AccountView: View {
                         Text("Coynitt")
                             .font(.subheadline)
                             .fontWeight(.bold)
-                            .foregroundColor(cynWhite)
+                            .foregroundColor(cynBlack)
                             .textCase(.uppercase)
+                            .kerning(5)
                         
-                        Text("@\(String(userTag))")
+                        Text("Acc: \(String(userAccNum))")
                             .font(.system(size: 10))
-                            .foregroundColor(cynWhite)
+                            .foregroundColor(cynBlack)
+                            .textCase(.uppercase)
+                            .kerning(2)
                     }
                 }
                 
+                // MARK: "Referral" button
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                    // MARK: How-to Button
                     Button(action: {
-                        
+                        showReferSheet.toggle()
                     }, label: {
                         VStack {
-                            Image("how-to")
+                            Image("ticket")
                                 .resizable()
                                 .frame(width: 25, height: 25)
-                                .foregroundColor(cynWhite)
+                                .foregroundColor(cynBlack)
                                 .clipShape(Circle())
                             
-                            Text("How-To")
-                                .font(.system(size: 10))
-                                .foregroundColor(cynWhite)
+                            Text("Refer A Friend")
+                                .font(.system(size: 8))
+                                .foregroundColor(cynBlack)
+                                .textCase(.uppercase)
+                                .kerning(2)
                         }
                     })
+                    .blurredSheet(.init(.ultraThinMaterial), show: $showReferSheet) {
+                        //
+                    } content: {
+                        ReferralInviteView()
+                            .ignoresSafeArea()
+                            .presentationDetents([.large, .fraction(0.95)])
+                    }
                 }
             }
-        }.accentColor(cynWhite)
+        }
+        .accentColor(cynWhite)
     }
 }
 
-// MARK: Card Info
-enum CardInfoSheet: Identifiable {
-    case pin_number
-    case card_number
-    case card_cvc
-    case card_expiry
-    
-    var id: Int {
-        hashValue
+struct AccountView_previews : PreviewProvider {
+    static var previews : some View {
+        AccountView()
     }
 }

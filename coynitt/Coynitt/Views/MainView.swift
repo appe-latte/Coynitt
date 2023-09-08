@@ -10,351 +10,402 @@ import UIKit
 import CarBode
 import Combine
 import AlertToast
+import PassKit
 
 struct MainView: View {
-    
     @State var userAccBal : Double = 1498.18
-    @State private var userAccNum : Int = 373812093
     @State var userFName : String = "Samuel"
     @State private var userTag : String = "samthing90"
     @State var txAmount : Double  = 0.00
     
     @State var rowHeight = 50.0 // sets row height for list
-    @State private var showAccountDetailsSheetView = false
-    @State private var showDepositSheetView = false
-    @State var showAccFreezeAlert = false
-    @State var showTransferActiveSheet = false
-    @State var isTransferActiveSheetPresented = false
-    @State var showDepositActiveSheet = false
-    @State var depositActivitySheet: DepositActivitySheet?
     @State var showQrSheet = false
     @State var showProfileSheet = false
     
-    init() {
-        UITableView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        UITextView.appearance().backgroundColor = UIColor(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        
-        // MARK: Nav Bar
-        let barTintColor = UINavigationBarAppearance()
-        barTintColor.configureWithOpaqueBackground()
-        barTintColor.shadowColor = .clear // hides nav bar bottom separator
-        barTintColor.backgroundColor = UIColor.init(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-        barTintColor.titleTextAttributes = [.foregroundColor: UIColor(Color.white)]
-        barTintColor.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.white)]
-        UINavigationBar.appearance().scrollEdgeAppearance = barTintColor
-        UINavigationBar.appearance().standardAppearance = barTintColor
-        
-        // MARK: Tab Bar
-        let tabBarTintColor = UITabBarAppearance()
-        tabBarTintColor.configureWithOpaqueBackground()
-        tabBarTintColor.shadowColor = .clear
-        tabBarTintColor.backgroundColor = UIColor.init(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        tabBarTintColor.selectionIndicatorTintColor = UIColor.init(Color(red: 248 / 255, green: 248 / 255, blue: 248 / 255))
-        UITabBar.appearance().scrollEdgeAppearance = tabBarTintColor
-        UITabBar.appearance().standardAppearance = tabBarTintColor
-    }
+    // MARK: "Add Funds"
+    @State var showDepositActiveSheet = false
+    @State var depositActivitySheet: DepositActivitySheet?
+    
+    // MARK: Apple Pay
+    let paymentHandler = PaymentHandler()
+    
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    
+    // MARK: Keyboard
+    @State private var text: String = ""
+    @FocusState private var showKeyboard: Bool
     
     var body: some View {
         NavigationView {
             ZStack {
-                cynWhite
+                cynOlive
+                    .ignoresSafeArea()
+                
                 VStack {
                     Rectangle()
-                        .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 110)
-                        .edgesIgnoringSafeArea(.all)
+                        .fill(cynWhite)
+                        .cornerRadius(45, corners: [.bottomRight])
+                        .frame(width: screenWidth, height: 110)
                         .overlay(
                             VStack {
-                                HStack {
-                                    
-                                    // MARK: User Profile View
-                                    Button(action: {
-                                        showProfileSheet.toggle()
-                                    }, label: {
-                                        VStack {
-                                            Image("dummy-image")
+                                HStack(spacing: 25) {
+                                    // MARK: "Add Funds" button
+                                    VStack {
+                                        Button(action: {
+                                            self.showDepositActiveSheet.toggle()
+                                        }, label: {
+                                            Image("add")
                                                 .resizable()
-                                                .scaledToFill()
-                                                .aspectRatio(contentMode: .fill)
-                                                .clipped()
-                                                .frame(width: 35, height: 35)
-                                                .foregroundColor(cynGreen)
-                                                .clipShape(Circle())
-                                                .padding(5)
-                                            
-                                            Text("Hi, \(userFName)")
-                                                .font(.custom("Avenir", size: 12).bold())
-                                                .foregroundColor(.black)
-                                                .scaledToFill()
-                                                .minimumScaleFactor(0.5)
-                                        }
+                                                .frame(width: 25, height: 25)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
+                                        .background(cynApricot)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        //                                        .actionSheet(isPresented: $showDepositActiveSheet) {
+                                        //                                            ActionSheet(title: Text("Add Funds"), message: Text("How would you like to deposit the funds?"), buttons: [
+                                        //                                                .default(Text("Apple Pay")){
+                                        //                                                    depositActivitySheet = .appl_pay
+                                        //                                                    //
+                                        //                                                    paymentHandler.startPayment { (success) in
+                                        //                                                        if success {
+                                        //                                                            print("Success")
+                                        //                                                        } else {
+                                        //                                                            print("Failed")
+                                        //                                                        }
+                                        //                                                    }
+                                        //                                                },
+                                        //                                                .default(Text("Debit / Credit card")){
+                                        //                                                    depositActivitySheet = .debit_card
+                                        //                                                },
+                                        //                                                .default(Text("Bank Transfer")){
+                                        //                                                    depositActivitySheet = .bank_tx
+                                        //                                                },
+                                        //                                                .cancel()
+                                        //                                            ])
+                                        //                                        }
                                         
-                                    }).sheet(isPresented: $showProfileSheet) {
+                                        VStack {
+                                            Text("Recharge")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                            
+                                            Text("Airtime")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                        }
+                                        .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    
+                                    // MARK: "Transfer Funds" button
+                                    VStack(spacing: 5) {
+                                        NavigationLink(
+                                            destination: PaymentsView()){
+                                                Image("send")
+                                                    .resizable()
+                                                    .frame(width: 25, height: 25)
+                                                    .foregroundColor(cynWhite)
+                                                    .rotationEffect(Angle(degrees: -45))
+                                            }
+                                            .frame(width: 50, height: 50)
+                                            .background(cynGreen2)
+                                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                                            .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        VStack {
+                                            Text("Transfer")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                            
+                                            Text("Funds")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                        }
+                                        .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    
+                                    // MARK: QR Code Button
+                                    VStack(spacing: 5) {
+                                        Button(action: {
+                                            showQrSheet.toggle()
+                                        }, label: {
+                                            Image(systemName: "qrcode")
+                                                .resizable()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
+                                        .background(cynOlive)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        VStack {
+                                            Text("QR Code")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                            
+                                            Spacer()
+                                        }
+                                        .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    .sheet(isPresented: $showQrSheet) {
                                         ZStack {
                                             cynWhite
                                             
-                                            UserProfileView()
+                                            QrCodeView()
                                         }
                                         .ignoresSafeArea()
-                                        .presentationDetents([.large, .fraction(0.95)])
+                                        .presentationDetents([.medium, .fraction(0.5)])
+                                        .HapticFeedback()
                                     }
-                                    
-                                    Spacer()
                                     
                                     // MARK: "Available Balance"
                                     VStack {
-                                        Text("Available Balance: ")
-                                            .font(.custom("Avenir", size: 12).bold())
-                                            .foregroundColor(Color(uiColor: .darkGray))
+                                        Text("Available Balance:")
+                                            .font(.system(size: 8))
+                                            .fontWeight(.semibold)
+                                            .kerning(3)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                         
                                         HStack {
-                                            Image("united-states")
+                                            Image("canada")
                                                 .resizable()
                                                 .frame(width: 18, height: 18)
+                                                .overlay(
+                                                    Circle()
+                                                        .stroke(cynBlack, lineWidth: 1)
+                                                )
                                                 .padding(5)
                                             
+                                            
                                             Text("$\(userAccBal, specifier: "%.2f")")
-                                                .font(.custom("Avenir", size: 18
-                                                             ))
-                                                .fontWeight(.bold)
-                                                .foregroundColor(Color(uiColor: .darkGray))
+                                                .font(.custom("Impact", size: 24))
+                                                .textCase(.uppercase)
+                                                .kerning(3)
+                                                .foregroundColor(cynBlack)
                                         }
                                     }
-                                    .frame(width: 200, height: 100)
-                                    .padding(.horizontal, 10)
+                                    .frame(width: 160, height: 100)
                                 }
-                                .padding(10)
+                                .padding(.horizontal, 20)
                             }
                                 .padding(.top, 20))
                     
-                    // MARK: Keypad
-                    NavigationView {
+                    // MARK: Keyboard + "Most Recent" Recipient
+                    VStack {
+                        // MARK: List of most recent recipients
                         
-                        KeypadEntry()
+                        // MARK: Amount to send
+                        TextField("$0.00", text: $text)
+                            .font(.system(size: 50))
+                            .fontWeight(.semibold)
+                            .kerning(2)
+                            .textCase(.uppercase)
+                            .foregroundColor(cynWhite)
+                            .multilineTextAlignment(.center)
+                            .padding(10)
                         
+                        // MARK: Keyboard View
+                        CustomKeyboardView()
                     }
+                    .frame(maxWidth: .infinity, maxHeight: screenHeight * 0.55)
                     
-                    HStack {
-                        // MARK: "Add Funds" Button
-                        Button(action: {
-                            self.showDepositActiveSheet.toggle()
-                        }, label: {
-                            HStack {
-                                Image("add")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(cynWhite)
-                                
-                                Text("Add Funds")
-                                    .font(.system(size: 14))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(cynWhite)
-                            }
-                        })
-                        .frame(width: 150, height: 60)
-                        .background(cynGreen)
-                        .clipShape(Capsule())
-                        .actionSheet(isPresented: $showDepositActiveSheet) {
-                            ActionSheet(title: Text("Add Funds"), message: Text("How would you like to deposit the funds?"), buttons: [
-                                .default(Text("Apple Pay")){
-                                    depositActivitySheet = .appl_pay
-                                },
-                                .default(Text("Debit / Credit card")){
-                                    depositActivitySheet = .appl_pay
-                                },
-                                .default(Text("Bank Transfer")){
-                                    depositActivitySheet = .appl_pay
-                                },
-                                .cancel()
-                            ])
-                        }
-                        
-                        // MARK: "Quick Send" Button
-                        Button(action: {
-                            
-                        }, label: {
-                            HStack {
-                                Image("send")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(cynGreen)
-                                
-                                Text("Quick Send")
-                                    .font(.system(size: 14))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(cynGreen)
-                            }
-                        })
-                        .frame(width: 150, height: 60)
-                        .background(cynGreen.opacity(0.1))
-                        .clipShape(Capsule())
-                    }
-                    .padding(.bottom, 25)
+                    Spacer()
                 }
-                
-                Spacer()
             }
-            .background(Color.white)
-            .accentColor(cynGreen)
+            .accentColor(cynWhite)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    VStack {
-                        Text("Coynitt")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                            .foregroundColor(cynWhite)
-                            .textCase(.uppercase)
+                    
+                    HStack(spacing: 10) {
+                        // MARK: User Profile View
+                        Button(action: {
+                            showProfileSheet.toggle()
+                        }, label: {
+                            Image("dummy-image")
+                                .resizable()
+                                .scaledToFill()
+                                .aspectRatio(contentMode: .fill)
+                                .clipped()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(cynGreen)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(cynOlive, lineWidth: 1)
+                                )
+                        }).sheet(isPresented: $showProfileSheet) {
+                            ZStack {
+                                cynWhite
+                                
+                                UserProfileView()
+                            }
+                            .ignoresSafeArea()
+                            .presentationDetents([.large, .fraction(0.95)])
+                        }
                         
-                        Text("@\(String(userTag))")
-                            .font(.system(size: 10))
-                            .foregroundColor(cynWhite)
+                        VStack {
+                            Text("Coynitt")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundColor(cynBlack)
+                                .textCase(.uppercase)
+                                .kerning(5)
+                            
+                            HStack {
+                                Text("Hi, \(userFName)")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(cynBlack)
+                                    .textCase(.uppercase)
+                                    .kerning(2)
+                                
+                                Spacer()
+                            }
+                        }
                     }
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                    // MARK: QR Code Button
-                    Button(action: {
-                        showQrSheet.toggle()
-                    }, label: {
-                        Image(systemName: "qrcode") // Notifications button
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(cynWhite)
-                    }).sheet(isPresented: $showQrSheet) {
-                        ZStack {
-                            cynWhite
-                            
-                            QrCodeView()
-                        }
-                        .ignoresSafeArea()
-                        .presentationDetents([.medium, .fraction(0.5)])
-                        .HapticFeedback()
-                    }
-                    
                     // MARK: Notifications Button
                     Button(action: {
-                        
+                        //
                     }, label: {
-                        Image("alert")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(cynWhite)
-                            .clipShape(Circle())
+                        VStack {
+                            Image("alert")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(cynBlack)
+                                .clipShape(Circle())
+                            
+                            Text("Alerts")
+                                .font(.system(size: 8))
+                                .foregroundColor(cynBlack)
+                                .textCase(.uppercase)
+                                .kerning(2)
+                        }
                     })
                 }
             }
-        }.accentColor(cynWhite)
-            .onAppear()
-    }
-}
-
-// MARK: KeyPad structure
-struct KeyPad : View {
-    @Binding var txDigits : [String]
-    
-    var body : some View {
-        VStack(alignment: .leading, spacing: 15) {
-            ForEach(datas){ i in
-                HStack(spacing: self.getSpacing()){
-                    ForEach(i.row){ j in
-                        
-                        Button(action: {
-                            if j.value == "delete.left.fill" {
-                                self.txDigits.removeLast()
-                            } else {
-                                self.txDigits.append(j.value)
-                                
-                                // MARK: Digit Entry Limit
-                                if self.txDigits.count == 8 {
-                                    NotificationCenter.default.post(name: NSNotification.Name("Successful"), object: nil)
-                                    
-                                    self.txDigits.removeAll()
-                                }
-                            }
-                        }) {
-                            if j.value == "delete.left.fill" {
-                                Image(systemName: j.value).font(.body).padding(.vertical)
-                            } else {
-                                Text(j.value).font(.title).fontWeight(.bold).padding(.vertical)
-                            }
-                        }
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(cynGreen)
-                        .padding(5)
-                        .background(cynGreen.opacity(0.1))
-                        .clipShape(Circle())
-                    }
-                }
-            }
         }
-        .accentColor(cynGreen)
+        .accentColor(cynWhite)
+        .onAppear()
     }
     
-    func getSpacing()-> CGFloat {
-        return UIScreen.main.bounds.width / 8
-    }
-}
-
-// MARK: Keypad Entry
-struct KeypadEntry : View {
-    
-    @State var amtDigits : [String] = []
-    
-    var body : some View {
-        
-        ZStack {
-            cynWhite
-            VStack {
-                HStack(spacing: 10) {
-                    Text("$")
-                        .font(.custom("Avenir", size: 60))
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(uiColor: .darkGray))
+    // MARK: Custom Keyboard
+    @ViewBuilder
+    func CustomKeyboardView() -> some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 10), count: 3), spacing: 10) {
+            ForEach(1...9, id: \.self) { index in
+                KeyboardButtonView(.text("\(index)")) {
+                    if text.isEmpty {
+                        text.append("$")
+                    }
                     
-                    ForEach(amtDigits, id: \.self){ i in
-                        Text(i)
-                            .font(.custom("Avenir", size: 60))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(uiColor: .darkGray))
+                    text.append("\(index)")
+                }
+            }
+            
+            // MARK: Delete last figure
+            KeyboardButtonView(.image("delete-amount")) {
+                if !text.isEmpty {
+                    text.removeLast()
+                    if text == "$" {
+                        text = ""
                     }
                 }
-                
-                Spacer()
-                    .frame(height: 45)
-                
-                KeyPad(txDigits: $amtDigits)
             }
+            
+            // MARK: "Zero"
+            KeyboardButtonView(.text("0")) {
+                if text.isEmpty {
+                    text.append("$")
+                }
+                text.append("0")
+            }
+            
+            // MARK: "Comma"
+            KeyboardButtonView(.text(".")) {
+                if text.isEmpty {
+                    text.append("$")
+                }
+                text.append(".00")
+            }
+            
+            // MARK: Transfer Amount + Most recent recipient -- Send Initiation
+            //            KeyboardButtonView(.image("approve")) {
+            //                //
+            //                // <---- add logic for initiating send
+            //                //
+            //            }
+        }
+        .padding(.horizontal, 15)
+        .padding(.vertical, 5)
+        .background {
+            Rectangle()
+                .fill(cynOlive)
+                .ignoresSafeArea()
         }
     }
+    
+    // MARK: Keyboard View
+    @ViewBuilder
+    func KeyboardButtonView(_ value: KeyboardValue, onTap: @escaping () -> ()) -> some View {
+        Button(action: onTap) {
+            ZStack {
+                switch value {
+                case .text(let string):
+                    Text(string)
+                        .font(.system(size: 30))
+                        .fontWeight(.semibold)
+                        .textCase(.uppercase)
+                        .foregroundColor(cynWhite)
+                    
+                case .image(let image):
+                    Image(image)
+                        .font(image == "approve" ? .title : .title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(image == "approve" ? cynGreen2 : cynWhite)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 15)
+            .contentShape(Rectangle())
+        }
+    }
+}
+
+struct Home_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+// MARK: Keyboard enums
+enum KeyboardValue {
+    case text(String)
+    case image(String)
 }
 
 // MARK: Deposit Activity Sheet enum
 enum DepositActivitySheet: Identifiable {
-    case appl_pay, chq_deposit
+    case appl_pay, bank_tx, debit_card
     
     var id: Int {
         hashValue
     }
 }
-
-// MARK: Keypad Datas
-struct type: Identifiable {
-    var id : Int
-    var row: [row]
-}
-
-struct row : Identifiable {
-    var id: Int
-    var value : String
-}
-
-var datas = [
-    type(id: 0, row: [row(id: 0, value: "1"), row(id: 1, value: "2"), row(id: 2, value: "3")]),
-    type(id: 1, row: [row(id: 0, value: "4"), row(id: 1, value: "5"), row(id: 2, value: "6")]),
-    type(id: 2, row: [row(id: 0, value: "7"), row(id: 1, value: "8"), row(id: 2, value: "9")]),
-    type(id: 3, row: [row(id: 0, value: "."), row(id: 1, value: "0"), row(id: 2, value: "delete.left.fill")]),
-]
-

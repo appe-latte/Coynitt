@@ -17,7 +17,9 @@ struct SettingsView: View {
         
         NavigationView {
             ZStack {
-                //                cynWhite
+                cynOlive
+                    .ignoresSafeArea()
+                
                 VStack(alignment: .center) {
                     Rectangle()
                         .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
@@ -46,10 +48,8 @@ struct SettingsView: View {
                             }
                         }
                         
-                        // MARK: App Settings
+                        // MARK: App Settings Section
                         Section(header: Text("App Settings")) {
-                            
-                            // About This App
                             NavigationLink(destination: PaymentsView()){
                                 Image("info")
                                     .resizable()
@@ -65,7 +65,6 @@ struct SettingsView: View {
                                 }
                             }
                             
-                            // Notification Settings
                             NavigationLink(destination: PaymentsView()){
                                 Image("alert")
                                     .resizable()
@@ -81,7 +80,6 @@ struct SettingsView: View {
                                 }
                             }
                             
-                            // Privacy Policy
                             NavigationLink(destination: PaymentsView()){
                                 Image("policy")
                                     .resizable()
@@ -98,11 +96,8 @@ struct SettingsView: View {
                             }
                         }
                         
-                        // MARK: Security
-                        Section(header: Text("Security")) {
-                            
-                            // MARK: Biometric Settings
-                            
+                        // MARK: Biometric + Passcode Security
+                        Section(header: Text("Account Settings")) {
                             Button(action: {showBiometricSheet.toggle()}, label: {
                                 HStack {
                                     Image("face-id")
@@ -143,8 +138,6 @@ struct SettingsView: View {
                                 .presentationDetents([.height(screenHeight / 4), .fraction(0.25)])
                             }
                             
-                            // MARK: "Passcode" Settings
-                            
                             Button(action: {showPasscodeSheet.toggle()}, label: {
                                 HStack {
                                     Image("passcode")
@@ -184,13 +177,7 @@ struct SettingsView: View {
                                 .ignoresSafeArea()
                                 .presentationDetents([.height(screenHeight / 4), .fraction(0.25)])
                             }
-                        }
-                        
-                        
-                        
-                        // MARK: Account Settings
-                        Section(header: Text("Security")) {
-                            // Delete User Account
+                            
                             NavigationLink(destination: PaymentsView()){
                                 Image("freeze-shield")
                                     .resizable()
@@ -217,7 +204,6 @@ struct SettingsView: View {
                                 }
                             }
                             
-                            // Delete User Account
                             NavigationLink(destination: PaymentsView()){
                                 Image("delete")
                                     .resizable()
@@ -243,7 +229,6 @@ struct SettingsView: View {
                                 }
                             }
                             
-                            // Log out
                             NavigationLink(destination: PaymentsView()){
                                 Image("log-out")
                                     .resizable()
@@ -268,8 +253,48 @@ struct SettingsView: View {
                                     }
                                 }
                             }
+                        }
+                        
+                        // MARK: Account Socials Section
+                        Section(header: Text("Socials")) {
+                            // MARK: Instagram
+                            VStack(spacing: 10) {
+                                HStack {
+                                    Image("instagram")
+                                        .resizable()
+                                        .frame(width: 34, height: 34)
+                                    Link("Follow Us on Instagram", destination: URL(string: "https://www.instagram.com/coynitt")!)
+                                        .font(.custom("Avenir", size: 15).bold())
+                                        .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
+                                }
+                            }
                             
-                            // App Version Number
+                            // MARK: Facebook
+                            VStack(spacing: 10) {
+                                HStack {
+                                    Image("facebook")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                    Link("Follow Us on Facebook", destination: URL(string: "https://www.facebook.com/appelatteltd")!)
+                                        .font(.custom("Avenir", size: 15).bold())
+                                        .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
+                                }
+                            }
+                            
+                            // MARK: TikTok
+                            VStack(spacing: 10) {
+                                HStack {
+                                    Image("tiktok")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                    Link("Follow Us on TikTok", destination: URL(string: "https://www.tiktok.com/@appe.latte")!)
+                                        .font(.custom("Avenir", size: 15).bold())
+                                        .foregroundColor(Color(red: 83 / 255, green: 82 / 255, blue: 116 / 255))
+                                }
+                            }
+                            
+                            // MARK: App Version Number
+                            
                             VStack {
                                 HStack {
                                     Spacer()
@@ -297,26 +322,43 @@ struct SettingsView: View {
                         .textCase(.uppercase)
                 }
                 
+                // MARK: Support
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                    // MARK: Chat Support
-                    Button(action: {
+                    
+                    Menu("Support"
+                    ) {
+                        // MARK: Chat
+                        Button(action: {}, label: {
+                            HStack {
+                                Image("chat-support")
+                                Text("Chat 24/7")
+                            }
+                        })
                         
-                    }, label: {
-                        VStack {
-                            Image("chat-support")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(cynWhite)
-                                .clipShape(Circle())
-                            
-                            Text("Support")
-                                .font(.system(size: 10))
-                                .foregroundColor(cynWhite)
-                        }
-                    })
+                        // MARK: Call
+                        Button(action: {}, label: {
+                            HStack {
+                                Image("phone")
+                                Text("Call")
+                            }
+                        })
+                        
+                        // MARK: Text
+                        Button(action: {}, label: {
+                            HStack {
+                                Image("chat-support")
+                                Text("Text")
+                            }
+                        })
+                        
+                    }
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
                 }
             }
         }
+        .scrollContentBackground(.hidden)
     }
 }
 

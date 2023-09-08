@@ -4,16 +4,14 @@
 target 'Coynitt' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for Coynitt
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Core'
-  pod 'Firebase/Storage'
-  pod 'lottie-ios'
   pod 'AlertToast'
   pod 'SDWebImageSwiftUI'
-  pod 'Kingfisher'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'lottie-ios'
+  pod 'FirebaseStorage'
 end

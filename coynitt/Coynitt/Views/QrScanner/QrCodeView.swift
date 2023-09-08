@@ -27,26 +27,27 @@ struct QrCodeView: View {
         
         ZStack {
             VStack {
-                
-                VStack {
-                    // MARK: QR Code
-                    Image(uiImage: generateQRCode(from: " Name: \(userTag)"))
-                        .resizable()
-                        .interpolation(.none)
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 250, height: 250)
-                        .padding(5)
-                        .overlay(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 0.25))
-                    
-                    Text("Scan to receive funds")
-                        .font(.custom("Avenir", size: 12).bold())
-                        .foregroundColor(.black)
-                }
-                .padding(.top, 10)
-                
+                Rectangle()
+                    .fill(Color(red: 47 / 255, green: 107 / 255, blue: 97 / 255))
+                    .frame(width: UIScreen.main.bounds.width, height: 45)
+                    .edgesIgnoringSafeArea(.all)
+                    .overlay(
+                        VStack {
+                            HStack {
+                                Text("Scan QR Code")
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(cynWhite)
+                                    .textCase(.uppercase)
+                                    .kerning(2)
+                                
+                                Spacer()
+                            }
+                            .padding(.leading, 10)
+                        })
                 
                 // MARK: Scan QR
+                
                 HStack {
                     Spacer()
                     
@@ -62,12 +63,36 @@ struct QrCodeView: View {
                                 .font(.custom("Avenir", size: 8).bold())
                                 .foregroundColor(.black)
                                 .padding(5)
+                                .textCase(.uppercase)
+                                .kerning(2)
                         }
                     }).sheet(isPresented: $showQrScanner) {
                         ModalScannerView()
                     }
                 }
                 .padding(.horizontal, 20)
+                
+                // MARK: QR Code
+                
+                VStack {
+                    Image(uiImage: generateQRCode(from: " Name: \(userTag)"))
+                        .resizable()
+                        .interpolation(.none)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 250)
+                        .padding(5)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 0.25))
+                    
+                    Text("Scan to receive funds")
+                        .font(.custom("Avenir", size: 12).bold())
+                        .foregroundColor(.black)
+                        .textCase(.uppercase)
+                        .kerning(2)
+                }
+                .padding(.top, 10)
+                
+                Spacer()
             }
         }
     }

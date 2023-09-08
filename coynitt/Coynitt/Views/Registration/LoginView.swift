@@ -12,7 +12,6 @@ import AlertToast
 import FirebaseAuth
 import CountryPicker
 
-
 struct LoginView: View {
     @State private var isLoggedIn : Bool = false
     @State var showPwdResetSheet : Bool = false
@@ -70,7 +69,7 @@ struct LoginView: View {
                     .foregroundColor(.black)
                     .padding(.leading, 10)
                     
-                    TextField("Enter mobile no.", text: $phoneNumber)
+                    TextField("Enter cell no.", text: $phoneNumber)
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .keyboardType(.numberPad)
@@ -102,21 +101,22 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                // MARK: "login" button
-                Button("verify"){
+                // MARK: "Verify / Login" button
+                Button("Verify"){
                     self.showProgressView = true
                     self.sendOtp()
                 }
+                .font(.headline)
                 .fontWeight(.semibold)
-                .frame(width: 250, height: 60)
+                .frame(width: 200, height: 60)
                 .background(cynGreen)
                 .clipShape(Capsule())
                 .foregroundColor(.white)
                 .disabled((phoneNumber != "") ? false : true)
                 .opacity((phoneNumber != "") ? 1 : 0.5)
-                .alert(isPresented: $viewModel.isError, content: {
-                    Alert(title: Text("Login Error"), message: Text(viewModel.errorMsg).environmentObject(self.viewModel) as? Text)
-                })
+//                .alert(isPresented: $viewModel.isError, content: {
+//                    Alert(title: Text("Login Error"), message: Text(viewModel.errorMsg).environmentObject(self.viewModel) as? Text)
+//                })
                 .sheet(isPresented: $showOtpSheet, onDismiss: {
                     if viewModel.userSession != nil {
                         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -132,8 +132,7 @@ struct LoginView: View {
                 AlertToast(displayMode: .alert, type: .error(cynRed), title: Optional(errTitle), subTitle: Optional(errMessage))
             }
         }
-        .background(cynOrange)
-        .accentColor(cynPurple)
+        .accentColor(cynGreen2)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("")
     }

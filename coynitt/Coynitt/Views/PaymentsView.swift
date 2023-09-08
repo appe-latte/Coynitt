@@ -20,7 +20,6 @@ struct PaymentsView: View {
     
     var body: some View {
         ZStack {
-            cynWhite
             VStack {
                 VStack {
                     HStack {
@@ -376,83 +375,13 @@ struct PaymentsView: View {
                         })
                         // MARK: Send to Zimbabwe sheet
                         .sheet(isPresented: $zwPaySheet) {
-                            VStack {
-                                HStack {
-                                    Text("Send to Zimbabwe")
-                                        .font(.system(size: 13))
-                                        .bold()
-                                        .foregroundColor(.black)
-                                        .padding(.horizontal, 13)
-                                    
-                                    Spacer()
-                                    
-                                    Text("Avail. $\(accBalance, specifier: "%.2f")")
-                                        .font(.system(size: 15))
-                                        .bold()
-                                        .foregroundColor(.black)
-                                        .padding(.horizontal, 20)
-                                }
+                            ZStack {
+                                cynWhite
                                 
-                                Spacer().frame(height: 30)
-                                
-                                VStack {
-                                    HStack {
-                                        Text("Withdrawal method:")
-                                            .font(.custom("Avenir", size: 13))
-                                        
-                                        Button(action: toggle){
-                                            Image(systemName: isChecked ? "circle.circle.fill": "circle")
-                                        }
-                                        
-                                        Text("Ecocash")
-                                            .font(.custom("Avenir", size: 14))
-                                            .fontWeight(.semibold)
-                                        
-                                    }
-                                    .frame(width: 350, height: 50)
-                                    .background(cynGreen2.opacity(0.1))
-                                    .clipShape(RoundedCorner(radius: 15))
-                                }
-                                
-                                Spacer()
-                                    .frame(height: 30)
-                                
-                                
-                                if isChecked == true {
-                                    TxZimbabweView()
-                                    
-                                    Spacer()
-                                    
-                                    Button(action : {},
-                                           label: {
-                                        Text("continue")
-                                            .font(.custom("Avenir", size: 18))
-                                            .fontWeight(.semibold)
-                                            .frame(width: 250, height: 50)
-                                            .foregroundColor(.white)
-                                            .background(cynGreen)
-                                            .clipShape(Capsule())
-                                    })
-                                } else {
-                                    TxZimbabweView().opacity(0.1)
-                                    
-                                    Spacer()
-                                    
-                                    Button(action : {},
-                                           label: {
-                                        Text("continue")
-                                            .font(.custom("Avenir", size: 18))
-                                            .fontWeight(.semibold)
-                                            .frame(width: 250, height: 50)
-                                            .foregroundColor(.white)
-                                            .background(cynGreen.opacity(0))
-                                            .clipShape(Capsule())
-                                            .disabled(true)
-                                    })
-                                }
+                                TxZimbabweView()
                             }
-                            .accentColor(cynGreen)
-                            .padding(.top, 30)
+                            .ignoresSafeArea()
+                            .presentationDetents([.large, .fraction(0.95)])
                         }
                         
                         // MARK: Zambia

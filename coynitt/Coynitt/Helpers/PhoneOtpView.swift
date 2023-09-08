@@ -8,7 +8,6 @@
 import os
 import SwiftUI
 import Combine
-import Firebase
 import FirebaseAuth
 import MapKit
 import AlertToast

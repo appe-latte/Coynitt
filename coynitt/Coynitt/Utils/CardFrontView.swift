@@ -12,26 +12,37 @@ struct CardFrontView: View {
     @State private var lastFourDigits : Int = 1762
     @State var accType : String = "Current"
     
-    @State var cardWidth : CGFloat = 250.0
-    @State var cardHeight : CGFloat = 150
+    @State var cardWidth : CGFloat = 350
+    @State var cardHeight : CGFloat = 225
     
     let width : CGFloat
     let height : CGFloat
-    @Binding var degree : Double
+    
+    @State private var showCardDetailsSheet = false
+    @State private var showPinNumberSheet = false
     
     var body: some View {
         ZStack {
-            GeometryReader { geo in
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynPurple]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .frame(width: cardWidth, height: cardHeight)
-                    .cornerRadius(15, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
-                    .edgesIgnoringSafeArea(.all)
-                    .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(cynWhite)
+                .frame(width: cardWidth, height: cardHeight)
+                .shadow(color: .black, radius: 0.1, x: 4, y: 4)
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
+                    ZStack {
+                        HStack {
+                            Rectangle()
+                                .fill(cynOlive)
+                                .frame(width: 90, height: cardHeight)
+                                .cornerRadius(20, corners: [.topLeft, .bottomLeft])
+                            
+                            Spacer()
+                        }
+                        
                         VStack {
                             // MARK: Top Section
                             HStack {
-                                Image("logo-trans")
+                                Image("logo")
                                     .resizable()
                                     .scaledToFill()
                                     .aspectRatio(contentMode: .fill)
@@ -42,39 +53,138 @@ struct CardFrontView: View {
                                 Spacer()
                                 
                                 Text("COYNITT")
-                                    .font(.custom("Avenir", size: 16))
+                                    .font(.headline)
                                     .bold()
-                                    .foregroundColor(.white)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(cynBlack)
                             }
-                            .padding(.horizontal, 10)
+                            .padding(15)
                             
                             Spacer()
                             
-                            // MARK: Middle Section
-                            VStack {
+                            // MARK: Last Four Digits
+                            VStack(spacing: 5) {
                                 HStack {
-                                    Text("Available Balance")
-                                        .font(.custom("Avenir", size: 16))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
+                                    Image("card-chip")
+                                        .resizable()
+                                        .frame(width: 30, height: 25)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(cynWhite, lineWidth: 1))
                                     
                                     Spacer()
+                                    
+                                    Text("···· ···· ····")
+                                        .font(.largeTitle)
+                                        .fontWeight(.semibold)
+                                        .kerning(3)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(.black)
+                                    
+                                    Text("\(String(lastFourDigits))")
+                                        .font(.custom("Impact", size: 18))
+                                        .kerning(3)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(.black)
                                 }
+                                .padding(.trailing, 20)
+                                .padding(.bottom, 10)
                                 
                                 HStack {
-                                    Text("$\(accBalance, specifier: "%.2f")")
-                                        .font(.custom("Avenir", size: 20))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white)
+                                    
+                                    // MARK: Display Card Details
+                                    VStack {
+                                        Button(action: {
+                                            showCardDetailsSheet.toggle()
+                                        }, label: {
+                                            Image("c-card")
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
+                                                .foregroundColor(cynWhite)
+                                                .padding(5)
+                                                .background(cynOlive)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
+                                        })
+                                        
+                                        Text("Details")
+                                            .font(.system(size: 6))
+                                            .fontWeight(.medium)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynWhite)
+                                    }
+                                    
+                                    // MARK: Pin Reminder
+                                    VStack {
+                                        Button(action: {
+                                            showPinNumberSheet.toggle()
+                                        }, label: {
+                                            Image("lock")
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
+                                                .foregroundColor(cynWhite)
+                                                .padding(5)
+                                                .background(cynOlive)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
+                                        })
+                                        
+                                        Text("Pin")
+                                            .font(.system(size: 6))
+                                            .fontWeight(.medium)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynWhite)
+                                    }
                                     
                                     Spacer()
+                                        .frame(width: 50)
                                     
+                                    // MARK: Account Balance
+                                    VStack {
+                                        HStack {
+                                            Text("$\(accBalance, specifier: "%.2f")")
+                                                .font(.custom("Impact", size: 24))
+                                                .textCase(.uppercase)
+                                                .kerning(3)
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        HStack {
+                                            Text("Available Balance")
+                                                .font(.system(size: 7))
+                                                .fontWeight(.semibold)
+                                                .kerning(3)
+                                                .textCase(.uppercase)
+                                                .foregroundColor(.black)
+                                            
+                                            Spacer()
+                                        }
+                                    }
                                 }
-                                .padding(.horizontal, 5)
                             }
+                            .padding(15)
                         }
-                            .padding(10))
-            }
-        }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+                    }
+                )
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(cynWhite, lineWidth: 1))
+        }
+        .blurredSheet(.init(.ultraThinMaterial), show: $showCardDetailsSheet) {
+            //
+        } content: {
+            CardDetailsView()
+                .presentationDetents([.large, .fraction(0.8)])
+                .ignoresSafeArea()
+        }
+        .blurredSheet(.init(.ultraThinMaterial), show: $showPinNumberSheet) {
+            //
+        } content: {
+            PinReminderView()
+                .presentationDetents([.medium, .fraction(0.45)])
+                .ignoresSafeArea()
+        }
     }
 }

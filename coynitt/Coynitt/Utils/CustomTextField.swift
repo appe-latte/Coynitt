@@ -22,7 +22,7 @@ struct CustomTextField: View {
             }
             
             HStack(spacing: 15) {
-                Image(systemName: imageName)
+                Image(imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
@@ -31,6 +31,30 @@ struct CustomTextField: View {
                 
                 TextField("", text: $text)
                     .font(.footnote)
+            }
+        }
+    }
+}
+
+struct TxCustomTextField: View {
+    @Binding var text : String
+    let placeholder : Text
+    
+    var body: some View {
+        ZStack {
+            if text.isEmpty {
+                placeholder
+                    .font(.subheadline)
+                    .foregroundColor(Color(uiColor: .lightGray))
+                    .padding(.leading, 10)
+                
+                Spacer()
+            }
+            
+            HStack {
+                TextField("", text: $text)
+                    .font(.subheadline)
+                    .padding(.leading, 10)
             }
         }
     }

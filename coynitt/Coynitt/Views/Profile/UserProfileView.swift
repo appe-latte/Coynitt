@@ -14,7 +14,7 @@ struct UserProfileView: View {
     @State var userMemberAcctType : String = "Premium"
     @State var userEmail : String = "sam_james90@coynitt.com"
     @State var userAddr : String = "125 Lethbridge Way, Calgary, AB"
-    @State var userPhn : String = "(587) 187-9272"
+    @State var userPhn : String = "+1 (587) 187-9272"
     @State var userDob : String = "11-May-92"
     @State var userCountry : String = "Canada"
     
@@ -24,10 +24,12 @@ struct UserProfileView: View {
     
     var body: some View {
         ZStack {
-            cynWhite
+            cynOlive
+                .ignoresSafeArea()
+            
             VStack {
                 Rectangle()
-                    .fill(Color(red: 177 / 255, green: 156 / 255, blue: 217 / 255))
+                    .fill(Color(red: 47 / 255, green: 107 / 255, blue: 97 / 255))
                     .frame(width: UIScreen.main.bounds.width, height: 45)
                     .edgesIgnoringSafeArea(.all)
                     .overlay(
@@ -37,6 +39,8 @@ struct UserProfileView: View {
                                     .font(.subheadline)
                                     .fontWeight(.bold)
                                     .foregroundColor(cynWhite)
+                                    .textCase(.uppercase)
+                                    .kerning(2)
                                 
                                 Spacer()
                             }
@@ -55,9 +59,10 @@ struct UserProfileView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .clipped()
                                 .frame(width: 90, height: 90)
-                                .clipShape(Circle())
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynBlack, lineWidth: 1))
                                 .padding(5)
-                            
+                                
                             Button(action: {},
                                    label:  {
                                 Text("EDIT")
@@ -74,13 +79,14 @@ struct UserProfileView: View {
                         }
                         
                         // MARK: Name / UserID / Membership Type
-                        
                         VStack {
                             HStack {
                                 Text("\(userFName) \(userLName)")
-                                    .font(.custom("Avenir", size: 14).bold())
+                                    .font(.system(size: 12))
+                                    .fontWeight(.heavy)
+                                    .kerning(2)
                                     .textCase(.uppercase)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(cynBlack)
                                     .scaledToFill()
                                     .minimumScaleFactor(0.5)
                                 
@@ -90,7 +96,9 @@ struct UserProfileView: View {
                             VStack {
                                 HStack {
                                     Text("User ID: \(userID)")
-                                        .font(.custom("Avenir", size: 11).bold())
+                                        .font(.system(size: 10))
+                                        .fontWeight(.medium)
+                                        .kerning(2)
                                         .textCase(.uppercase)
                                         .foregroundColor(.gray)
                                         .scaledToFill()
@@ -101,7 +109,9 @@ struct UserProfileView: View {
                                 
                                 HStack {
                                     Text("Account Type: \(userMemberAcctType)")
-                                        .font(.custom("Avenir", size: 11).bold())
+                                        .font(.system(size: 10))
+                                        .fontWeight(.medium)
+                                        .kerning(2)
                                         .textCase(.uppercase)
                                         .foregroundColor(.gray)
                                         .scaledToFill()
@@ -130,16 +140,22 @@ struct UserProfileView: View {
                                     VStack {
                                         HStack {
                                             Text("Email")
-                                                .font(.custom("Avenir", size: 12).bold())
-                                                .foregroundColor(.black)
+                                                .font(.system(size: 12))
+                                                .fontWeight(.semibold)
+                                                .kerning(2)
+                                                .textCase(.uppercase)
+                                                .foregroundColor(cynBlack)
                                             
                                             Spacer()
                                         }
                                         
                                         HStack {
                                             Text(userEmail)
-                                                .font(.custom("Avenir", size: 15).bold())
-                                                .foregroundColor(.black)
+                                                .font(.system(size: 10))
+                                                .fontWeight(.medium)
+                                                .kerning(2)
+                                                .textCase(.uppercase)
+                                                .foregroundColor(cynBlack)
                                                 .minimumScaleFactor(0.5)
                                             
                                             Spacer()
@@ -151,18 +167,23 @@ struct UserProfileView: View {
                                 VStack {
                                     HStack {
                                         Text("Date of Birth")
-                                            .font(.custom("Avenir", size: 12).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 12))
+                                            .fontWeight(.semibold)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                         
                                         Spacer()
                                     }
                                     
                                     HStack {
                                         Text(userDob)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                             .minimumScaleFactor(0.5)
-                                        
                                         Spacer()
                                     }
                                 }
@@ -171,25 +192,38 @@ struct UserProfileView: View {
                                 VStack {
                                     HStack {
                                         Text("Phone")
-                                            .font(.custom("Avenir", size: 12).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 12))
+                                            .fontWeight(.semibold)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                         
                                         Spacer()
+                                        
                                     }
                                     
                                     HStack {
-                                        Image("canada")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 15, height: 10)
-                                        
                                         Text(userPhn)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                             .minimumScaleFactor(0.5)
                                         
                                         Spacer()
+                                        
+                                        Button(action: {}, label: {
+                                            Text("change")
+                                                .font(.custom("Avenir", size: 10).bold())
+                                                .foregroundColor(.black)
+                                                .frame(width: 60, height: 20)
+                                                .padding(2)
+                                                .overlay(
+                                                    Capsule(style: .continuous)
+                                                        .stroke(.black, style: StrokeStyle(lineWidth: 1))
+                                                )
+                                        })
                                     }
                                 }
                                 
@@ -197,16 +231,22 @@ struct UserProfileView: View {
                                 VStack {
                                     HStack {
                                         Text("Address")
-                                            .font(.custom("Avenir", size: 12).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 12))
+                                            .fontWeight(.semibold)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                         
                                         Spacer()
                                     }
                                     
                                     HStack {
                                         Text(userAddr)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                             .minimumScaleFactor(0.5)
                                         
                                         Spacer()
@@ -217,8 +257,11 @@ struct UserProfileView: View {
                                 VStack {
                                     HStack {
                                         Text("Country")
-                                            .font(.custom("Avenir", size: 12).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 12))
+                                            .fontWeight(.semibold)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                         
                                         Spacer()
                                     }
@@ -231,8 +274,11 @@ struct UserProfileView: View {
                                             .frame(width: 15, height: 10)
                                         
                                         Text(userCountry)
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .kerning(2)
+                                            .textCase(.uppercase)
+                                            .foregroundColor(cynBlack)
                                             .minimumScaleFactor(0.5)
                                         
                                         Spacer()
@@ -242,14 +288,19 @@ struct UserProfileView: View {
                                 // MARK: Disclaimer
                                 Text("To update your personal information email: verification@coynitt.com")
                                     .lineLimit(nil)
-                                    .font(.custom("Avenir", size: 10).bold())
-                                    .foregroundColor(Color.black)
-                                    .accentColor(cynGreen2)
+                                    .font(.system(size: 7))
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(cynBlack)
+                                    .minimumScaleFactor(0.5)
+                                    .accentColor(cynOlive)
                             }
                         }
                     }
                 }
             }
-        }.environment(\.defaultMinListRowHeight, rowHeight)
+        }
+        .environment(\.defaultMinListRowHeight, rowHeight)
+        .scrollContentBackground(.hidden)
     }
 }

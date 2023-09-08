@@ -16,24 +16,32 @@ struct CardBackView: View {
     @State private var expiryDate = "03/25"
     @State private var fullName : String = "Samuel Jameson"
     
-    @State var cardWidth : CGFloat = 250.0
-    @State var cardHeight : CGFloat = 150
+    @State var cardWidth : CGFloat = 325
+    @State var cardHeight : CGFloat = 200
     
     @State var isSecured: Bool = true
     
     let width : CGFloat
     let height : CGFloat
-    @Binding var degree : Double
     
     var body: some View {
         ZStack {
-            GeometryReader { geo in
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [cynGreen2, cynGreen]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .frame(width: cardWidth, height: cardHeight)
-                    .cornerRadius(15, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
-                    .edgesIgnoringSafeArea(.all)
-                    .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(cynWhite)
+                .frame(width: cardWidth, height: cardHeight)
+                .shadow(color: .black, radius: 0.1, x: 4, y: 4)
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
+                    ZStack {
+                        HStack {
+                            Spacer()
+                            
+                            Rectangle()
+                                .fill(cynOlive)
+                                .frame(width: 90, height: cardHeight)
+                                .cornerRadius(20, corners: [.topRight, .bottomRight])
+                        }
+                        
                         VStack {
                             // MARK: Top Section
                             HStack {
@@ -41,30 +49,35 @@ struct CardBackView: View {
                                 Spacer()
                                 
                                 Text("Debit")
-                                    .font(.custom("Avenir", size: 14))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.white)
+                                    .font(.headline)
+                                    .bold()
+                                    .kerning(2)
                                     .textCase(.uppercase)
+                                    .foregroundColor(cynWhite)
                             }
                             .padding(.horizontal, 10)
-                            .padding(.top, 10)
+                            .padding(.vertical, 20)
                             
                             Rectangle()
-                                .frame(width: cardWidth, height: 20)
-                                .background(.black).opacity(0.1)
+                                .fill(cynBlack.opacity(0.1))
+                                .frame(width: cardWidth, height: 40)
                                 .overlay(
                                     HStack {
                                         if isSecured {
                                             Text("**** **** **** \(String(lastFourDigits))")
-                                                .font(.custom("Avenir", size: 14))
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.white)
+                                                .font(.headline)
+                                                .fontWeight(.heavy)
+                                                .kerning(2)
+                                                .textCase(.uppercase)
+                                                .foregroundColor(cynOlive)
                                                 .padding(.leading, 5)
                                         } else {
                                             Text("\(String(firstFourDigits)) " + "\(String(secondFourDigits)) " + "\(String(thirdFourDigits)) " + "\(String(lastFourDigits))")
-                                                .font(.custom("Avenir", size: 14))
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.white)
+                                                .font(.headline)
+                                                .fontWeight(.heavy)
+                                                .kerning(2)
+                                                .textCase(.uppercase)
+                                                .foregroundColor(cynOlive)
                                                 .padding(.leading, 5)
                                         }
                                         
@@ -76,13 +89,13 @@ struct CardBackView: View {
                                             if isSecured == true {
                                                 Image(systemName: "eye.fill")
                                                     .resizable()
-                                                    .frame(width: 20, height: 14)
+                                                    .frame(width: 30, height: 20)
                                                     .foregroundColor(cynWhite)
                                                     .padding(2)
                                             } else {
                                                 Image(systemName: "eye.slash.fill")
                                                     .resizable()
-                                                    .frame(width: 20, height: 14)
+                                                    .frame(width: 30, height: 20)
                                                     .foregroundColor(cynWhite)
                                                     .padding(2)
                                             }
@@ -93,53 +106,61 @@ struct CardBackView: View {
                             
                             // MARK: Middle Section
                             HStack {
-                                Text("\(String(expiryDate))") // String() ~ removes comma from Int
-                                    .font(.custom("Avenir", size: 12))
+                                Text("Expiry: \(String(expiryDate))") // String() ~ removes comma from Int
+                                    .font(.caption)
                                     .fontWeight(.semibold)
-                                    .foregroundColor(.white)
+                                    .kerning(2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(cynBlack)
                                 
                                 Spacer()
                                 
                                 if isSecured {
-                                    Text("***")
-                                        .font(.custom("Avenir", size: 12))
+                                    Text("CVV: ***")
+                                        .font(.caption)
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.white)
+                                        .kerning(2)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(cynWhite)
+                                        .padding(2)
                                 } else {
-                                    Text("\(String(cvv))")
-                                        .font(.custom("Avenir", size: 12))
+                                    Text("CVV: \(String(cvv))")
+                                        .font(.caption)
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.white)
+                                        .kerning(2)
+                                        .textCase(.uppercase)
+                                        .foregroundColor(cynWhite)
+                                        .padding(2)
                                 }
                             }
-                            .padding(.horizontal, 5)
+                            .padding(.horizontal, 10)
                             .padding(.top, 10)
                             
                             Spacer()
                             
                             HStack {
                                 Text("\(fullName)")
-                                    .font(.custom("Avenir", size: 12))
+                                    .font(.caption)
                                     .fontWeight(.semibold)
-                                    .foregroundColor(.white)
+                                    .kerning(2)
                                     .textCase(.uppercase)
+                                    .foregroundColor(cynBlack)
                                 
                                 Spacer()
                                 
-                                Image("master-card")
+                                Image("visa-logo")
                                     .resizable()
-                                    .scaledToFill()
-                                    .aspectRatio(contentMode: .fill)
+                                    .scaledToFit()
                                     .clipped()
-                                    .frame(width: 40, height: 40)
+                                    .frame(width: 45, height: 40)
+                                    .padding(5)
+                                    .foregroundColor(cynWhite)
                             }
-                            .padding(.horizontal, 5)
+                            .padding(.horizontal, 10)
                         }
-                            .padding(10))
-            }
-        }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+                    }
+                )
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(cynBlack, lineWidth: 1))
+        }
     }
 }
-
-
-

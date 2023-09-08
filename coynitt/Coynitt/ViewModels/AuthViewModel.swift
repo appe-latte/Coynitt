@@ -5,10 +5,15 @@
 //  Created by Stanford L. Khumalo on 2022-12-13.
 //
 
-import Foundation
+
 import SwiftUI
-import Firebase
 import Combine
+import FirebaseAuth
+import Foundation
+import FirebaseFirestore
+import FirebaseCore
+import Kingfisher
+import FirebaseStorage
 
 class AuthViewModel : ObservableObject {
     @Published var userSession : FirebaseAuth.User? // tracks if user is logged in

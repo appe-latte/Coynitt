@@ -16,10 +16,12 @@ struct SignUpView: View {
     @State private var phoneNumber = ""
     @State private var email = ""
     @State private var userPassword = ""
-    @State private var cellNum = "-"
-    @State private var regCountry = "-"
+    @State private var cellNum = ""
+    @State private var regCountry = ""
     @State private var dob = "-"
     
+    @State var isChecked : Bool = false
+    func toggle(){ isChecked = !isChecked }
     @State private var keyboardHeight: CGFloat = 0
     
     // MARK: Image Picker
@@ -86,7 +88,7 @@ struct SignUpView: View {
                                                 .foregroundColor(.black)
                                         }.frame(width: 125, height: 125)
                                             .padding(.vertical, 5)
-                                            .background(cynOrange.opacity(0.1))
+                                            .background(cynGreen2.opacity(0.1))
                                             .clipShape(Circle())
                                     }
                                 }
@@ -96,27 +98,44 @@ struct SignUpView: View {
                         }
                         
                         // MARK: Textfields
-                        VStack(spacing: 5) {
+                        VStack(spacing: 15) {
                             
                             // MARK: First Name Text
-                            CustomTextField(text: $userFName, placeholder: Text("First Name"), imageName: "users")
+                            CustomTextField(text: $userFName, placeholder: Text("Enter first name"), imageName: "users")
                                 .padding(5)
                                 .foregroundColor(.black)
                                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
+                                .background(cynGreen2.opacity(0.1))
+                                .clipShape(Capsule())
                                 .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
                             
+                            
                             // MARK: Last Name Text
-                            CustomTextField(text: $userLName, placeholder: Text("Last Name"), imageName: "users")
+                            CustomTextField(text: $userLName, placeholder: Text("Enter last name"), imageName: "users")
                                 .padding(5)
                                 .foregroundColor(.black)
                                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
+                                .background(cynGreen2.opacity(0.1))
+                                .clipShape(Capsule())
                                 .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
                             
                             // MARK: User Email Text
-                            CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
+                            CustomTextField(text: $email, placeholder: Text("Enter email"), imageName: "envelope")
                                 .padding(5)
                                 .foregroundColor(.black)
                                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
+                                .background(cynGreen2.opacity(0.1))
+                                .clipShape(Capsule())
+                                .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+                                .keyboardType(.emailAddress)
+                            
+                            // MARK: Reg Country Text
+                            CustomTextField(text: $regCountry, placeholder: Text("Country of Residence"), imageName: "location")
+                                .padding(5)
+                                .foregroundColor(.black)
+                                .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
+                                .background(cynGreen2.opacity(0.1))
+                                .clipShape(Capsule())
                                 .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
                             
                             Text("* Please ensure that information is entered in all the available fields and that a profile image is selected.")
@@ -128,29 +147,92 @@ struct SignUpView: View {
                             
                             Spacer()
                             
+                            // MARK: T&C's checkbox
+                            
+                            HStack {
+                                
+                                Button(action: toggle){
+                                    Image(systemName: isChecked ? "square.fill": "square")
+                                        .resizable()
+                                        .frame(width: 15, height: 15)
+                                        .foregroundColor(cynGreen)
+                                }
+                                
+                                Text("I accept the")
+                                    .font(.footnote)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.black)
+                                
+                                Button("Terms of Service."){ }
+                                    .font(.footnote)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.blue)
+                            }
                         }.font(.subheadline)
                     }
                 }
                 Spacer()
                 
-                // MARK: "Sign Up" Button
-                Button(action: {
-                    guard let image = selectedUIImage else {return}
-                    viewModel.saveUserInfo(email: email, userFName: userFName, userLName: userLName, profileImage: image, cellNum: cellNum, dob: dob, regCountry: regCountry)
+                VStack {
                     
-                }, label: {
-                    Text("Sign Up")
+                    if isChecked == true {
+                        // MARK: "Sign Up" Button
+                        Button(action: {
+                            guard let image = selectedUIImage else {return}
+                            viewModel.saveUserInfo(email: email, userFName: userFName, userLName: userLName, profileImage: image, cellNum: cellNum, dob: dob, regCountry: regCountry)
+                            
+                        }, label: {
+                            Text("Sign Up")
+                                .fontWeight(.semibold)
+                                .frame(width: 250, height: 60)
+                                .background(cynGreen)
+                                .clipShape(Capsule())
+                                .foregroundColor(.white)
+                        })
+                        .disabled((userLName != "" && userFName != "" && email != "") ? false : true)
+                        //                    .opacity((userLName != "" && userLName != "" && email != "") ? 1 : 0.6)
+                        //                .alert(isPresented: $viewModel.isError, content: {
+                        //                    Alert(title: Text("Registration Error"), message: Text(viewModel.errorMsg))
+                    } else {
+                        
+                        // MARK: "Sign Up" Button
+                        Button(action: {
+                            guard let image = selectedUIImage else {return}
+                            viewModel.saveUserInfo(email: email, userFName: userFName, userLName: userLName, profileImage: image, cellNum: cellNum, dob: dob, regCountry: regCountry)
+                            
+                        }, label: {
+                            Text("Sign Up")
+                                .fontWeight(.semibold)
+                                .frame(width: 250, height: 60)
+                                .background(cynGreen.opacity(0.1))
+                                .clipShape(Capsule())
+                                .foregroundColor(.white)
+                        })
+                        .disabled((userLName != "" && userFName != "" && email != "" && isChecked != false) ? false : true)
+                        .opacity((userLName != "" && userLName != "" && email != "") ? 1 : 0.6)
+                        //                .alert(isPresented: $viewModel.isError, content: {
+                        //                    Alert(title: Text("Registration Error"), message: Text(viewModel.errorMsg))
+                    }
+                    
+                    
+                    //                }).sheet(isPresented: $showOTPSheetView){}
+                    
+                    // MARK: "login" option
+                    
+                    HStack {
+                        Text("Already have an account?")
+                            .font(.footnote)
+                            .foregroundColor(.black
+                            )
+                        
+                        Button("Log in"){
+                            
+                        }
+                        .font(.footnote)
                         .fontWeight(.semibold)
-                        .frame(width: 250, height: 60)
-                        .background(cynGreen)
-                        .clipShape(Capsule())
-                        .foregroundColor(.white)
-                })
-                .disabled((userLName != "" && userFName != "" && email != "") ? false : true)
-                .opacity((userLName != "" && userLName != "" && email != "") ? 1 : 0.6)
-                .alert(isPresented: $viewModel.isError, content: {
-                    Alert(title: Text("Registration Error"), message: Text(viewModel.errorMsg))
-                }).sheet(isPresented: $showOTPSheetView){}
+                        .foregroundColor(.blue)
+                    }
+                }
             }
         }
         .keyboardAdaptive()

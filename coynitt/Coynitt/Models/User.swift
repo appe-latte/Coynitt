@@ -5,7 +5,9 @@
 //  Created by Stanford L. Khumalo on 10/03/2022.
 //
 
-import Firebase
+import FirebaseFirestore
+import FirebaseCore
+import FirebaseAuth
 
 struct User: Identifiable {
     let id : String

@@ -18,12 +18,15 @@ struct AccountDetailsView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                cynOlive
+                    .ignoresSafeArea()
+                
                 VStack {
                     Form {
                         // MARK: Deposit Protection
                         Section {
                             VStack {
-                                HStack {
+                                HStack(spacing: 10) {
                                     Image("cdic-logo")
                                         .resizable()
                                         .scaledToFit()
@@ -32,21 +35,22 @@ struct AccountDetailsView: View {
                                         .padding(.horizontal, 2)
                                     
                                     Text("All customer deposits are monitored and protected by the CDIC.")
-                                        .font(.custom("Avenir", size: 10).bold())
-                                        .lineLimit(nil)
-                                        .fixedSize(horizontal: false, vertical: true)
+                                        .font(.system(size: 12))
+                                        .fontWeight(.medium)
                                         .textCase(.uppercase)
-                                    
-//                                    Spacer()
-                                    
-                                    
+                                        .foregroundColor(.black)
+                                        .padding(2)
                                 }
                                 
                                 HStack {
                                     Button(action: {}, label: {
                                         Text("More info")
-                                            .font(.custom("Avenir", size: 10))
+                                            .font(.system(size: 10))
+                                            .fontWeight(.semibold)
+                                            .textCase(.uppercase)
+                                            .kerning(1)
                                             .foregroundColor(.blue)
+                                        
                                     })
                                     
                                     Spacer()
@@ -54,59 +58,14 @@ struct AccountDetailsView: View {
                             }
                         }
                         
-                        // MARK: Account Controls
-                        Section {
-                            // MARK: Payment Methods
-                            NavigationLink(destination: PaymentsView()){
-                                VStack {
-                                    HStack {
-                                        Text("Account Payment Methods")
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    HStack {
-                                        Text("Add new debit card or bank information")
-                                            .font(.custom("Avenir", size: 10).bold())
-                                            .foregroundColor(.black)
-                                        
-                                        Spacer()
-                                    }
-                                }
-                            }
-                            
-                            // MARK: Transfer Limit
-                            NavigationLink(destination: PaymentsView()){
-                                VStack {
-                                    HStack {
-                                        Text("Account Limits")
-                                            .font(.custom("Avenir", size: 15).bold())
-                                            .foregroundColor(.black)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    HStack {
-                                        Text("Modify your daily transfer limit")
-                                            .font(.custom("Avenir", size: 10).bold())
-                                            .foregroundColor(.black)
-                                        
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        }
+                        
                     }
                     .environment(\.defaultMinListRowHeight, rowHeight)
                     .foregroundColor(Color.black)
-                    .onAppear(perform: {
-                        UITableView.appearance().backgroundColor = UIColor.clear
-                        UITableViewCell.appearance().backgroundColor = UIColor.clear
-                    })
                 }
             }
-        }.accentColor(cynWhite)
+        }
+        .scrollContentBackground(.hidden)
+        .accentColor(cynWhite)
     }
 }

@@ -11,145 +11,222 @@ import Charts
 struct TransactionView: View {
     @State var rowHeight = 50.0 // sets row height for list
     
-    let dummyActivity = [
-        Activity(activDate: "31-Sep", activName: "To: Marshawn Lychee", activAmount: 135.25),
-        Activity(activDate: "31-Sep", activName: "To: Russell Wheelson", activAmount: 450.00),
-        Activity(activDate: "27-Sep", activName: "Pay: Multichoose (ZAR) *AG18773", activAmount: 65.15),
-        Activity(activDate: "25-Sep", activName: "Add: Funds", activAmount: 245.00),
-        Activity(activDate: "25-Sep", activName: "From: Stanford Khumalo", activAmount: 120.00),
-        Activity(activDate: "25-Sep", activName: "To: Dakson Prescott", activAmount: 750.29),
-        Activity(activDate: "17-Sep", activName: "To: Paul Mahoomes", activAmount: 135.25),
-        Activity(activDate: "17-Sep", activName: "From: Libra James", activAmount: 450.00),
-        Activity(activDate: "15-Sep", activName: "Pay: Eiskom *AG18773", activAmount: 65.15),
-        Activity(activDate: "14-Sep", activName: "Pay: Mobile top-up (eco) * - 9837", activAmount: 15.00),
-        Activity(activDate: "12-Sep", activName: "To: Alberto Nyathi", activAmount: 120.00),
-        Activity(activDate: "11-Sep", activName: "To: Stewie Gerrard", activAmount: 750.29),
-        Activity(activDate: "11-Sep", activName: "From: Paulo Figo", activAmount: 135.25),
-        Activity(activDate: "07-Sep", activName: "To: Zinedo Zidane", activAmount: 450.00)
-    ]
+    @EnvironmentObject var transactionViewModel: TransactionViewModel
     
-    let chartData: [DataItem] = [
-        DataItem(name: "Jan", value: 486),
-        DataItem(name: "Feb", value: 87),
-        DataItem(name: "Mar", value: 725),
-        DataItem(name: "Apr", value: 439),
-        DataItem(name: "May", value: 287),
-        DataItem(name: "Jun", value: 771),
-        DataItem(name: "Jul", value: 873),
-        DataItem(name: "Aug", value: 569),
-        DataItem(name: "Sep", value: 287),
-        DataItem(name: "Oct", value: 134),
-        DataItem(name: "Nov", value: 657),
-        DataItem(name: "Dec", value: 403)
-    ]
+    // MARK: Environment Values
+    @Environment(\.self) var env
+    @Namespace var animation
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                cynWhite
-                VStack {
-                    Rectangle()
-                        .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 120)
-                        .edgesIgnoringSafeArea(.all)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 15){
+                HStack(spacing: 15){
                     
-                    // MARK: Line Chart
-                    VStack {
-                        HStack {
-                            Text("Monthly Summary")
-                                .font(.custom("Avenir", size: 14).bold())
-                            
-                            Spacer()
-                        }
-                        .padding(.leading, 10)
-                        
-                        Chart {
-                            ForEach(chartData) { item in
-                                LineMark(
-                                    x: .value("Month", item.name),
-                                    y: .value("Amount", item.value)
-                                )
-                                .lineStyle(.init(lineWidth: 3, lineCap: .round, lineJoin: .round))
-                            }
-                            .foregroundStyle(cynGreen2)
-                            .interpolationMethod(.linear)
-                            .symbol(Circle())
-                        }
-                        .chartPlotStyle { plotArea in
-                            plotArea
-                                .background(cynGreen.opacity(0.05))
-                        }
-                    }
-                    .font(.custom("Avenir", size: 10).bold())
-                    .frame(width: UIScreen.main.bounds.width, height: 250, alignment: .center)
-                    .padding(20)
-                    
-                    
-                    Spacer()
-                    
-                    // MARK: "Recent Transactions"
-                    
-                    Form {
-                        Section(header: Text("Recent Transactions")) {
-                            List(dummyActivity) { activity in
-                                ActivityRow(activity: activity)
-                            }
-                        }
-                    }
-                    .foregroundColor(.black)
-                    .environment(\.defaultMinListRowHeight, rowHeight)
-                    
-                }
-                .padding(.top, -100) // <--- removes white space above form from Navigation view
-                
-                Spacer()
-            }
-            .accentColor(cynGreen)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Transaction History")
+                    Text("Transactions")
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .foregroundColor(cynWhite)
                         .textCase(.uppercase)
+                        .kerning(5)
+                        .frame(maxWidth: .infinity,alignment: .leading)
+                    
+                    Button {
+                        transactionViewModel.showFilterView = true
+                    } label: {
+                        Image(systemName: "slider.horizontal.3")
+                            .foregroundColor(cynBlack)
+                            .frame(width: 40, height: 40)
+                            .background(cynWhite,in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        
+                    }
                 }
                 
-                ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button(action: {
-                        
-                    }, label: {
-                        VStack {
-                            Image("policy")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(cynWhite)
-                                .clipShape(Circle())
-                            
-                            Text("Statements")
-                                .font(.system(size: 10))
-                                .foregroundColor(cynWhite)
-                        }
-                    })
+                CustomSegmentedControl()
+                    .padding(.top)
+                
+                // MARK: Currently Filtered Date With Amount
+                VStack(spacing: 15){
+                    Text(transactionViewModel .convertDateToString())
+                        .opacity(0.7)
+                    
+                    Text(transactionViewModel.convertExpensesToCurrency(expenses: transactionViewModel.expenses, type: transactionViewModel.tabName))
+                        .font(.title.bold())
+                        .opacity(0.9)
+                        .animation(.none, value: transactionViewModel.tabName)
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background{
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                        .fill(.white)
+                }
+                .padding(.vertical,20)
+                
+                ForEach(transactionViewModel.expenses.filter{
+                    return $0.type == transactionViewModel.tabName
+                }){expense in
+                    TransactionCardView(expense: expense)
+                        .environmentObject(transactionViewModel)
                 }
             }
+            .padding()
+        }
+        .navigationBarHidden(true)
+        .overlay {
+            FilterView()
         }
     }
     
-    struct DataItem: Identifiable {
-        let name: String
-        let value: Double
-        let id = UUID()
+    // MARK: Filter View
+    @ViewBuilder
+    func FilterView()->some View{
+        ZStack{
+            Color.black
+                .opacity(transactionViewModel.showFilterView ? 0.25 : 0)
+                .ignoresSafeArea()
+            
+            // MARK: Based On the Date Filter Expenses Array
+            if transactionViewModel.showFilterView{
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Start Date")
+                        .font(.caption)
+                        .opacity(0.7)
+                    
+                    DatePicker("", selection: $transactionViewModel.startDate,in: Date.distantPast...Date(), displayedComponents: [.date])
+                        .labelsHidden()
+                        .datePickerStyle(.compact)
+                    
+                    Text("End Date")
+                        .font(.caption)
+                        .opacity(0.7)
+                        .padding(.top,10)
+                    
+                    DatePicker("", selection: $transactionViewModel.endDate,in: Date.distantPast...Date(), displayedComponents: [.date])
+                        .labelsHidden()
+                        .datePickerStyle(.compact)
+                }
+                .padding(20)
+                .background{
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(.white)
+                }
+                // MARK: Close Button
+                .overlay(alignment: .topTrailing, content: {
+                    Button {
+                        transactionViewModel.showFilterView = false
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.title3)
+                            .foregroundColor(.black)
+                            .padding(5)
+                    }
+                })
+                .padding()
+            }
+        }
+        .animation(.easeInOut, value: transactionViewModel.showFilterView)
     }
     
-    struct ChartHeaderView: View {
-        var title: String
-        var height: CGFloat
-        
-        var body: some View {
-            Text(title)
-                .frame(height: height)
+    // MARK: Custom Segmented Control
+    @ViewBuilder
+    func CustomSegmentedControl() -> some View {
+        HStack(spacing: 0){
+            ForEach([ExpenseType.income,ExpenseType.expense],id: \.rawValue){ tab in
+                Text(tab.rawValue.capitalized)
+                    .fontWeight(.semibold)
+                    .foregroundColor(transactionViewModel.tabName == tab ? .white : .black)
+                    .opacity(transactionViewModel.tabName == tab ? 1 : 0.7)
+                    .padding(.vertical,12)
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        // MARK: With Matched Geometry Effect
+                        if transactionViewModel.tabName == tab {
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(
+                                    LinearGradient(colors: [
+                                        Color("Gradient1"),
+                                        Color("Gradient2"),
+                                        Color("Gradient3"),
+                                    ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                )
+                                .matchedGeometryEffect(id: "TAB", in: animation)
+                        }
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation {
+                            transactionViewModel.tabName = tab
+                        }
+                    }
+            }
+        }
+        .padding(5)
+        .background{
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .fill(.white)
+        }
+    }
+}
+
+struct TransactionView_Previews: PreviewProvider {
+    static var previews: some View {
+        TransactionView()
+            .environmentObject(TransactionViewModel())
+    }
+}
+
+struct TransactionCardView: View {
+    var expense: Expense
+    @EnvironmentObject var transactionViewModel: TransactionViewModel
+    
+    var body: some View {
+        HStack(spacing: 12){
+            // MARK: First Letter Avatar
+            if let first = expense.remark.first {
+                
+                Text(String(first))
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .textCase(.uppercase)
+                    .foregroundColor(.white)
+                    .frame(width: 50, height: 50)
+                    .background{
+                        Circle()
+                            .fill(Color(expense.color))
+                        //                            .fill(expense.color)
+                        
+                    }
+                
+            }
+            
+            Text(expense.remark)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity,alignment: .leading)
+            
+            VStack(alignment: .trailing, spacing: 7) {
+                // MARK: Displaying Price
+                let price = transactionViewModel.convertNumberToPrice(value: expense.type == .expense ? -expense.amount : expense.amount)
+                Text(price)
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .kerning(1)
+                    .opacity(0.7)
+                    .foregroundColor(expense.type == .expense ? cynOrange : cynGreen2)
+                
+                Text(expense.date.formatted(date: .numeric, time: .omitted))
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .kerning(1)
+                    .opacity(0.5)
+            }
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(.white)
         }
     }
 }

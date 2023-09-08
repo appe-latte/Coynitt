@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1005191069698-so58dvg1s924ek622l5rt7njcukhrcfg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1005191069698-so58dvg1s924ek622l5rt7njcukhrcfg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCR8vKamCD_o7BISRcmGGp8GdMEk7ete2o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1005191069698</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.coynitt.coynitt</string>
+	<key>PROJECT_ID</key>
+	<string>coynitt-084</string>
+	<key>STORAGE_BUCKET</key>
+	<string>coynitt-084.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1005191069698:ios:f34902b755f5562b64271b</string>
+</dict>
+</plist>

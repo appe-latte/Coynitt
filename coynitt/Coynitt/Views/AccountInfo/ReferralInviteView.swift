@@ -16,10 +16,27 @@ struct ReferralInviteView: View {
     
     var body: some View {
         
-        
         ZStack {
-            cynWhite
             VStack(alignment: .center, spacing: 20) {
+                Rectangle()
+                    .fill(Color(red: 47 / 255, green: 107 / 255, blue: 97 / 255))
+                    .frame(width: UIScreen.main.bounds.width, height: 45)
+                    .edgesIgnoringSafeArea(.all)
+                    .overlay(
+                        VStack {
+                            HStack {
+                                Text("Refer A Friend")
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(cynWhite)
+                                    .textCase(.uppercase)
+                                    .kerning(2)
+                                
+                                Spacer()
+                            }
+                            .padding(.leading, 10)
+                        })
+                
                 // MARK: Promo image
                 VStack {
                     Image("promo")
@@ -85,22 +102,21 @@ struct ReferralInviteView: View {
                 }.padding(.horizontal, 20)
                 
                 Spacer()
-                    
-                    // MARK: "Terms" button
-                    Button(action: {}, label: {
-                        Text("View our Terms and Conditions")
-                            .font(.system(size: 13))
-                            .fontWeight(.semibold)
-                            .frame(width: 250, height: 60)
-                            .foregroundColor(.blue)
-                    })
                 
-//                Spacer()
+                // MARK: "Terms" button
+                Button(action: {}, label: {
+                    Text("View our Terms and Conditions")
+                        .font(.system(size: 13))
+                        .fontWeight(.semibold)
+                        .frame(width: 250, height: 60)
+                        .foregroundColor(.blue)
+                })
                 
+                Spacer()
             }
-            .padding(.top, 35)
-            
-            Spacer()
+            .frame(maxHeight: .infinity, alignment: .top)
+//            .padding(.all)
+
         }
     }
     
@@ -112,11 +128,5 @@ struct ReferralInviteView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.copyText = "Copy"
         }
-    }
-}
-
-struct ReferralInviteView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReferralInviteView()
     }
 }

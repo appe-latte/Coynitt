@@ -8,9 +8,9 @@
 import UIKit
 import SwiftUI
 import Combine
-import Firebase
 import CoreData
 import FirebaseAuth
+import FirebaseCore
 import LocalAuthentication
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
