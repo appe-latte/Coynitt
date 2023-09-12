@@ -47,7 +47,7 @@ class AuthViewModel : ObservableObject {
     
     // MARK: "user registration" function
     
-    func userRegistration(email: String, userPwd: String, userFName: String, userLName: String, profileImage: UIImage, cellNum: String, dob: String, regCountry: String) {
+    func userRegistration(email: String, password: String, firstName: String, lastName: String, profileImage: UIImage, cellNum: String, dob: String, country: String) {
         guard let imageData = profileImage.jpegData(compressionQuality: 0.75) else { return }
         let filename = NSUUID().uuidString
         let storageRef = Storage.storage().reference(withPath: "/profile_image/\(filename)")
@@ -64,7 +64,7 @@ class AuthViewModel : ObservableObject {
             storageRef.downloadURL { url, _ in
                 guard let profileImageUrl = url?.absoluteString else { return }
                 
-                Auth.auth().createUser(withEmail: email, password: userPwd) { result, error in
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     if error != nil {
                         self.isError.toggle()
                         self.errorMsg = error?.localizedDescription ?? ""
@@ -74,13 +74,13 @@ class AuthViewModel : ObservableObject {
                     guard let user = result?.user else { return }
                     
                     let data = ["email": email,
-                                "first_name": userFName,
-                                "last_name": userLName,
+                                "first_name": firstName,
+                                "last_name": lastName,
                                 "profImgUrl": profileImageUrl,
                                 "uid": user.uid,
                                 "cell_num": cellNum,
                                 "dob": dob,
-                                "reg_country": regCountry
+                                "country": country
                     ]
                     
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
@@ -117,7 +117,7 @@ class AuthViewModel : ObservableObject {
     
     // MARK: "verify OTP" function
     
-    func verifyOtpAndSignIn(verificationID: String?, phoneOtp: String, email: String, userFName: String, userLName: String, profileImage: UIImage, cellNum: String, dob: String, regCountry: String) {
+    func verifyOtpAndSignIn(verificationID: String?, phoneOtp: String, email: String, firstName: String, lastName: String, profileImage: UIImage, cellNum: String, dob: String, country: String) {
         
         if let mVerificationID = verificationID {
             
@@ -152,13 +152,13 @@ class AuthViewModel : ObservableObject {
                         
                         if let currentUser = currentUserInstance {
                             let data = ["email": email,
-                                        "first_name": userFName,
-                                        "last_name": userLName,
+                                        "first_name": firstName,
+                                        "last_name": lastName,
                                         "profImgUrl": profileImageUrl,
                                         "uid": currentUser.uid,
                                         "cell_num": cellNum,
                                         "dob": dob,
-                                        "reg_country": regCountry
+                                        "country": country
                             ]
                             
                             Firestore.firestore().collection("users").document(currentUser.uid).setData(data) { _ in
@@ -206,7 +206,7 @@ class AuthViewModel : ObservableObject {
     
     // MARK: "save user info" function
     
-    func saveUserInfo(email: String, userFName: String, userLName: String, profileImage: UIImage, cellNum: String, dob: String, regCountry: String) {
+    func saveUserInfo(email: String, firstName: String, lastName: String, profileImage: UIImage, cellNum: String, dob: String, country: String) {
         
         guard let imageData = profileImage.jpegData(compressionQuality: 0.75) else { return }
         let filename = NSUUID().uuidString
@@ -225,13 +225,13 @@ class AuthViewModel : ObservableObject {
                 
                 if let userSession = self.userSession {
                     let data = ["email": email,
-                                "first_name": userFName,
-                                "last_name": userLName,
+                                "first_name": firstName,
+                                "last_name": lastName,
                                 "profImgUrl": profileImageUrl,
                                 "uid": userSession.uid,
                                 "cell_num": "\(userSession.phoneNumber ?? "")",
                                 "dob": dob,
-                                "reg_country": regCountry
+                                "country": country
                     ]
                     
                     Firestore.firestore().collection("users").document(userSession.uid).setData(data) { _ in

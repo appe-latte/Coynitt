@@ -8,111 +8,200 @@
 import SwiftUI
 
 struct RecipientsView: View {
-    @State var recipFirstName : String = ""
-    @State var recipLastName : String = ""
-    @State var recipFullName : String = ""
+    @State var recipientfirstName : String = ""
+    @State var recipientLastName : String = ""
     
-    // MARK: Bottom Sheet
-    @State private var showAddRecipSheet = false
+    @State private var recipients: [Recipient] = []
+    @State private var isAddingRecipient = false
+    
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
         NavigationView {
             ZStack {
-                cynWhite
+                cynOlive
+                    .ignoresSafeArea()
+                
                 VStack {
                     Rectangle()
-                        .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 120)
-                        .edgesIgnoringSafeArea(.all)
+                        .fill(cynWhite)
+                        .cornerRadius(45, corners: [.bottomRight])
+                        .frame(width: screenWidth, height: 110)
+                        .overlay(
+                            VStack {
+                                HStack(spacing: 25) {
+                                    // MARK: "Add New Recipient" button
+                                    VStack {
+                                        Button(action: {
+                                            isAddingRecipient.toggle()
+                                        }, label: {
+                                            Image("add")
+                                                .resizable()
+                                                .frame(width: 25, height: 25)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
+                                        .background(cynOrange)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        VStack {
+                                            Text("Add New")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                            
+                                            Text("Recipient")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                        }
+                                        .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    
+                                    // MARK: "Delete Recipient" button
+                                    VStack {
+                                        Button(action: {
+                                            isAddingRecipient.toggle()
+                                        }, label: {
+                                            Image("add")
+                                                .resizable()
+                                                .frame(width: 25, height: 25)
+                                                .foregroundColor(cynWhite)
+                                        })
+                                        .frame(width: 50, height: 50)
+                                        .background(cynLightGreen)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(cynWhite, lineWidth: 1))
+                                        
+                                        VStack {
+                                            Text("Delete")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                            
+                                            Text("Recipient")
+                                                .font(.system(size: 8))
+                                                .foregroundColor(cynBlack)
+                                                .textCase(.uppercase)
+                                        }
+                                        .padding(.vertical, 2)
+                                    }
+                                    .padding(.bottom, 10)
+                                    
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 20)
+                            }
+                        )
                     
-                    Text("+ Add new recipient")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(uiColor: .lightGray))
-                        .textCase(.uppercase)
-                        .padding(.top, 250)
+                    // MARK: List of recipients
+                    Group {
+                        if recipients.isEmpty {
+                            Text("+ Add new recipient")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color(uiColor: .lightGray))
+                                .textCase(.uppercase)
+                                .padding(.top, 250)
+                        } else {
+                            List {
+                                ForEach(recipients) { recipient in
+                                    HStack(spacing: 10) {
+                                        Circle()
+                                            .frame(width: 40, height: 40)
+                                            .foregroundColor(cynOlive)
+                                            .shadow(color: cynBlack, radius: 0.1, x: 2, y: 2)
+                                            .overlay(
+                                                HStack {
+                                                    Text(recipient.firstInitial)
+                                                        .font(.headline)
+                                                        .fontWeight(.heavy)
+                                                        .foregroundColor(cynWhite)
+                                                        .textCase(.uppercase)
+                                                    
+                                                    Text(recipient.secondInitial)
+                                                        .font(.headline)
+                                                        .fontWeight(.heavy)
+                                                        .foregroundColor(cynWhite)
+                                                        .textCase(.uppercase)
+                                                }
+                                                    .padding(5)
+                                            )
+                                        
+                                        // MARK: Recipient First + Last Name
+                                        Text(recipient.recipientFirstName)
+                                            .font(.headline)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                        
+                                        Text(recipient.recipientLastName)
+                                            .font(.headline)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(cynBlack)
+                                            .textCase(.uppercase)
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
                     Spacer()
                 }
-                .padding(.top, -100) // <--- removes white space above form from Navigation view
+                //                .padding(.top, -100) // <--- removes white space above form from Navigation view
                 
                 Spacer()
             }
-            .accentColor(cynGreen)
-            .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $showAddRecipSheet) {
-                ZStack {
-                    cynWhite
-                    
-                    AddRecipientView()
-                }
-                .ignoresSafeArea()
-                .presentationDetents([.large, .fraction(0.7)])
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Recipients")
-                        .font(.subheadline)
-                        .fontWeight(.bold)
-                        .foregroundColor(cynWhite)
-                        .textCase(.uppercase)
-                }
-                
-                ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button(action: {
-                        showAddRecipSheet.toggle()
-                    }, label: {
-                        VStack {
-                            Image("add-user")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(cynWhite)
-                                .clipShape(Circle())
-                            
-                            Text("Add Recipient")
-                                .font(.system(size: 9))
-                                .foregroundColor(cynWhite)
-                        }
-                    })
-                }
+        }
+        .accentColor(cynWhite)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing){
+                // MARK: Notifications Button
+                Button(action: {
+                    //
+                }, label: {
+                    VStack {
+                        Image("alert")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(cynBlack)
+                            .clipShape(Circle())
+                        
+                        Text("Alerts")
+                            .font(.system(size: 8))
+                            .foregroundColor(cynBlack)
+                            .textCase(.uppercase)
+                            .kerning(2)
+                    }
+                })
             }
         }
+        .sheet(isPresented: $isAddingRecipient) {
+            ZStack {
+                cynOlive
+                
+                NewRecipientView(recipients: $recipients)
+            }
+            .ignoresSafeArea()
+            .presentationDetents([.large, .fraction(0.7)])
+        }
+        .scrollContentBackground(.hidden)
     }
 }
 
-// MARK: Recipients Lists - shows last 10 transfers
-struct Recipients: Identifiable {
-    let id = UUID()
-    let lName : String
-    let initials : String
-}
-
-struct RecipientsRow: View {
-    var recipients: Recipients
+// MARK: Extension - for grabbing first letter of First and Last name for the graphic
+extension Recipient {
+    var firstInitial: String {
+        return String(recipientFirstName.prefix(1))
+    }
     
-    var body: some View {
-        HStack {
-            VStack {
-                Text(recipients.initials)
-                    .foregroundColor(.white)
-                    .frame(width: 30, height: 30)
-                    .padding(10)
-                    .background(cynGreen)
-                    .clipShape(Circle())
-                
-                Text(recipients.lName)
-                    .font(.custom("Avenir", size: 14))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.black)
-                    .scaledToFill()
-                    .minimumScaleFactor(0.5)
-                
-            }
-            .padding(2)
-            .listRowBackground(cynWhite) // list background colour
-            .edgesIgnoringSafeArea(.all)
-        }
+    var secondInitial: String {
+        return String(recipientLastName.prefix(1))
     }
 }
-

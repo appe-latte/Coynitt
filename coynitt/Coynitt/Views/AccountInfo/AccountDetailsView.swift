@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountDetailsView: View {
-    @State private var userAccNum : Int = 3738122
+    @State private var accountNumber : Int = 3738122
     @State private var institutionNum : Int = 707
     @State private var transitNum : Int = 87362
     @State private var swiftCode : String = "CYNT182"

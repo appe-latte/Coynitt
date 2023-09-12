@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TxCompletionView: View {
+struct TransferCompletedView: View {
     var body: some View {
         ZStack {
             cynWhite

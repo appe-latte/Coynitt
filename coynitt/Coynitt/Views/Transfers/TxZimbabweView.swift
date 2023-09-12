@@ -13,9 +13,9 @@ struct TxZimbabweView : View {
     @State private var arrivalDate = "10 minutes"
     @State var isChecked : Bool = false
     
-    @State var senderFName : String = ""
-    @State var senderLName : String = ""
-    @State var sendermobile : String = ""
+    @State var senderFirstName : String = ""
+    @State var senderLastName : String = ""
+    @State var senderCellNum : String = ""
     
     // MARK: Country Picker
     @State private var country: Country?
@@ -55,7 +55,7 @@ struct TxZimbabweView : View {
                                 .foregroundColor(.black)
                                 .padding(.trailing, 10)
                             
-                            TxCustomTextField(text: $senderFName, placeholder: Text(""))
+                            TxCustomTextField(text: $senderFirstName, placeholder: Text(""))
                                 .font(.custom("Avenir", size: 16))
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(5)
@@ -69,7 +69,7 @@ struct TxZimbabweView : View {
                                 .foregroundColor(.black)
                                 .padding(.trailing, 10)
                             
-                            TxCustomTextField(text: $senderLName, placeholder: Text(""))
+                            TxCustomTextField(text: $senderLastName, placeholder: Text(""))
                                 .font(.custom("Avenir", size: 16))
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(5)
@@ -94,7 +94,7 @@ struct TxZimbabweView : View {
                                 .foregroundColor(.black)
                                 .padding(.leading, 5)
                                 
-                                TextField("e.g., 772 765945", text: $sendermobile)
+                                TextField("e.g., 772 765945", text: $senderCellNum)
                                     .font(.custom("Avenir", size: 16))
                                     .keyboardType(.numberPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())

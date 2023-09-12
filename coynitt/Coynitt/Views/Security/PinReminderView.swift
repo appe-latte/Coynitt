@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PinReminderView: View {
     @State private var userPin : Int = 5198
-    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CardFrontView: View {
-    @State var accBalance : Double = 1498.18
-    @State private var lastFourDigits : Int = 1762
+    @State var balance : Double = 1498.18
+    @State private var setFour : Int = 1762
     @State var accType : String = "Current"
     
     @State var cardWidth : CGFloat = 350
@@ -81,7 +81,7 @@ struct CardFrontView: View {
                                         .textCase(.uppercase)
                                         .foregroundColor(cynBlack)
                                     
-                                    Text("\(String(lastFourDigits))")
+                                    Text("\(String(setFour))")
                                         .font(.custom("Impact", size: 18))
                                         .kerning(3)
                                         .textCase(.uppercase)
@@ -91,9 +91,9 @@ struct CardFrontView: View {
                                 .padding(.bottom, 10)
                                 
                                 ZStack {
-                                    HStack {
+                                    HStack(spacing: 5) {
                                         Spacer()
-                                            .frame(width: 100)
+                                            .frame(width: 80)
                                         
                                         // MARK: Show Pin and Card Details
                                         HStack {
@@ -112,7 +112,8 @@ struct CardFrontView: View {
                                                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
                                                     
                                                     Text("Details")
-                                                        .font(.system(size: 8))
+                                                        .font(.system(size: 7))
+                                                        .fontWeight(.semibold)
                                                         .foregroundColor(cynBlack)
                                                         .textCase(.uppercase)
                                                 }
@@ -132,18 +133,21 @@ struct CardFrontView: View {
                                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(cynWhite, lineWidth: 1))
                                                     
-                                                    Text("Show PIN")
-                                                        .font(.system(size: 8))
+                                                    Text("PIN")
+                                                        .font(.system(size: 7))
+                                                        .fontWeight(.semibold)
                                                         .foregroundColor(cynBlack)
                                                         .textCase(.uppercase)
                                                 }
                                             })
                                         }
                                         
+                                        Spacer()
+                                        
                                         // MARK: Account Balance
                                         VStack(alignment: .leading) {
                                             HStack {
-                                                Text("$\(accBalance, specifier: "%.2f")")
+                                                Text("$\(balance, specifier: "%.2f")")
                                                     .font(.custom("Impact", size: 24))
                                                     .textCase(.uppercase)
                                                     .kerning(3)

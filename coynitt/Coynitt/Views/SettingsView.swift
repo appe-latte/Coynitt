@@ -14,6 +14,7 @@ struct SettingsView: View {
     
     var body: some View {
         let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
         
         NavigationView {
             ZStack {
@@ -22,10 +23,11 @@ struct SettingsView: View {
                 
                 VStack(alignment: .center) {
                     Rectangle()
-                        .fill(Color(red: 92 / 255, green: 181 / 255, blue: 184 / 255))
-                        .cornerRadius(15, corners: [.bottomRight])
-                        .frame(width: UIScreen.main.bounds.width, height: 110)
-                        .edgesIgnoringSafeArea(.all)
+                        .fill(cynWhite)
+                        .cornerRadius(45, corners: [.bottomRight])
+                        .frame(width: screenWidth, height: 110)
+                    
+                    Spacer() 
                     
                     Form {
                         // MARK: ID Verification

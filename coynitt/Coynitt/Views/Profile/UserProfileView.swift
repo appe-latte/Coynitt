@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    @State var userFName : String = "Samuel"
-    @State var userLName : String = "James"
+    @State var firstName : String = "Samuel"
+    @State var lastName : String = "James"
     @State var userID : String = "18636390"
-    @State var userMemberAcctType : String = "Premium"
-    @State var userEmail : String = "sam_james90@coynitt.com"
-    @State var userAddr : String = "125 Lethbridge Way, Calgary, AB"
-    @State var userPhn : String = "+1 (587) 187-9272"
-    @State var userDob : String = "11-May-92"
-    @State var userCountry : String = "Canada"
+    @State var accountType : String = "Premium"
+    @State var email : String = "sam_james90@coynitt.com"
+    @State var address : String = "125 Lethbridge Way, Calgary, AB"
+    @State var cellNum : String = "+1 (587) 187-9272"
+    @State var dob : String = "11-May-92"
+    @State var country : String = "Canada"
     
     var viewWidth = UIScreen.main.bounds.width
     var viewHeight = UIScreen.main.bounds.height
+    
     @State var rowHeight = 65.0 // sets row height for list
     
     var body: some View {
@@ -81,7 +82,7 @@ struct UserProfileView: View {
                         // MARK: Name / UserID / Membership Type
                         VStack {
                             HStack {
-                                Text("\(userFName) \(userLName)")
+                                Text("\(firstName) \(lastName)")
                                     .font(.system(size: 12))
                                     .fontWeight(.heavy)
                                     .kerning(2)
@@ -106,7 +107,7 @@ struct UserProfileView: View {
                                 }
                                 
                                 HStack {
-                                    Text("Account Type: \(userMemberAcctType)")
+                                    Text("Account Type: \(accountType)")
                                         .font(.system(size: 10))
                                         .fontWeight(.medium)
                                         .kerning(2)
@@ -148,7 +149,7 @@ struct UserProfileView: View {
                                         }
                                         
                                         HStack {
-                                            Text(userEmail)
+                                            Text(email)
                                                 .font(.system(size: 10))
                                                 .fontWeight(.medium)
                                                 .kerning(2)
@@ -175,7 +176,7 @@ struct UserProfileView: View {
                                     }
                                     
                                     HStack {
-                                        Text(userDob)
+                                        Text(dob)
                                             .font(.system(size: 10))
                                             .fontWeight(.medium)
                                             .kerning(2)
@@ -201,7 +202,7 @@ struct UserProfileView: View {
                                     }
                                     
                                     HStack {
-                                        Text(userPhn)
+                                        Text(cellNum)
                                             .font(.system(size: 10))
                                             .fontWeight(.medium)
                                             .kerning(2)
@@ -238,7 +239,7 @@ struct UserProfileView: View {
                                     }
                                     
                                     HStack {
-                                        Text(userAddr)
+                                        Text(address)
                                             .font(.system(size: 10))
                                             .fontWeight(.medium)
                                             .kerning(2)
@@ -270,7 +271,7 @@ struct UserProfileView: View {
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: 15, height: 10)
                                         
-                                        Text(userCountry)
+                                        Text(country)
                                             .font(.system(size: 10))
                                             .fontWeight(.medium)
                                             .kerning(2)

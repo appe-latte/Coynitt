@@ -10,9 +10,9 @@ import SwiftUI
 
 struct Activity: Identifiable {
     let id = UUID()
-    let activDate: String
-    let activName: String
-    let activAmount: Double
+    let date: String
+    let title: String
+    let amount: Double
 }
 
 struct ActivityRow: View {
@@ -21,21 +21,21 @@ struct ActivityRow: View {
     var body: some View {
         VStack {
             HStack {
-                Text(activity.activName)
+                Text(activity.title)
                     .font(.custom("Avenir", size: 14))
                     .fontWeight(.semibold)
                     .foregroundColor(.black)
                 
                 Spacer()
                 
-                Text("\(activity.activAmount, specifier: "%.2f")")
+                Text("\(activity.amount, specifier: "%.2f")")
                     .font(.custom("Avenir", size: 13))
                     .fontWeight(.semibold)
                     .foregroundColor(.black)
             }
             
             HStack {
-                Text(activity.activDate)
+                Text(activity.date)
                     .font(.custom("Avenir", size: 12))
                     .bold()
                     .foregroundColor(.gray)

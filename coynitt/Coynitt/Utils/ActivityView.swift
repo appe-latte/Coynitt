@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ActivityView: View {
-    
     var body: some View {
         GeometryReader { geo in
             Rectangle()

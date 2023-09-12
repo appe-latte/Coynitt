@@ -9,7 +9,6 @@ import Foundation
 import CommonCrypto
 
 extension String {
-    
     func aesEncrypt(key:String) -> String? {
         if let keyData = key.data(using: String.Encoding.utf8),
            let data = self.data(using: String.Encoding.utf8),

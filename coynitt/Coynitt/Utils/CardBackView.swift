@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CardBackView: View {
-    @State private var firstFourDigits : Int = 2536
-    @State private var secondFourDigits : Int = 5291
-    @State private var thirdFourDigits : Int = 1809
-    @State private var lastFourDigits : Int = 1762
+    @State private var setOne : Int = 2536
+    @State private var setTwo : Int = 5291
+    @State private var setThree : Int = 1809
+    @State private var setFour : Int = 1762
     @State private var cvv : Int = 162
     @State private var expiryDate = "03/25"
     @State private var fullName : String = "Samuel Jameson"
@@ -64,7 +64,7 @@ struct CardBackView: View {
                                 .overlay(
                                     HStack {
                                         if isSecured {
-                                            Text("**** **** **** \(String(lastFourDigits))")
+                                            Text("**** **** **** \(String(setFour))")
                                                 .font(.headline)
                                                 .fontWeight(.heavy)
                                                 .kerning(2)
@@ -72,7 +72,7 @@ struct CardBackView: View {
                                                 .foregroundColor(cynOlive)
                                                 .padding(.leading, 5)
                                         } else {
-                                            Text("\(String(firstFourDigits)) " + "\(String(secondFourDigits)) " + "\(String(thirdFourDigits)) " + "\(String(lastFourDigits))")
+                                            Text("\(String(setOne)) " + "\(String(setTwo)) " + "\(String(setThree)) " + "\(String(setFour))")
                                                 .font(.headline)
                                                 .fontWeight(.heavy)
                                                 .kerning(2)

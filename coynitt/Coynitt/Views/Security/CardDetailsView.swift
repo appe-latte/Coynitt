@@ -8,16 +8,7 @@
 import SwiftUI
 
 struct CardDetailsView: View {
-    // MARK: Card Number
-    @State private var firstFourDigits : Int = 2536
-    @State private var secondFourDigits : Int = 5291
-    @State private var thirdFourDigits : Int = 1809
-    @State private var lastFourDigits : Int = 1762
-    
     @Environment(\.dismiss) var dismiss
-    
-    @State private var cvv : Int = 162
-    @State private var expiryDate = "03/25"
     
     let width : CGFloat = 200
     let height : CGFloat = 250

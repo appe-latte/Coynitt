@@ -10,9 +10,9 @@ import AlertToast
 import PassKit
 
 struct AccountView: View {
-    @State var userFName : String = "Samuel"
-    @State private var userTag : String = "samthing90"
-    @State private var userAccNum : Int = 1001773
+    @State var firstName : String = "Samuel"
+    @State private var userHandle : String = "samthing90"
+    @State private var accountNumber : Int = 1001773
     
     @State var rowHeight = 65.0 // sets row height for list
     @State private var showAccountDetailsSheetView = false
@@ -365,7 +365,7 @@ struct AccountView: View {
                             .textCase(.uppercase)
                             .kerning(5)
                         
-                        Text("Acc: \(String(userAccNum))")
+                        Text("Acc: \(String(accountNumber))")
                             .font(.system(size: 10))
                             .foregroundColor(cynBlack)
                             .textCase(.uppercase)

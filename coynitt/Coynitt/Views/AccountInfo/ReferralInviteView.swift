@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ReferralInviteView: View {
-    @State private var refCode: String = "KIPCYN"
+    @State private var refCode: String = "KIPCYN/135"
     @State private var copyText: String = "Copy"
     
     private let pasteboard = UIPasteboard.general
-    
     
     var body: some View {
         

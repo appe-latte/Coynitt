@@ -13,9 +13,9 @@ import AlertToast
 import PassKit
 
 struct MainView: View {
-    @State var userAccBal : Double = 1498.18
-    @State var userFName : String = "Samuel"
-    @State private var userTag : String = "samthing90"
+    @State var balance : Double = 1498.18
+    @State var firstName : String = "Samuel"
+    @State private var usrHandle : String = "samthing90"
     @State var txAmount : Double  = 0.00
     
     @State var rowHeight = 50.0 // sets row height for list
@@ -192,7 +192,7 @@ struct MainView: View {
                                                 .padding(5)
                                             
                                             
-                                            Text("$\(userAccBal, specifier: "%.2f")")
+                                            Text("$\(balance, specifier: "%.2f")")
                                                 .font(.custom("Impact", size: 24))
                                                 .textCase(.uppercase)
                                                 .kerning(3)
@@ -268,7 +268,7 @@ struct MainView: View {
                                 .kerning(5)
                             
                             HStack {
-                                Text("Hi, \(userFName)")
+                                Text("Hi, \(firstName)")
                                     .font(.system(size: 10))
                                     .foregroundColor(cynBlack)
                                     .textCase(.uppercase)

@@ -19,7 +19,7 @@ struct LoginView: View {
     
     // MARK: OTP
     @State var showOtpSheet : Bool = false
-    @State var phoneNumber : String = ""
+    @State var cellNum : String = ""
     @State private var verificationID : String = ""
     @State var showProgressView : Bool = false
     
@@ -69,7 +69,7 @@ struct LoginView: View {
                     .foregroundColor(.black)
                     .padding(.leading, 10)
                     
-                    TextField("Enter cell no.", text: $phoneNumber)
+                    TextField("Enter cell no.", text: $cellNum)
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .keyboardType(.numberPad)
@@ -112,8 +112,8 @@ struct LoginView: View {
                 .background(cynGreen)
                 .clipShape(Capsule())
                 .foregroundColor(.white)
-                .disabled((phoneNumber != "") ? false : true)
-                .opacity((phoneNumber != "") ? 1 : 0.5)
+                .disabled((cellNum != "") ? false : true)
+                .opacity((cellNum != "") ? 1 : 0.5)
 //                .alert(isPresented: $viewModel.isError, content: {
 //                    Alert(title: Text("Login Error"), message: Text(viewModel.errorMsg).environmentObject(self.viewModel) as? Text)
 //                })
@@ -144,7 +144,7 @@ struct LoginView: View {
             countryCode = "+ \(country!.phoneCode)"
         }
         
-        let phoneNum = "\(countryCode)\(phoneNumber)"
+        let phoneNum = "\(countryCode)\(cellNum)"
         
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNum, uiDelegate: nil) {

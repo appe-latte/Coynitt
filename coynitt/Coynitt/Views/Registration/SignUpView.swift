@@ -11,13 +11,12 @@ import UIKit
 import FirebaseAuth
 
 struct SignUpView: View {
-    @State private var userFName = ""
-    @State private var userLName = ""
-    @State private var phoneNumber = ""
-    @State private var email = ""
-    @State private var userPassword = ""
+    @State private var firstName = ""
+    @State private var lastName = ""
     @State private var cellNum = ""
-    @State private var regCountry = ""
+    @State private var email = ""
+    @State private var password = ""
+    @State private var country = ""
     @State private var dob = "-"
     
     @State var isChecked : Bool = false
@@ -101,7 +100,7 @@ struct SignUpView: View {
                         VStack(spacing: 15) {
                             
                             // MARK: First Name Text
-                            CustomTextField(text: $userFName, placeholder: Text("Enter first name"), imageName: "users")
+                            CustomTextField(text: $firstName, placeholder: Text("Enter first name"), imageName: "users")
                                 .padding(5)
                                 .foregroundColor(.black)
                                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
@@ -111,7 +110,7 @@ struct SignUpView: View {
                             
                             
                             // MARK: Last Name Text
-                            CustomTextField(text: $userLName, placeholder: Text("Enter last name"), imageName: "users")
+                            CustomTextField(text: $lastName, placeholder: Text("Enter last name"), imageName: "users")
                                 .padding(5)
                                 .foregroundColor(.black)
                                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
@@ -130,7 +129,7 @@ struct SignUpView: View {
                                 .keyboardType(.emailAddress)
                             
                             // MARK: Reg Country Text
-                            CustomTextField(text: $regCountry, placeholder: Text("Country of Residence"), imageName: "location")
+                            CustomTextField(text: $country, placeholder: Text("Country of Residence"), imageName: "location")
                                 .padding(5)
                                 .foregroundColor(.black)
                                 .frame(width: UIScreen.main.bounds.size.width - 40, height: 50).padding(.leading,10)
@@ -179,7 +178,7 @@ struct SignUpView: View {
                         // MARK: "Sign Up" Button
                         Button(action: {
                             guard let image = selectedUIImage else {return}
-                            viewModel.saveUserInfo(email: email, userFName: userFName, userLName: userLName, profileImage: image, cellNum: cellNum, dob: dob, regCountry: regCountry)
+                            viewModel.saveUserInfo(email: email, firstName: firstName, lastName: lastName, profileImage: image, cellNum: cellNum, dob: dob, country: country)
                             
                         }, label: {
                             Text("Sign Up")
@@ -189,7 +188,7 @@ struct SignUpView: View {
                                 .clipShape(Capsule())
                                 .foregroundColor(.white)
                         })
-                        .disabled((userLName != "" && userFName != "" && email != "") ? false : true)
+                        .disabled((lastName != "" && firstName != "" && email != "") ? false : true)
                         //                    .opacity((userLName != "" && userLName != "" && email != "") ? 1 : 0.6)
                         //                .alert(isPresented: $viewModel.isError, content: {
                         //                    Alert(title: Text("Registration Error"), message: Text(viewModel.errorMsg))
@@ -198,7 +197,7 @@ struct SignUpView: View {
                         // MARK: "Sign Up" Button
                         Button(action: {
                             guard let image = selectedUIImage else {return}
-                            viewModel.saveUserInfo(email: email, userFName: userFName, userLName: userLName, profileImage: image, cellNum: cellNum, dob: dob, regCountry: regCountry)
+                            viewModel.saveUserInfo(email: email, firstName: firstName, lastName: lastName, profileImage: image, cellNum: cellNum, dob: dob, country: country)
                             
                         }, label: {
                             Text("Sign Up")
@@ -208,8 +207,8 @@ struct SignUpView: View {
                                 .clipShape(Capsule())
                                 .foregroundColor(.white)
                         })
-                        .disabled((userLName != "" && userFName != "" && email != "" && isChecked != false) ? false : true)
-                        .opacity((userLName != "" && userLName != "" && email != "") ? 1 : 0.6)
+                        .disabled((lastName != "" && firstName != "" && email != "" && isChecked != false) ? false : true)
+                        .opacity((lastName != "" && lastName != "" && email != "") ? 1 : 0.6)
                         //                .alert(isPresented: $viewModel.isError, content: {
                         //                    Alert(title: Text("Registration Error"), message: Text(viewModel.errorMsg))
                     }

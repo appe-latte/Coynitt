@@ -260,7 +260,7 @@ struct AccUpgradeView: View {
                 
                 // MARK: "Upgrade" button
                 Button(action: {
-                    
+                    //
                 }, label: {
                     Text("Upgrade Today")
                         .fontWeight(.semibold)

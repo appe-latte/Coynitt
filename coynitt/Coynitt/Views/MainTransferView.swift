@@ -10,14 +10,14 @@ import UIKit
 
 struct MainTransferView: View {
     @State var selectedCountry: String = ""
-    @State var recipFullName : String = ""
-    @State var txRecvAmount : Double = 0.00
-    @State var txSendAmount : Double = 0.00
-    @State var txTotalAmount : Double = 0.00
-    @State var txRate : Double = 17.69
-    @State var txFee : Double = 3.25
-    @State var txRateCountry : String = "ZAR"
-    @State var arrivalTime : String = "20"
+    @State var receiverName : String = ""
+    @State var receiveAmount : Double = 0.00
+    @State var sendAmount : Double = 0.00
+    @State var transferTotal : Double = 0.00
+    @State var rate : Double = 17.69
+    @State var fee : Double = 3.25
+    @State var coutryRate : String = "ZAR"
+    @State var estimatedArrival : String = "20"
     
     @State private var showKeypadSheet = false
     @State var showDepositActiveSheet = false

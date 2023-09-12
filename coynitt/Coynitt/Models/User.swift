@@ -11,12 +11,12 @@ import FirebaseAuth
 
 struct User: Identifiable {
     let id : String
-    let userFName : String
-    let userLName : String
+    let firstName : String
+    let lastName : String
     let email : String
     let cellNum : String
     let profileImageUrl : String
-    let regCountry : String
+    let country : String
     let dob : String
     let accountNumber : String
     
@@ -24,13 +24,13 @@ struct User: Identifiable {
     
     init(dictionary: [String: Any]) {
         self.id = dictionary["uid"] as? String ?? ""
-        self.userFName = dictionary["first_name"] as? String ?? ""
-        self.userLName = dictionary["surname"] as? String ?? ""
+        self.firstName = dictionary["first_name"] as? String ?? ""
+        self.lastName = dictionary["last_name"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.cellNum = dictionary["cell_num"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.dob = dictionary["dob"] as? String ?? ""
-        self.regCountry = dictionary["reg_country"] as? String ?? ""
-        self.accountNumber = dictionary["accountNum"] as? String ?? ""
+        self.country = dictionary["country"] as? String ?? ""
+        self.accountNumber = dictionary["account_num"] as? String ?? ""
     }
 }
